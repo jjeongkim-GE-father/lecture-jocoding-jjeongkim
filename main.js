@@ -1,5 +1,21 @@
 const drawButton = document.getElementById('draw-button');
 const lottoNumbersDiv = document.querySelector('.lotto-numbers');
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Check for saved theme preference
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+    body.classList.add('dark');
+    themeToggle.textContent = 'Light Mode';
+}
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark');
+    const isDark = body.classList.contains('dark');
+    themeToggle.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
 
 drawButton.addEventListener('click', () => {
     lottoNumbersDiv.innerHTML = '';
