@@ -20,6 +20,25 @@ const translations = {
         navCollections: 'Collections',
         navAbout: 'About',
         menuCount: (count) => `${count} dishes in rotation`,
+        contact: {
+            eyebrow: 'Partnership',
+            title: "Let's Collaborate",
+            subtitle: "Share your proposal and we'll get back within 2 business days.",
+            labels: {
+                name: 'Name',
+                email: 'Email',
+                company: 'Company',
+                message: 'Message'
+            },
+            placeholders: {
+                name: 'Your name',
+                email: 'name@email.com',
+                company: 'Company or brand',
+                message: 'Tell us about your partnership idea...'
+            },
+            submit: 'Send inquiry',
+            note: 'We will only use this to reply to your inquiry.'
+        },
         features: [
             {
                 title: 'Global Variety',
@@ -152,6 +171,25 @@ const translations = {
         navCollections: '컬렉션',
         navAbout: '소개',
         menuCount: (count) => `${count}가지 메뉴가 준비되어 있어요`,
+        contact: {
+            eyebrow: '제휴 문의',
+            title: '함께 협업해요',
+            subtitle: '간단히 제안 내용을 알려주시면 2영업일 내에 답변드릴게요.',
+            labels: {
+                name: '이름',
+                email: '이메일',
+                company: '회사',
+                message: '메시지'
+            },
+            placeholders: {
+                name: '이름을 입력하세요',
+                email: 'name@email.com',
+                company: '회사 또는 브랜드',
+                message: '제휴/협업 제안을 간단히 적어주세요.'
+            },
+            submit: '문의 보내기',
+            note: '문의 답변을 위해서만 사용됩니다.'
+        },
         features: [
             {
                 title: '글로벌 다양성',
@@ -289,6 +327,25 @@ function updateLanguage() {
     document.getElementById('nav-collections').textContent = t.navCollections;
     document.getElementById('nav-about').textContent = t.navAbout;
     document.getElementById('menu-count').textContent = t.menuCount(t.menus.length);
+    document.getElementById('contact-eyebrow').textContent = t.contact.eyebrow;
+    document.getElementById('contact-title').textContent = t.contact.title;
+    document.getElementById('contact-subtitle').textContent = t.contact.subtitle;
+    document.getElementById('label-name').textContent = t.contact.labels.name;
+    document.getElementById('label-email').textContent = t.contact.labels.email;
+    document.getElementById('label-company').textContent = t.contact.labels.company;
+    document.getElementById('label-message').textContent = t.contact.labels.message;
+    document.getElementById('form-submit').textContent = t.contact.submit;
+    document.getElementById('form-note').textContent = t.contact.note;
+
+    const nameInput = document.querySelector('input[name=\"name\"]');
+    const emailInput = document.querySelector('input[name=\"email\"]');
+    const companyInput = document.querySelector('input[name=\"company\"]');
+    const messageInput = document.querySelector('textarea[name=\"message\"]');
+
+    if (nameInput) nameInput.placeholder = t.contact.placeholders.name;
+    if (emailInput) emailInput.placeholder = t.contact.placeholders.email;
+    if (companyInput) companyInput.placeholder = t.contact.placeholders.company;
+    if (messageInput) messageInput.placeholder = t.contact.placeholders.message;
 
     const featureTitle1 = document.getElementById('feature-title-1');
     const featureTitle2 = document.getElementById('feature-title-2');
