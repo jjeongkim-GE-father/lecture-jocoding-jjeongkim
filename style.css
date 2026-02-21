@@ -1,29 +1,28 @@
 :root {
-    --bg-color: #f0f0f0;
-    --text-color: #333;
-    --container-bg: #fff;
-    --btn-bg: #4caf50;
+    --bg-color: #fff9f0;
+    --text-color: #4a4a4a;
+    --container-bg: #ffffff;
+    --btn-bg: #ff6b6b;
     --btn-text: #fff;
-    --number-bg: #4caf50;
-    --number-text: #fff;
+    --accent-color: #ffa502;
 }
 
 body.dark {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --container-bg: #1e1e1e;
-    --btn-bg: #bb86fc;
-    --btn-text: #000;
-    --number-bg: #03dac6;
-    --number-text: #000;
+    --bg-color: #2f3542;
+    --text-color: #f1f2f6;
+    --container-bg: #57606f;
+    --btn-bg: #ff4757;
+    --btn-text: #fff;
+    --accent-color: #eccc68;
 }
 
 body {
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    margin: 0;
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
@@ -31,41 +30,42 @@ body {
 
 .container {
     text-align: center;
-    padding: 40px;
+    padding: 50px;
     background-color: var(--container-bg);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: background-color 0.3s;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 90%;
 }
 
-.lotto-numbers {
+.menu-display {
+    margin: 30px 0;
+    min-height: 80px;
     display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.number {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--number-bg);
-    color: var(--number-text);
-    display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 0 5px;
-    font-size: 24px;
-    font-weight: bold;
+    justify-content: center;
 }
 
-#draw-button {
-    padding: 10px 20px;
-    font-size: 18px;
+#recommendation {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+#recommend-button {
+    padding: 15px 30px;
+    font-size: 20px;
     cursor: pointer;
     background-color: var(--btn-bg);
     color: var(--btn-text);
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+#recommend-button:active {
+    transform: scale(0.95);
 }
 
 #theme-toggle {
@@ -74,8 +74,8 @@ body {
     right: 20px;
     padding: 8px 16px;
     cursor: pointer;
-    background-color: var(--btn-bg);
-    color: var(--btn-text);
-    border: none;
-    border-radius: 5px;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    border-radius: 20px;
 }

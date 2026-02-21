@@ -1,7 +1,22 @@
-const drawButton = document.getElementById('draw-button');
-const lottoNumbersDiv = document.querySelector('.lotto-numbers');
+const recommendButton = document.getElementById('recommend-button');
+const recommendationText = document.getElementById('recommendation');
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
+
+const dinnerMenus = [
+    'Kimchi Jjigae (Kimchi Stew)',
+    'Bulgogi (Korean BBQ Beef)',
+    'Bibimbap',
+    'Tteokbokki',
+    'Fried Chicken',
+    'Pasta',
+    'Pizza',
+    'Sushi',
+    'Tacos',
+    'Steak',
+    'Ramen',
+    'Burger'
+];
 
 // Check for saved theme preference
 const currentTheme = localStorage.getItem('theme');
@@ -17,24 +32,14 @@ themeToggle.addEventListener('click', () => {
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
-drawButton.addEventListener('click', () => {
-    lottoNumbersDiv.innerHTML = '';
-    const numbers = generateLottoNumbers();
-    numbers.forEach((number, index) => {
-        setTimeout(() => {
-            const numberDiv = document.createElement('div');
-            numberDiv.classList.add('number');
-            numberDiv.textContent = number;
-            lottoNumbersDiv.appendChild(numberDiv);
-        }, index * 500);
-    });
+recommendButton.addEventListener('click', () => {
+    recommendationText.textContent = 'Thinking...';
+    recommendationText.style.opacity = '0.5';
+    
+    setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * dinnerMenus.length);
+        const selectedMenu = dinnerMenus[randomIndex];
+        recommendationText.textContent = selectedMenu;
+        recommendationText.style.opacity = '1';
+    }, 500);
 });
-
-function generateLottoNumbers() {
-    const numbers = new Set();
-    while (numbers.size < 6) {
-        const randomNumber = Math.floor(Math.random() * 45) + 1;
-        numbers.add(randomNumber);
-    }
-    return Array.from(numbers).sort((a, b) => a - b);
-}
