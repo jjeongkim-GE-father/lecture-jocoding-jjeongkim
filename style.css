@@ -269,6 +269,23 @@ p {
     margin-top: 56px;
 }
 
+.comments-section {
+    margin-top: 32px;
+}
+
+.comments-card {
+    background: var(--surface);
+    border-radius: 28px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.comments-title {
+    font-size: clamp(22px, 2.6vw, 30px);
+    margin-bottom: 16px;
+}
+
 .contact-card {
     background: var(--surface);
     border-radius: 28px;
