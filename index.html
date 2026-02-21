@@ -4,22 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Dinner Menu Recommendation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="background-orbs" aria-hidden="true"></div>
+
     <div class="top-controls">
         <button id="lang-toggle">한국어</button>
         <button id="theme-toggle">Dark Mode</button>
     </div>
-    <div class="container">
-        <h1 id="main-heading">What's for Dinner?</h1>
-        <div class="menu-display">
-            <div id="recommendations-container">
-                <p id="instruction-text">Click the button for recommendations!</p>
+
+    <header class="site-header">
+        <div class="brand">Dinner Atlas</div>
+        <nav class="site-nav">
+            <button class="nav-link" id="nav-menu">Menu</button>
+            <button class="nav-link" id="nav-collections">Collections</button>
+            <button class="nav-link" id="nav-about">About</button>
+        </nav>
+    </header>
+
+    <main class="page">
+        <section class="hero">
+            <div class="hero-text">
+                <p class="tagline" id="tagline">Curated dinner ideas for every mood.</p>
+                <h1 id="main-heading">What's for Dinner?</h1>
+                <p class="sub-heading" id="sub-heading">
+                    Pick from a wide global lineup, each with a short description so you can decide fast.
+                </p>
+                <div class="hero-cta">
+                    <button id="recommend-button">Recommend 3 Menus</button>
+                    <div class="menu-count" id="menu-count">40 dishes in rotation</div>
+                </div>
             </div>
-        </div>
-        <button id="recommend-button">Recommend 3 Menus</button>
-    </div>
+
+            <div class="hero-card">
+                <div class="menu-display">
+                    <div id="recommendations-container">
+                        <p id="instruction-text">Click the button for recommendations!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-row">
+            <div class="feature-card">
+                <div class="feature-title" id="feature-title-1">Global Variety</div>
+                <p class="feature-desc" id="feature-desc-1">Korean classics, noodles, grills, and comfort food from around the world.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title" id="feature-title-2">Fast Decisions</div>
+                <p class="feature-desc" id="feature-desc-2">Short, clear descriptions make it easy to pick what fits tonight.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title" id="feature-title-3">Always Fresh</div>
+                <p class="feature-desc" id="feature-desc-3">Hit the button again for a new trio every time.</p>
+            </div>
+        </section>
+    </main>
+
     <script src="main.js"></script>
 </body>
 </html>
