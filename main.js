@@ -59,6 +59,7 @@ const translations = {
         metaSources: 'Sources: CDC · WHO · KR Public Health',
         heroPanelTitle: 'Quick Filters',
         filterNote: 'Pick a stage to open the full checklist.',
+        jumpStages: 'Explore Months',
         stagesTitle: 'Stage Playbook',
         stagesSubtitle: 'Tap a stage to see Top 5 essentials + detailed cards.',
         hotTitle: 'Parenting Themes',
@@ -96,6 +97,7 @@ const translations = {
         metaSources: '출처: CDC · WHO · 보건소 자료',
         heroPanelTitle: '빠른 필터',
         filterNote: '구간을 선택하면 상세 체크리스트가 열립니다.',
+        jumpStages: '월령 보기',
         stagesTitle: '구간별 플레이북',
         stagesSubtitle: '구간을 눌러 필수 Top 5와 상세 카드를 확인하세요.',
         hotTitle: '육아 테마',
@@ -2512,6 +2514,9 @@ const setText = () => {
         if (!el || !t[key]) return;
         el.textContent = t[key];
     });
+    if (jumpStages) {
+        jumpStages.textContent = t.jumpStages;
+    }
     themeToggle.textContent = body.classList.contains('dark') ? t.themeLight : t.themeDark;
     langToggle.textContent = t.langBtn;
 };
