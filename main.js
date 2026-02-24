@@ -2485,7 +2485,10 @@ const openThemeModal = (theme) => {
         focus.textContent = translations[currentLang].detailFocus;
         const focusList = document.createElement('ul');
         focusList.className = 'accordion-list';
-        getFocusPoints(item, currentLang).forEach(point => {
+        const focusPoints = item.focus && item.focus[currentLang]
+            ? item.focus[currentLang]
+            : getFocusPoints(item, currentLang);
+        focusPoints.forEach(point => {
             const li = document.createElement('li');
             li.textContent = point;
             focusList.appendChild(li);
