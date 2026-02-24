@@ -64,8 +64,8 @@ const translations = {
         hotSubtitle: 'Play, learning, outings, and formula picks in one place.',
         disclaimerTitle: 'Important Notes',
         disclaimerText: 'This page offers planning cues only and does not replace medical advice. Always check product safety standards, ingredient labels, and consult professionals for health-related decisions.',
-        navStages: 'Stages',
-        navHot: 'Themes',
+        navStages: 'Care Stages',
+        navHot: 'Care Themes',
         themeDark: 'Dark Mode',
         themeLight: 'Light Mode',
         langBtn: '한국어',
@@ -79,6 +79,7 @@ const translations = {
         detailCaution: 'Caution',
         detailTiming: 'Best timing',
         detailChecklist: 'Quick checklist'
+        ,detailHow: 'How to do it'
     },
     ko: {
         pageTitle: '몽글맵',
@@ -97,8 +98,8 @@ const translations = {
         hotSubtitle: '놀이, 교육, 외출, 분유까지 한 번에.',
         disclaimerTitle: '안내 사항',
         disclaimerText: '이 페이지는 계획 참고용이며 의학적 조언을 대신하지 않습니다. 제품 안전 기준, 성분표를 확인하고 건강 관련 결정은 전문가와 상의하세요.',
-        navStages: '구간',
-        navHot: '테마',
+        navStages: '육아구간',
+        navHot: '육아테마',
         themeDark: '다크 모드',
         themeLight: '라이트 모드',
         langBtn: 'English',
@@ -111,7 +112,8 @@ const translations = {
         detailReason: '이유/근거',
         detailCaution: '주의사항',
         detailTiming: '추천 시기',
-        detailChecklist: '체크리스트'
+        detailChecklist: '체크리스트',
+        detailHow: '실행 방법'
     }
 };
 
@@ -1951,6 +1953,38 @@ const openModal = (stage) => {
         });
 
         panel.appendChild(summary);
+
+        const how = document.createElement('div');
+        how.className = 'card-detail';
+        how.textContent = translations[currentLang].detailHow;
+        const howList = document.createElement('ul');
+        howList.className = 'accordion-list';
+        const timingSummary = cardItem.details.timing[currentLang].join(', ');
+        const checklistSummary = cardItem.details.checklist[currentLang].join(', ');
+        [timingSummary, checklistSummary].forEach(text => {
+            if (!text) return;
+            const li = document.createElement('li');
+            li.textContent = text;
+            howList.appendChild(li);
+        });
+        panel.appendChild(how);
+        panel.appendChild(howList);
+
+        const how = document.createElement('div');
+        how.className = 'card-detail';
+        how.textContent = translations[currentLang].detailHow;
+        const howList = document.createElement('ul');
+        howList.className = 'accordion-list';
+        const timingSummary = item.details.timing[currentLang].join(', ');
+        const checklistSummary = item.details.checklist[currentLang].join(', ');
+        [timingSummary, checklistSummary].forEach(text => {
+            if (!text) return;
+            const li = document.createElement('li');
+            li.textContent = text;
+            howList.appendChild(li);
+        });
+        panel.appendChild(how);
+        panel.appendChild(howList);
         panel.appendChild(reason);
         panel.appendChild(reasonList);
         panel.appendChild(caution);
