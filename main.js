@@ -693,10 +693,11 @@ const DATA = {
             title: { ko: '외출/이동', en: 'Outing' },
             subtitle: { ko: '외출 필수템과 이동 안전', en: 'Outing essentials and safety' },
             summary: {
-                ko: ['유모차/카시트/아기띠', '외출가방 구성', '이동 안전 점검'],
-                en: ['Stroller/car seat/carrier', 'Outing bag basics', 'Travel safety checks']
+                ko: ['유모차', '카시트', '아기띠', '외출가방 구성', '이동 안전 점검'],
+                en: ['Stroller', 'Car seat', 'Carrier', 'Outing bag', 'Travel safety']
             },
             items: 
+
 [
                 {
                     type: 'product',
@@ -720,11 +721,21 @@ const DATA = {
                 },
                 {
                     type: 'product',
-                    title: { ko: 'Stokke Xplory X (디럭스)', en: 'Stokke Xplory X (deluxe)' },
-                    summary: { ko: '높은 시트로 교감에 집중한 디럭스 라인.', en: 'High-seat deluxe stroller focused on interaction.' },
+                    title: { ko: 'Bugaboo Dragonfly (절충형)', en: 'Bugaboo Dragonfly (city)' },
+                    summary: { ko: '도심형 절충 라인업.', en: 'City-focused midweight line.' },
                     focus: {
-                        ko: ['높은 시트 포지션과 각도 조절', '캐리콧/카시트 연동 트래블 시스템', '안전벨트와 리플렉터 등 안전 요소'],
-                        en: ['High seat with adjustable angles', 'Travel system with carry cot/car seat', 'Safety harness and reflectors']
+                        ko: ['시트/배시넷 그대로 원핸드 폴딩', '풀 서스펜션과 도심 휠', 'XL 언더바스켓+확장 포켓'],
+                        en: ['One-hand fold with seat/bassinet', 'Full suspension and city wheels', 'XL basket with expandable pocket']
+                    },
+                    details: PRODUCT_DETAILS.stroller
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'Bugaboo Butterfly 2 (휴대용·최신)', en: 'Bugaboo Butterfly 2 (travel, latest)' },
+                    summary: { ko: '원터치 폴딩 휴대용 최신 라인.', en: 'Latest one-second fold travel stroller.' },
+                    focus: {
+                        ko: ['1초 폴딩, 기내 반입 규격', '풀 리클라인 좌석', '더 큰 바퀴/수납 강화'],
+                        en: ['One-second fold, cabin approved', 'Lay-flat recline', 'Bigger wheels and more storage']
                     },
                     details: PRODUCT_DETAILS.stroller
                 },
@@ -740,71 +751,11 @@ const DATA = {
                 },
                 {
                     type: 'product',
-                    title: { ko: '리안 솔로 2025 (절충형·최신)', en: 'Rian Solo 2025 (midweight, latest)' },
-                    summary: { ko: '국내 인기 절충형의 최신 라인업.', en: 'Latest midweight line popular in Korea.' },
-                    focus: {
-                        ko: ['기존 솔로 라인 대비 사양 업그레이드', '경량화·편의성 개선 강조', '출시 연도 기준 최신 라인'],
-                        en: ['Upgraded from prior Solo line', 'Emphasis on lighter, easier handling', 'Latest release in the Solo line']
-                    },
-                    details: PRODUCT_DETAILS.stroller
-                },
-                {
-                    type: 'product',
-                    title: { ko: '리안 솔로 2021 (절충형·이전)', en: 'Rian Solo 2021 (midweight, previous)' },
-                    summary: { ko: '이전 세대 솔로 라인업.', en: 'Previous generation Solo line.' },
-                    focus: {
-                        ko: ['이전 세대 모델로 라인 기준 비교용', '세부 사양은 구매처 정보 확인 필요'],
-                        en: ['Previous generation reference model', 'Check retailer specs for details']
-                    },
-                    details: PRODUCT_DETAILS.stroller
-                },
-                {
-                    type: 'product',
-                    title: { ko: 'Oyster4 (절충형·최신)', en: 'Oyster4 (midweight, latest)' },
-                    summary: { ko: '자동 폴딩과 통풍 캐노피를 강조한 최신 라인.', en: 'Latest line with auto-fold and ventilated canopy.' },
-                    focus: {
-                        ko: ['시트 장착 상태로 자동 폴딩', '신생아부터 사용 가능한 풀 리클라인', 'UPF50+ 통풍 캐노피 및 서스펜션'],
-                        en: ['Auto-fold with seat attached', 'Lie-flat recline from birth', 'UPF50+ ventilated canopy and suspension']
-                    },
-                    details: PRODUCT_DETAILS.stroller
-                },
-                {
-                    type: 'product',
-                    title: { ko: 'Oyster3 (절충형·이전)', en: 'Oyster3 (midweight, previous)' },
-                    summary: { ko: '이전 세대 Oyster 라인업.', en: 'Previous generation Oyster line.' },
-                    focus: {
-                        ko: ['Oyster4 이전 세대 라인업', '세부 사양은 판매처 스펙 확인 권장'],
-                        en: ['Predecessor to Oyster4', 'Check retailer specs for details']
-                    },
-                    details: PRODUCT_DETAILS.stroller
-                },
-                {
-                    type: 'product',
-                    title: { ko: 'Bugaboo Dragonfly (절충형/시티)', en: 'Bugaboo Dragonfly (city)' },
-                    summary: { ko: '도심형 절충 라인업.', en: 'City-focused midweight line.' },
-                    focus: {
-                        ko: ['시트/배시넷 그대로 원핸드 폴딩', '풀 서스펜션과 도심 휠', 'XL 언더바스켓+확장 포켓'],
-                        en: ['One-hand fold with seat/bassinet', 'Full suspension and city wheels', 'XL basket with expandable pocket']
-                    },
-                    details: PRODUCT_DETAILS.stroller
-                },
-                {
-                    type: 'product',
-                    title: { ko: 'Joolz Hub² (절충형/시티)', en: 'Joolz Hub² (city)' },
+                    title: { ko: 'Joolz Hub² (절충형)', en: 'Joolz Hub² (city)' },
                     summary: { ko: '컴팩트 도심 이동에 최적화된 라인.', en: 'Compact city stroller line.' },
                     focus: {
                         ko: ['도심형 컴팩트 사이즈', '부드러운 주행과 간편한 조작', '휴대/보관 편의성 강조'],
                         en: ['Compact city size', 'Smooth ride and easy handling', 'Easy carry and storage']
-                    },
-                    details: PRODUCT_DETAILS.stroller
-                },
-                {
-                    type: 'product',
-                    title: { ko: 'Bugaboo Butterfly 2 (휴대용·최신)', en: 'Bugaboo Butterfly 2 (travel, latest)' },
-                    summary: { ko: '원터치 폴딩 휴대용 최신 라인.', en: 'Latest one-second fold travel stroller.' },
-                    focus: {
-                        ko: ['1초 폴딩, 기내 반입 규격', '풀 리클라인 좌석', '더 큰 바퀴/수납 강화'],
-                        en: ['One-second fold, cabin approved', 'Lay-flat recline', 'Bigger wheels and more storage']
                     },
                     details: PRODUCT_DETAILS.stroller
                 },
@@ -830,6 +781,66 @@ const DATA = {
                 },
                 {
                     type: 'product',
+                    title: { ko: 'Oyster4 (절충형·최신)', en: 'Oyster4 (midweight, latest)' },
+                    summary: { ko: '자동 폴딩과 통풍 캐노피를 강조한 최신 라인.', en: 'Latest line with auto-fold and ventilated canopy.' },
+                    focus: {
+                        ko: ['시트 장착 상태로 자동 폴딩', '신생아부터 사용 가능한 풀 리클라인', 'UPF50+ 통풍 캐노피 및 서스펜션'],
+                        en: ['Auto-fold with seat attached', 'Lie-flat recline from birth', 'UPF50+ ventilated canopy and suspension']
+                    },
+                    details: PRODUCT_DETAILS.stroller
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'Oyster3 (절충형·이전)', en: 'Oyster3 (midweight, previous)' },
+                    summary: { ko: '이전 세대 Oyster 라인업.', en: 'Previous generation Oyster line.' },
+                    focus: {
+                        ko: ['Oyster4 이전 세대 라인업', '세부 사양은 판매처 스펙 확인 권장'],
+                        en: ['Predecessor to Oyster4', 'Check retailer specs for details']
+                    },
+                    details: PRODUCT_DETAILS.stroller
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'Oyster Lite (휴대용)', en: 'Oyster Lite (travel)' },
+                    summary: { ko: '경량 알루미늄 프레임 휴대용 라인.', en: 'Lightweight aluminum-frame travel line.' },
+                    focus: {
+                        ko: ['경량 알루미늄 프레임', '풀 리클라인으로 신생아 사용', '확장 캐노피·수납 바스켓'],
+                        en: ['Lightweight aluminum frame', 'Full recline from birth', 'Extendable hood and large basket']
+                    },
+                    details: PRODUCT_DETAILS.stroller
+                },
+                {
+                    type: 'product',
+                    title: { ko: '리안 솔로 2025 (절충형·최신)', en: 'Rian Solo 2025 (midweight, latest)' },
+                    summary: { ko: '국내 인기 절충형의 최신 라인업.', en: 'Latest midweight line popular in Korea.' },
+                    focus: {
+                        ko: ['기존 솔로 라인 대비 사양 업그레이드', '경량화·편의성 개선 강조', '출시 연도 기준 최신 라인'],
+                        en: ['Upgraded from prior Solo line', 'Emphasis on lighter, easier handling', 'Latest release in the Solo line']
+                    },
+                    details: PRODUCT_DETAILS.stroller
+                },
+                {
+                    type: 'product',
+                    title: { ko: '리안 솔로 2021 (절충형·이전)', en: 'Rian Solo 2021 (midweight, previous)' },
+                    summary: { ko: '이전 세대 솔로 라인업.', en: 'Previous generation Solo line.' },
+                    focus: {
+                        ko: ['이전 세대 모델로 라인 기준 비교용', '세부 사양은 구매처 정보 확인 필요'],
+                        en: ['Previous generation reference model', 'Check retailer specs for details']
+                    },
+                    details: PRODUCT_DETAILS.stroller
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'Stokke Xplory X (디럭스)', en: 'Stokke Xplory X (deluxe)' },
+                    summary: { ko: '높은 시트로 교감에 집중한 디럭스 라인.', en: 'High-seat deluxe stroller focused on interaction.' },
+                    focus: {
+                        ko: ['높은 시트 포지션과 각도 조절', '캐리콧/카시트 연동 트래블 시스템', '안전벨트와 리플렉터 등 안전 요소'],
+                        en: ['High seat with adjustable angles', 'Travel system with carry cot/car seat', 'Safety harness and reflectors']
+                    },
+                    details: PRODUCT_DETAILS.stroller
+                },
+                {
+                    type: 'product',
                     title: { ko: 'Stokke YOYO3 (휴대용·최신)', en: 'Stokke YOYO3 (travel, latest)' },
                     summary: { ko: '트래블 시스템 확장성이 강한 최신 라인.', en: 'Latest travel line with modular system.' },
                     focus: {
@@ -845,16 +856,6 @@ const DATA = {
                     focus: {
                         ko: ['YOYO2 0+ / 6+ 구성', '유럽 안전 규격(EN1888-1) 승인'],
                         en: ['YOYO2 0+ / 6+ configuration', 'Approved to EN1888-1 standard']
-                    },
-                    details: PRODUCT_DETAILS.stroller
-                },
-                {
-                    type: 'product',
-                    title: { ko: 'Oyster Lite (휴대용)', en: 'Oyster Lite (travel)' },
-                    summary: { ko: '경량 알루미늄 프레임 휴대용 라인.', en: 'Lightweight aluminum-frame travel line.' },
-                    focus: {
-                        ko: ['경량 알루미늄 프레임', '풀 리클라인으로 신생아 사용', '확장 캐노피·수납 바스켓'],
-                        en: ['Lightweight aluminum frame', 'Full recline from birth', 'Extendable hood and large basket']
                     },
                     details: PRODUCT_DETAILS.stroller
                 },
@@ -1027,8 +1028,33 @@ const DATA = {
                         en: ['4-in-1 hip seat + carrier', 'IHDI-certified brand', 'Reinforced support for longer wear']
                     },
                     details: PRODUCT_DETAILS.carrier
-                }
+                },
+                card('외출', 'Outing', '외출가방 구성', 'Outing bag setup', '외출 시 필수 구성품을 미리 정리합니다.', 'Pre-pack essentials for outings.',
+                    details(
+                        ['외출 중 돌봄 스트레스를 줄입니다.'],
+                        ['Reduces stress during outings.'],
+                        ['계절/이동 시간에 맞춰 구성하세요.'],
+                        ['Adjust for season and trip length.'],
+                        ['외출 전날 10분 점검.'],
+                        ['Check 10 minutes before leaving.'],
+                        ['기저귀/물티슈', '여벌 옷/턱받이', '수유용품'],
+                        ['Diapers/wipes', 'Spare clothes/bib', 'Feeding supplies']
+                    )
+                ),
+                card('안전', 'Safety', '이동 안전 점검', 'Travel safety check', '이동 전 안전 체크리스트를 확인합니다.', 'Run a pre-travel safety check.',
+                    details(
+                        ['사고 위험을 줄이는 기본 절차입니다.'],
+                        ['Basic step to reduce risks.'],
+                        ['설치 상태를 반드시 확인하세요.'],
+                        ['Confirm installation before travel.'],
+                        ['외출 직전 3분 점검.'],
+                        ['3-minute check before leaving.'],
+                        ['카시트 각도', '벨트 장력', '고정 상태'],
+                        ['Seat angle', 'Belt tension', 'Mounting check']
+                    )
+                )
             ]
+
 
         },
         {
@@ -1087,6 +1113,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '타이니러브 클래식 모빌', en: 'Tiny Love classic mobile' },
                     summary: { ko: '초기 시각 자극용 대표 모빌.', en: 'Classic visual-stimulation mobile.' },
+                    focus: {
+                        ko: ["고정 상태와 안전 거리 확인", "음량/회전 속도 조절", "짧은 노출로 자극 관리"],
+                        en: ["Check secure mounting and safe distance", "Adjust volume and rotation", "Keep sessions short to avoid overstimulation"]
+                    },
                     details: details(
                         ['대비 패턴과 음악으로 초기 시각 발달에 도움.'],
                         ['Contrasts and music support early visual focus.'],
@@ -1102,6 +1132,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '흑백 대비 카드', en: 'Black-and-white cards' },
                     summary: { ko: '초기 시각 자극용 대비 카드.', en: 'High-contrast visual cards.' },
+                    focus: {
+                        ko: ["15~20cm 거리에서 짧게", "양방향으로 천천히 이동", "하루 2~3회 소량"],
+                        en: ["Show at 15–20 cm distance", "Move slowly side-to-side", "Short sessions 2–3 times daily"]
+                    },
                     details: details(
                         ['짧게 보여주며 시각 초점을 돕습니다.'],
                         ['Supports early visual focus.'],
@@ -1117,6 +1151,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '플레이매트', en: 'Play mat' },
                     summary: { ko: '터미타임과 감각 자극에 도움.', en: 'Supports tummy time and sensory play.' },
+                    focus: {
+                        ko: ["미끄럼 방지 확인", "터미타임과 누워놀이 겸용", "세탁/관리 편의성 체크"],
+                        en: ["Confirm non-slip base", "Use for tummy time and floor play", "Check washability and maintenance"]
+                    },
                     details: details(
                         ['바닥 생활의 기본 아이템입니다.'],
                         ['Basic floor-play item.'],
@@ -1132,6 +1170,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '오볼 딸랑이', en: 'Oball rattle' },
                     summary: { ko: '잡기 쉬운 소근육 장난감.', en: 'Easy-grip fine-motor toy.' },
+                    focus: {
+                        ko: ["잡기 쉬운 그립 구멍", "세척 가능한 소재", "짧은 흔들기 놀이"],
+                        en: ["Easy-grip holes", "Washable materials", "Short shake-and-play sessions"]
+                    },
                     details: details(
                         ['잡기 놀이와 촉감 자극에 도움.'],
                         ['Supports grasping and tactile play.'],
@@ -1147,6 +1189,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '치발기', en: 'Teether' },
                     summary: { ko: '구강 탐색기 감각 놀이.', en: 'Supports gum relief and sensory play.' },
+                    focus: {
+                        ko: ["무독성 소재/치발 인증 확인", "냉장 보관 가능 여부", "깨끗이 세척 후 사용"],
+                        en: ["Non-toxic materials and safety marks", "Chill-friendly design", "Clean thoroughly before use"]
+                    },
                     details: details(
                         ['구강 탐색기에 유용합니다.'],
                         ['Useful during mouthing phase.'],
@@ -1162,6 +1208,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '촉감 사운드북', en: 'Sensory sound book' },
                     summary: { ko: '촉감과 소리를 함께 자극.', en: 'Combines texture and sound play.' },
+                    focus: {
+                        ko: ["질감/소리 섹션 다양성", "찢김 방지 재질", "짧고 자주 읽기"],
+                        en: ["Varied textures and sounds", "Tear-resistant material", "Short, frequent reading"]
+                    },
                     details: details(
                         ['손으로 만지며 탐색합니다.'],
                         ['Encourages tactile exploration.'],
@@ -1177,6 +1227,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '피셔프라이스 러닝홈', en: 'Fisher-Price learning home' },
                     summary: { ko: '잡고 서기/놀이 기능이 함께 있는 장난감.', en: 'Activity center for standing and play.' },
+                    focus: {
+                        ko: ["미끄럼 방지 바닥", "볼륨 조절 필수", "잡고 서기 연습 지원"],
+                        en: ["Non-slip base", "Volume control", "Supports pull-to-stand practice"]
+                    },
                     details: details(
                         ['붙잡고 서기 연습에 도움됩니다.'],
                         ['Supports pull-to-stand practice.'],
@@ -1192,6 +1246,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '소프트 볼', en: 'Soft ball set' },
                     summary: { ko: '대근육·감각 놀이용.', en: 'Gross motor and sensory play.' },
+                    focus: {
+                        ko: ["큰 사이즈로 삼킴 위험 줄이기", "부드러운 재질", "던지기/굴리기 놀이"],
+                        en: ["Large size to reduce choking risk", "Soft material", "Roll and toss play"]
+                    },
                     details: details(
                         ['움직임과 촉감 자극에 도움.'],
                         ['Supports movement and sensory input.'],
@@ -1207,6 +1265,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '실로폰/뮤직 토이', en: 'Xylophone/music toy' },
                     summary: { ko: '리듬 감각과 원인-결과 놀이.', en: 'Rhythm and cause-effect play.' },
+                    focus: {
+                        ko: ["음량 조절 기능", "모서리 라운딩 확인", "짧은 리듬 놀이"],
+                        en: ["Volume control", "Rounded edges", "Short rhythm play"]
+                    },
                     details: details(
                         ['소리 반응 놀이에 좋습니다.'],
                         ['Great for sound response play.'],
@@ -1222,6 +1284,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '레고 듀플로', en: 'LEGO DUPLO' },
                     summary: { ko: '큰 블록으로 안전하게 쌓기 놀이.', en: 'Large blocks for safe stacking.' },
+                    focus: {
+                        ko: ["큰 블록으로 안전성", "정리함 포함 여부", "역할 놀이 확장"],
+                        en: ["Large blocks for safety", "Check storage bin", "Expands pretend play"]
+                    },
                     details: details(
                         ['손-눈 협응과 상상 놀이에 도움.'],
                         ['Supports hand-eye and pretend play.'],
@@ -1237,6 +1303,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '주방놀이 세트', en: 'Pretend kitchen set' },
                     summary: { ko: '상상 놀이 확장에 도움.', en: 'Supports pretend play.' },
+                    focus: {
+                        ko: ["작은 부품 유무 확인", "내구성/소음 확인", "역할 놀이로 언어 확장"],
+                        en: ["Check for small parts", "Check durability and noise", "Language growth through pretend play"]
+                    },
                     details: details(
                         ['역할 놀이가 늘어나는 시기에 적합.'],
                         ['Fits role-play stage.'],
@@ -1263,6 +1333,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '아기 그림책 세트', en: 'Picture book set' },
                     summary: { ko: '짧은 문장과 선명한 그림 중심.', en: 'Short sentences with clear visuals.' },
+                    focus: {
+                        ko: ["짧은 문장/선명한 그림", "코팅 페이지 여부", "매일 반복 읽기"],
+                        en: ["Short sentences and clear images", "Check coated pages", "Repeat daily reading"]
+                    },
                     details: details(
                         ['매일 짧게 읽어주는 습관이 중요합니다.'],
                         ['Daily short reading helps.'],
@@ -1278,6 +1352,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '사운드북', en: 'Sound book' },
                     summary: { ko: '버튼을 누르는 상호작용 책.', en: 'Interactive button sound book.' },
+                    focus: {
+                        ko: ["버튼 위치가 손에 맞는지", "음량 조절 가능 여부", "짧은 시간 사용"],
+                        en: ["Button placement fits small hands", "Volume control", "Short usage time"]
+                    },
                     details: details(
                         ['원인-결과 인지에 도움됩니다.'],
                         ['Supports cause-effect learning.'],
@@ -1293,6 +1371,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '레인보우 온 세이펜', en: 'RainbowOn SayPen' },
                     summary: { ko: '소리 나는 책과 함께 쓰는 학습 펜.', en: 'Audio pen for interactive books.' },
+                    focus: {
+                        ko: ["호환 교재 리스트 확인", "배터리 충전/교체 편의", "짧은 듣기 루틴"],
+                        en: ["Check compatible books", "Battery/charging convenience", "Short listening routine"]
+                    },
                     details: details(
                         ['반복 듣기로 언어 자극을 제공합니다.'],
                         ['Supports repetitive listening.'],
@@ -1308,6 +1390,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '몬테소리 단어 카드', en: 'Montessori word cards' },
                     summary: { ko: '기초 단어 카드를 활용한 놀이.', en: 'Basic word cards for play.' },
+                    focus: {
+                        ko: ["카드 크기/재질 확인", "카테고리별 정리", "짧은 노출 반복"],
+                        en: ["Check card size/material", "Organize by category", "Short repeated exposure"]
+                    },
                     details: details(
                         ['단어-이미지 연결을 돕습니다.'],
                         ['Supports word-image matching.'],
@@ -1323,6 +1409,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '플래시카드', en: 'Flash cards' },
                     summary: { ko: '짧은 단어 자극에 유용.', en: 'Good for quick word exposure.' },
+                    focus: {
+                        ko: ["카드 수 제한(3~5장)", "선명한 이미지", "반응 기반 교체"],
+                        en: ["Limit to 3–5 cards", "Clear images", "Rotate based on response"]
+                    },
                     details: details(
                         ['짧게 보여주고 반응을 봅니다.'],
                         ['Show briefly and observe.'],
@@ -1338,6 +1428,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '한글/알파벳 벽보', en: 'Hangul/Alphabet poster' },
                     summary: { ko: '벽에 붙이는 시각 학습 포스터.', en: 'Visual learning wall poster.' },
+                    focus: {
+                        ko: ["눈높이 부착", "과한 정보 피하기", "자주 사용하는 공간 배치"],
+                        en: ["Place at eye level", "Avoid clutter", "Mount in frequent-use area"]
+                    },
                     details: details(
                         ['자주 노출로 글자 친숙도를 높입니다.'],
                         ['Repeated exposure builds familiarity.'],
@@ -1353,6 +1447,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '사운드 포스터', en: 'Sound poster' },
                     summary: { ko: '누르면 소리 나는 벽보형 학습 도구.', en: 'Press-to-sound learning poster.' },
+                    focus: {
+                        ko: ["벽면 고정 상태 확인", "음량 조절 여부", "짧게 반복 사용"],
+                        en: ["Secure wall mounting", "Volume control", "Short repeated use"]
+                    },
                     details: details(
                         ['원인-결과 놀이와 언어 자극에 도움.'],
                         ['Supports cause-effect and language.'],
@@ -1368,6 +1466,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '문화 카드(자연/생활)', en: 'Culture cards' },
                     summary: { ko: '생활·자연 주제 카드로 확장 학습.', en: 'Topic cards for broader learning.' },
+                    focus: {
+                        ko: ["주제별 정리", "사진/그림 명확성", "질문-응답 놀이"],
+                        en: ["Organize by topic", "Clear images", "Use Q&A play"]
+                    },
                     details: details(
                         ['시야를 넓히는 주제 놀이에 도움.'],
                         ['Helps broaden topic exposure.'],
@@ -1383,6 +1485,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '대형 퍼즐', en: 'Large-piece puzzle' },
                     summary: { ko: '손-눈 협응과 집중에 도움.', en: 'Supports hand-eye and focus.' },
+                    focus: {
+                        ko: ["큰 조각부터 시작", "손잡이 유무 확인", "완성 후 이름 말하기"],
+                        en: ["Start with large pieces", "Check for knobs", "Name objects after completion"]
+                    },
                     details: details(
                         ['큰 조각부터 시작합니다.'],
                         ['Start with large pieces.'],
@@ -1423,6 +1529,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '앱솔루트 명작', en: 'Absolute Masterpiece' },
                     summary: { ko: '국내 메이저 라인업 대표.', en: 'Major domestic line.' },
+                    focus: {
+                        ko: ["국내 메이저 라인 비교 기준", "단계별 라인업 확인", "알레르기 반응 모니터링"],
+                        en: ["Main domestic baseline for comparison", "Check stage lineup", "Monitor for allergies"]
+                    },
                     details: details(
                         ['국내 메이저 라인 비교 시 포함.'],
                         ['Include when comparing local lines.'],
@@ -1438,6 +1548,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '임페리얼XO', en: 'Imperial XO' },
                     summary: { ko: '국내 프리미엄 라인업.', en: 'Domestic premium line.' },
+                    focus: {
+                        ko: ["프리미엄 라인 포지션 확인", "단계별 영양 성분 확인", "아기 반응 기록"],
+                        en: ["Premium line positioning", "Check stage nutrients", "Log baby response"]
+                    },
                     details: details(
                         ['프리미엄 라인 비교 시 포함.'],
                         ['Include for premium comparisons.'],
@@ -1453,6 +1567,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '아이배냇 골든저지', en: 'Ivenet Golden Jersey' },
                     summary: { ko: '국내 대표 라인 중 하나.', en: 'One of mainstream lines.' },
+                    focus: {
+                        ko: ["국내 라인 비교 시 포함", "소화 반응 체크", "단계 확인"],
+                        en: ["Include in domestic comparisons", "Check digestion response", "Verify stage"]
+                    },
                     details: details(
                         ['국내 주요 브랜드 라인 비교에 포함.'],
                         ['Include in domestic line comparisons.'],
@@ -1468,6 +1586,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '압타밀 프로푸트라', en: 'Aptamil Profutura' },
                     summary: { ko: '수입 프리미엄 라인.', en: 'Premium imported line.' },
+                    focus: {
+                        ko: ["수입 프리미엄 비교용", "수급/배송 변동 체크", "유통기한 확인"],
+                        en: ["Imported premium comparison", "Check stock/delivery", "Check expiry"]
+                    },
                     details: details(
                         ['수입 프리미엄 라인을 찾는 경우 고려.'],
                         ['Consider imported premium lines.'],
@@ -1483,6 +1605,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '힙 콤비오틱', en: 'HiPP Combiotic' },
                     summary: { ko: '수입 유기농 라인 대표.', en: 'Popular imported organic line.' },
+                    focus: {
+                        ko: ["유기농 라인 비교", "프로바이오틱스/프리바이오틱스 확인", "수입 재고 변동 체크"],
+                        en: ["Organic line comparison", "Check pro/prebiotics", "Watch import stock"]
+                    },
                     details: details(
                         ['유기농 라인 비교 시 포함.'],
                         ['Include for organic comparisons.'],
@@ -1498,6 +1624,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '산양유 라인업', en: 'Goat milk line' },
                     summary: { ko: '산양유 기반 라인 비교용.', en: 'Category for goat milk options.' },
+                    focus: {
+                        ko: ["산양유 라인 후보군 분류", "알레르기 반응 체크", "맛/기호도 확인"],
+                        en: ["Group goat-milk candidates", "Watch for allergies", "Check taste acceptance"]
+                    },
                     details: details(
                         ['산양유 라인을 비교할 때 참고.'],
                         ['Check when comparing goat milk options.'],
@@ -1513,6 +1643,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '민감 케어 라인', en: 'Sensitive care line' },
                     summary: { ko: '민감 케어용 라인업.', en: 'Sensitive care formula line.' },
+                    focus: {
+                        ko: ["민감/소화 케어 라인 비교", "의료진 상담 우선", "변화 기록"],
+                        en: ["Compare sensitive care lines", "Consult clinician first", "Track changes"]
+                    },
                     details: details(
                         ['민감/소화 케어 라인 비교 시 참고.'],
                         ['Consider for sensitive digestion options.'],
@@ -1528,6 +1662,10 @@ const DATA = {
                     type: 'product',
                     title: { ko: '무유당/저유당 라인', en: 'Low/zero lactose line' },
                     summary: { ko: '소화 이슈 대응 라인.', en: 'Line for lactose-related needs.' },
+                    focus: {
+                        ko: ["특수 상황용 라인 구분", "의료진 상담 필수", "단기간 사용 여부 확인"],
+                        en: ["Special-use line classification", "Clinician guidance required", "Check short-term use"]
+                    },
                     details: details(
                         ['특수 상황에서 선택합니다.'],
                         ['Use for specific needs.'],
