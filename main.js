@@ -133,6 +133,39 @@ const details = (reasonKo, reasonEn, cautionKo, cautionEn, timingKo, timingEn, c
     checklist: { ko: checkKo, en: checkEn }
 });
 
+const PRODUCT_DETAILS = {
+    stroller: details(
+        ['사용 환경(도심/장거리)과 보관 공간에 맞춰 선택합니다.'],
+        ['Choose based on use environment and storage space.'],
+        ['차량 트렁크, 엘리베이터 크기를 먼저 확인하세요.'],
+        ['Check trunk and elevator size first.'],
+        ['임신 후반~출산 전 준비 추천.'],
+        ['Plan before birth, confirm after delivery.'],
+        ['접이 크기', '바퀴/서스펜션', '시트 각도'],
+        ['Fold size', 'Wheels/suspension', 'Seat recline']
+    ),
+    carSeat: details(
+        ['안전 규격과 체형 범위를 확인하는 것이 핵심입니다.'],
+        ['Safety standards and size range are key.'],
+        ['설치 방식과 차량 호환성을 확인하세요.'],
+        ['Check installation method and vehicle fit.'],
+        ['퇴원/첫 외출 전 미리 설치해 봅니다.'],
+        ['Install and test before first outing.'],
+        ['i-Size/R129', 'ISOFIX/벨트 설치', '회전/리클라인'],
+        ['i-Size/R129', 'ISOFIX/belt install', 'Rotation/recline']
+    ),
+    carrier: details(
+        ['체형 분산과 통기성이 편의에 큰 영향을 줍니다.'],
+        ['Weight distribution and airflow matter most.'],
+        ['아기 기도 확보와 자세를 최우선으로 확인하세요.'],
+        ['Prioritize airway clearance and positioning.'],
+        ['목 가누기 전에는 신생아 자세 기준을 따릅니다.'],
+        ['Follow newborn positioning guidance early on.'],
+        ['허리벨트', '메쉬/통기', '착용 포지션'],
+        ['Waist belt', 'Mesh/airflow', 'Carry positions']
+    )
+};
+
 const getFocusPoints = (cardItem, lang) => {
     if (!cardItem.category) {
         return lang === 'ko'
@@ -663,263 +696,340 @@ const DATA = {
                 ko: ['유모차/카시트/아기띠', '외출가방 구성', '이동 안전 점검'],
                 en: ['Stroller/car seat/carrier', 'Outing bag basics', 'Travel safety checks']
             },
-            items: [
+            items: 
+[
                 {
                     type: 'product',
-                    title: { ko: '부가부 폭스 5 (디럭스)', en: 'Bugaboo Fox 5 (full-size)' },
-                    summary: { ko: '프리미엄 디럭스 라인업 대표.', en: 'Premium full-size stroller line.' },
-                    details: details(
-                        ['승차감과 핸들링 안정성이 강점입니다.'],
-                        ['Known for smooth handling and suspension.'],
-                        ['차량 적재 공간을 확인하세요.'],
-                        ['Check car trunk size before purchase.'],
-                        ['신생아~유아기 장기간 사용.'],
-                        ['From newborn to toddler.'],
-                        ['접었을 때 크기', '바퀴 관리'],
-                        ['Folded size', 'Wheel care']
-                    )
+                    title: { ko: 'Bugaboo Fox 5 Renew (디럭스·최신)', en: 'Bugaboo Fox 5 Renew (deluxe, latest)' },
+                    summary: { ko: '친환경 소재와 통기성 강화를 내세운 플래그십.', en: 'Flagship with sustainability and airflow focus.' },
+                    focus: {
+                        ko: ['PureBreeze 매트리스로 통기성 강화', '재활용·바이오 기반 소재 사용', '확장 캐노피/수납 포켓 구성'],
+                        en: ['PureBreeze mattress for airflow', 'Recycled and bio-based materials', 'Extendable canopy and storage pocket']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '스토케 익스플로리 (디럭스)', en: 'Stokke Xplory (full-size)' },
-                    summary: { ko: '시트 높이가 높은 디럭스 라인.', en: 'High-seat premium stroller line.' },
-                    details: details(
-                        ['교감과 시야 확보에 유리합니다.'],
-                        ['Elevated seat supports interaction.'],
-                        ['차량 적재 공간을 확인하세요.'],
-                        ['Check trunk size.'],
-                        ['신생아~유아기 사용.'],
-                        ['Use from newborn to toddler.'],
-                        ['높이 조절', '접이 크기'],
-                        ['Seat height', 'Fold size']
-                    )
+                    title: { ko: 'Bugaboo Fox 3 (디럭스·이전)', en: 'Bugaboo Fox 3 (deluxe, previous)' },
+                    summary: { ko: '승차감과 조작성에 강점인 이전 라인.', en: 'Previous line known for ride comfort and handling.' },
+                    focus: {
+                        ko: ['통기성 배시넷', '고급 서스펜션', '원터치 하네스/부드러운 조작성'],
+                        en: ['Breezy bassinet', 'Advanced suspension', 'Quick harness and smooth push']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '잉글레시나 앱티카 (디럭스)', en: 'Inglesina Aptica (full-size)' },
-                    summary: { ko: '승차감이 좋은 디럭스 라인.', en: 'Full-size stroller with smooth ride.' },
-                    details: details(
-                        ['충격 흡수와 안정성에 강점.'],
-                        ['Known for cushioning and stability.'],
-                        ['보관 공간을 확인하세요.'],
-                        ['Check storage space.'],
-                        ['신생아~유아기 사용.'],
-                        ['Use from newborn to toddler.'],
-                        ['바퀴 관리', '시트 각도'],
-                        ['Wheel care', 'Seat recline']
-                    )
+                    title: { ko: 'Stokke Xplory X (디럭스)', en: 'Stokke Xplory X (deluxe)' },
+                    summary: { ko: '높은 시트로 교감에 집중한 디럭스 라인.', en: 'High-seat deluxe stroller focused on interaction.' },
+                    focus: {
+                        ko: ['높은 시트 포지션과 각도 조절', '캐리콧/카시트 연동 트래블 시스템', '안전벨트와 리플렉터 등 안전 요소'],
+                        en: ['High seat with adjustable angles', 'Travel system with carry cot/car seat', 'Safety harness and reflectors']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '부가부 비 (절충형)', en: 'Bugaboo Bee (midweight)' },
-                    summary: { ko: '도심형 절충 라인업.', en: 'City-friendly midweight line.' },
-                    details: details(
-                        ['디럭스보다 가볍고 휴대용보다 안정적.'],
-                        ['Lighter than full-size, steadier than travel.'],
-                        ['핸들링을 확인하세요.'],
-                        ['Check handling feel.'],
-                        ['생후 3~6개월 이후 중심.'],
-                        ['Often after 3-6 months.'],
-                        ['무게', '접이 크기'],
-                        ['Weight', 'Fold size']
-                    )
+                    title: { ko: 'Joolz Geo³ (디럭스·올터레인)', en: 'Joolz Geo³ (all-terrain)' },
+                    summary: { ko: '올터레인 주행과 넉넉한 공간을 강조한 라인.', en: 'All-terrain line with spacious design.' },
+                    focus: {
+                        ko: ['넓은 캐리콧과 통기성 구조', 'UPF50+ 캐노피', '올터레인 휠과 서스펜션'],
+                        en: ['Spacious ventilated cot', 'UPF50+ canopy', 'All-terrain wheels and suspension']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '베이비젠 요요2 (휴대용)', en: 'Babyzen YOYO2 (travel)' },
-                    summary: { ko: '기내 반입급 휴대용 라인업.', en: 'Popular travel stroller size.' },
-                    details: details(
-                        ['이동이 많은 가정에 적합합니다.'],
-                        ['Great for frequent travel.'],
-                        ['지면 충격 흡수는 제한적일 수 있어요.'],
-                        ['Cushioning can be limited.'],
-                        ['생후 6개월 이후 추천.'],
-                        ['Often after 6 months.'],
-                        ['접이 간편성', '어깨 스트랩'],
-                        ['Easy fold', 'Carry strap']
-                    )
+                    title: { ko: '리안 솔로 2025 (절충형·최신)', en: 'Rian Solo 2025 (midweight, latest)' },
+                    summary: { ko: '국내 인기 절충형의 최신 라인업.', en: 'Latest midweight line popular in Korea.' },
+                    focus: {
+                        ko: ['기존 솔로 라인 대비 사양 업그레이드', '경량화·편의성 개선 강조', '출시 연도 기준 최신 라인'],
+                        en: ['Upgraded from prior Solo line', 'Emphasis on lighter, easier handling', 'Latest release in the Solo line']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '부가부 버터플라이 (휴대용)', en: 'Bugaboo Butterfly (compact)' },
-                    summary: { ko: '원터치 접이 휴대용 라인업.', en: 'One-touch fold compact stroller.' },
-                    details: details(
-                        ['대중교통·여행에 유리합니다.'],
-                        ['Ideal for transit and travel.'],
-                        ['장거리 주행은 제한적일 수 있어요.'],
-                        ['Long rides may be less comfy.'],
-                        ['생후 6개월 이후 사용 권장.'],
-                        ['Recommended after 6 months.'],
-                        ['접이 속도', '무게 확인'],
-                        ['Fold speed', 'Weight check']
-                    )
+                    title: { ko: '리안 솔로 2021 (절충형·이전)', en: 'Rian Solo 2021 (midweight, previous)' },
+                    summary: { ko: '이전 세대 솔로 라인업.', en: 'Previous generation Solo line.' },
+                    focus: {
+                        ko: ['이전 세대 모델로 라인 기준 비교용', '세부 사양은 구매처 정보 확인 필요'],
+                        en: ['Previous generation reference model', 'Check retailer specs for details']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '줄즈 에어+ (휴대용)', en: 'Joolz Aer+ (compact)' },
-                    summary: { ko: '경량 휴대용 라인업.', en: 'Lightweight compact line.' },
-                    details: details(
-                        ['가벼운 외출에 적합합니다.'],
-                        ['Great for short outings.'],
-                        ['노면 충격 확인 필요.'],
-                        ['Check for road cushioning.'],
-                        ['생후 6개월 이후 추천.'],
-                        ['Recommended after 6 months.'],
-                        ['접이 간편성', '무게'],
-                        ['Easy fold', 'Weight']
-                    )
+                    title: { ko: 'Oyster4 (절충형·최신)', en: 'Oyster4 (midweight, latest)' },
+                    summary: { ko: '자동 폴딩과 통풍 캐노피를 강조한 최신 라인.', en: 'Latest line with auto-fold and ventilated canopy.' },
+                    focus: {
+                        ko: ['시트 장착 상태로 자동 폴딩', '신생아부터 사용 가능한 풀 리클라인', 'UPF50+ 통풍 캐노피 및 서스펜션'],
+                        en: ['Auto-fold with seat attached', 'Lie-flat recline from birth', 'UPF50+ ventilated canopy and suspension']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '리안 캐리 (휴대용)', en: 'Rian Carry (compact)' },
-                    summary: { ko: '가볍고 접기 쉬운 휴대용 모델.', en: 'Lightweight, easy-fold travel model.' },
-                    details: details(
-                        ['근거리 이동과 대중교통에 유리합니다.'],
-                        ['Good for short trips and transit.'],
-                        ['충격 흡수는 제한적일 수 있어요.'],
-                        ['Less cushioning than full-size strollers.'],
-                        ['생후 6개월 이후 추천.'],
-                        ['Often after 6 months.'],
-                        ['접이식 크기', '차양 유무'],
-                        ['Fold size', 'Sun canopy']
-                    )
+                    title: { ko: 'Oyster3 (절충형·이전)', en: 'Oyster3 (midweight, previous)' },
+                    summary: { ko: '이전 세대 Oyster 라인업.', en: 'Previous generation Oyster line.' },
+                    focus: {
+                        ko: ['Oyster4 이전 세대 라인업', '세부 사양은 판매처 스펙 확인 권장'],
+                        en: ['Predecessor to Oyster4', 'Check retailer specs for details']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '맥시코시 코랄 360 (신생아 카시트)', en: 'Maxi-Cosi Coral 360 (infant seat)' },
-                    summary: { ko: '분리형 캐리로 편한 신생아 카시트.', en: 'Infant seat with detachable carry shell.' },
-                    details: details(
-                        ['신생아 안전 이동에 필수입니다.'],
-                        ['Essential for newborn travel.'],
-                        ['설치 각도 확인 필수.'],
-                        ['Check recline angle.'],
-                        ['신생아~12개월 중심.'],
-                        ['Best for newborn to ~12 months.'],
-                        ['ISOFIX 호환', '캐리 분리'],
-                        ['ISOFIX compatibility', 'Detachable carrier']
-                    )
+                    title: { ko: 'Bugaboo Dragonfly (절충형/시티)', en: 'Bugaboo Dragonfly (city)' },
+                    summary: { ko: '도심형 절충 라인업.', en: 'City-focused midweight line.' },
+                    focus: {
+                        ko: ['시트/배시넷 그대로 원핸드 폴딩', '풀 서스펜션과 도심 휠', 'XL 언더바스켓+확장 포켓'],
+                        en: ['One-hand fold with seat/bassinet', 'Full suspension and city wheels', 'XL basket with expandable pocket']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '조이 아이스핀 360 (회전형)', en: 'Joie i-Spin 360 (rotating)' },
-                    summary: { ko: '회전형으로 탑승이 편한 카시트.', en: 'Rotating car seat for easier loading.' },
-                    details: details(
-                        ['탑승 동선이 편리합니다.'],
-                        ['Easier in/out flow.'],
-                        ['체형/연령 조건 확인.'],
-                        ['Check age/size fit.'],
-                        ['영아~유아기 사용.'],
-                        ['Use from infant to toddler.'],
-                        ['회전 잠금', '각도 표시'],
-                        ['Rotation lock', 'Angle indicator']
-                    )
+                    title: { ko: 'Joolz Hub² (절충형/시티)', en: 'Joolz Hub² (city)' },
+                    summary: { ko: '컴팩트 도심 이동에 최적화된 라인.', en: 'Compact city stroller line.' },
+                    focus: {
+                        ko: ['도심형 컴팩트 사이즈', '부드러운 주행과 간편한 조작', '휴대/보관 편의성 강조'],
+                        en: ['Compact city size', 'Smooth ride and easy handling', 'Easy carry and storage']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '브라이텍스 어드밴서픽스 (컨버터블)', en: 'Britax Advansafix (convertible)' },
-                    summary: { ko: '장기간 사용하는 컨버터블 카시트.', en: 'Long-use convertible seat.' },
-                    details: details(
-                        ['영아기 이후 장기간 사용 가능.'],
-                        ['Suitable for long-term use.'],
-                        ['차량 호환성 확인 필요.'],
-                        ['Check vehicle compatibility.'],
-                        ['유아기 중심.'],
-                        ['Primarily for toddler stage.'],
-                        ['벨트 고정', '각도 조절'],
-                        ['Belt routing', 'Recline control']
-                    )
+                    title: { ko: 'Bugaboo Butterfly 2 (휴대용·최신)', en: 'Bugaboo Butterfly 2 (travel, latest)' },
+                    summary: { ko: '원터치 폴딩 휴대용 최신 라인.', en: 'Latest one-second fold travel stroller.' },
+                    focus: {
+                        ko: ['1초 폴딩, 기내 반입 규격', '풀 리클라인 좌석', '더 큰 바퀴/수납 강화'],
+                        en: ['One-second fold, cabin approved', 'Lay-flat recline', 'Bigger wheels and more storage']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '싸이벡스 솔루션 (주니어)', en: 'Cybex Solution (booster)' },
-                    summary: { ko: '주니어용 등받이 부스터.', en: 'High-back booster style seat.' },
-                    details: details(
-                        ['성장에 맞춘 높이 조절이 가능해요.'],
-                        ['Adjustable headrest supports growth.'],
-                        ['연령/체중 기준을 확인하세요.'],
-                        ['Check age/weight requirements.'],
-                        ['유아기 이후 구간에 적합.'],
-                        ['Best for older infants/toddlers.'],
-                        ['ISOFIX 호환', '안전벨트 결합'],
-                        ['ISOFIX compatibility', 'Seat belt fit']
-                    )
+                    title: { ko: 'Joolz Aer² (휴대용·최신)', en: 'Joolz Aer² (travel, latest)' },
+                    summary: { ko: '초경량+원핸드 폴딩 최신 라인.', en: 'Latest ultra-light one-hand fold line.' },
+                    focus: {
+                        ko: ['원핸드 폴딩', '경량(약 6.5kg)과 기내 반입', '수납/바퀴/발공간 개선'],
+                        en: ['One-hand fold', 'Lightweight (~6.5kg) and cabin compatible', 'Improved basket, wheels, and legroom']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '에르고베이비 옴니 브리즈 (구조형)', en: 'Ergobaby Omni Breeze (structured)' },
-                    summary: { ko: '신생아부터 사용 가능한 메쉬 아기띠.', en: 'Breathable carrier for newborn to toddler.' },
-                    details: details(
-                        ['통풍성과 지지력이 장점입니다.'],
-                        ['Breathable with strong support.'],
-                        ['착용법을 반드시 확인하세요.'],
-                        ['Confirm correct fit and positioning.'],
-                        ['신생아~유아기 사용.'],
-                        ['Use from newborn to toddler.'],
-                        ['허리벨트 조절', '세척 가능 여부'],
-                        ['Waist fit', 'Washability']
-                    )
+                    title: { ko: 'Joolz Aer+ (휴대용·이전)', en: 'Joolz Aer+ (travel, previous)' },
+                    summary: { ko: '이전 세대 경량 휴대용 라인.', en: 'Previous generation lightweight travel line.' },
+                    focus: {
+                        ko: ['원핸드 폴딩', '초경량(약 6.0kg) 설계', 'UPF50+ 캐노피와 리클라인'],
+                        en: ['One-hand fold', 'Ultra-light (~6.0kg)', 'UPF50+ canopy and recline']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '슬링 아기띠 (신생아)', en: 'Ring sling (newborn)' },
-                    summary: { ko: '짧은 시간 밀착 케어에 적합.', en: 'Close-contact sling for newborns.' },
-                    details: details(
-                        ['신생아 초기 밀착에 유리합니다.'],
-                        ['Great for early newborn holds.'],
-                        ['기도 확보 확인 필수.'],
-                        ['Ensure airway is clear.'],
-                        ['신생아 초기 중심.'],
-                        ['Best for early newborn stage.'],
-                        ['자세 확인', '밀착도 조절'],
-                        ['Position check', 'Tightness control']
-                    )
+                    title: { ko: 'Stokke YOYO3 (휴대용·최신)', en: 'Stokke YOYO3 (travel, latest)' },
+                    summary: { ko: '트래블 시스템 확장성이 강한 최신 라인.', en: 'Latest travel line with modular system.' },
+                    focus: {
+                        ko: ['신생아팩/6+ 시트로 단계 확장', '컴팩트 폴딩', '여행용 액세서리 생태계'],
+                        en: ['Newborn pack + 6+ seat system', 'Compact fold', 'Travel accessory ecosystem']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '힙시트 아기띠', en: 'Hip seat carrier' },
-                    summary: { ko: '걸음마 전후 체중 분산에 유리.', en: 'Good weight distribution for toddlers.' },
-                    details: details(
-                        ['허리 부담을 줄이는 데 도움.'],
-                        ['Helps reduce back strain.'],
-                        ['장시간 사용은 피하세요.'],
-                        ['Avoid long continuous use.'],
-                        ['생후 6~36개월 중심.'],
-                        ['Best for 6-36 months.'],
-                        ['허리벨트', '미끄럼 방지'],
-                        ['Waist belt', 'Non-slip seat']
-                    )
+                    title: { ko: 'Stokke YOYO2 (휴대용·이전)', en: 'Stokke YOYO2 (travel, previous)' },
+                    summary: { ko: 'YOYO3 이전 세대 라인.', en: 'Previous generation YOYO line.' },
+                    focus: {
+                        ko: ['YOYO2 0+ / 6+ 구성', '유럽 안전 규격(EN1888-1) 승인'],
+                        en: ['YOYO2 0+ / 6+ configuration', 'Approved to EN1888-1 standard']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '쥬쥬비 B.F.F (기저귀가방)', en: 'JuJube B.F.F diaper bag' },
-                    summary: { ko: '수납이 많고 형태가 단정한 가방.', en: 'Structured diaper bag with ample storage.' },
-                    details: details(
-                        ['수납 분리가 잘되어 외출이 편합니다.'],
-                        ['Organized compartments help outings.'],
-                        ['무게감을 고려하세요.'],
-                        ['Consider total weight.'],
-                        ['외출 빈도가 늘어나는 시기부터.'],
-                        ['Best when outings increase.'],
-                        ['기저귀 파우치', '방수 구획'],
-                        ['Diaper pouch', 'Water-resistant sections']
-                    )
+                    title: { ko: 'Oyster Lite (휴대용)', en: 'Oyster Lite (travel)' },
+                    summary: { ko: '경량 알루미늄 프레임 휴대용 라인.', en: 'Lightweight aluminum-frame travel line.' },
+                    focus: {
+                        ko: ['경량 알루미늄 프레임', '풀 리클라인으로 신생아 사용', '확장 캐노피·수납 바스켓'],
+                        en: ['Lightweight aluminum frame', 'Full recline from birth', 'Extendable hood and large basket']
+                    },
+                    details: PRODUCT_DETAILS.stroller
                 },
                 {
                     type: 'product',
-                    title: { ko: '유모차 라이너', en: 'Stroller liner' },
-                    summary: { ko: '통풍·땀 흡수에 도움이 되는 라이너.', en: 'Breathable liner for comfort.' },
-                    details: details(
-                        ['여름철 땀 관리에 도움됩니다.'],
-                        ['Helps with sweat control.'],
-                        ['세탁 가능 여부 확인.'],
-                        ['Check washability.'],
-                        ['외출이 잦은 시기.'],
-                        ['When outings increase.'],
-                        ['통풍 소재', '고정 밴드'],
-                        ['Breathable material', 'Fixing straps']
-                    )
+                    title: { ko: 'CYBEX Cloud G i-Size (신생아·최신)', en: 'CYBEX Cloud G i-Size (infant, latest)' },
+                    summary: { ko: '에르고 리클라인과 통풍을 강조한 최신 인펀트 시트.', en: 'Latest infant seat emphasizing recline and ventilation.' },
+                    focus: {
+                        ko: ['인체공학 리클라인/라이라울팅', '올라운드 통풍 시스템', '베이스 G와 180° 회전 연동'],
+                        en: ['Ergonomic recline', 'All-round air ventilation', '180° rotation with Base G']
+                    },
+                    details: PRODUCT_DETAILS.carSeat
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'CYBEX Cloud Z2 i-Size (신생아·이전)', en: 'CYBEX Cloud Z2 i-Size (infant, previous)' },
+                    summary: { ko: 'Cloud G 이전 세대 라인.', en: 'Previous generation Cloud line.' },
+                    focus: {
+                        ko: ['베이스 Z2와 180° 회전 연동', '리클라인 확장 사용'],
+                        en: ['180° rotation with Base Z2', 'Extended recline support']
+                    },
+                    details: PRODUCT_DETAILS.carSeat
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'CYBEX Sirona G i-Size (회전형·최신)', en: 'CYBEX Sirona G i-Size (rotating, latest)' },
+                    summary: { ko: '360° 회전과 측면 보호를 강조한 최신 라인.', en: 'Latest rotating seat with side-impact focus.' },
+                    focus: {
+                        ko: ['360° 회전', 'L.S.P. 측면 보호', '올라운드 통풍 시스템'],
+                        en: ['360° rotation', 'L.S.P. side impact', 'All-round air ventilation']
+                    },
+                    details: PRODUCT_DETAILS.carSeat
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'CYBEX Sirona Z2 i-Size (회전형·이전)', en: 'CYBEX Sirona Z2 i-Size (rotating, previous)' },
+                    summary: { ko: 'Sirona G 이전 세대 라인.', en: 'Previous generation Sirona line.' },
+                    focus: {
+                        ko: ['베이스 Z2와 360° 회전', '측면 충돌 보호 구조'],
+                        en: ['360° rotation with Base Z2', 'Side impact protection']
+                    },
+                    details: PRODUCT_DETAILS.carSeat
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'Maxi-Cosi Pebble 360 Pro² (신생아·최신)', en: 'Maxi-Cosi Pebble 360 Pro² (infant, latest)' },
+                    summary: { ko: '슬라이드테크와 풀 리클라인을 강조한 최신 라인.', en: 'Latest infant seat with SlideTech and full recline.' },
+                    focus: {
+                        ko: ['SlideTech 베이스 연동', '풀 리클라인 평평 자세', 'ClimaFlow 통풍 설계'],
+                        en: ['SlideTech base system', 'Full lie-flat recline', 'ClimaFlow ventilation']
+                    },
+                    details: PRODUCT_DETAILS.carSeat
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'Maxi-Cosi Pebble 360 Pro (신생아·이전)', en: 'Maxi-Cosi Pebble 360 Pro (infant, previous)' },
+                    summary: { ko: 'Pro² 이전 세대 라인.', en: 'Previous generation Pro line.' },
+                    focus: {
+                        ko: ['FamilyFix 360 Pro 베이스 연동', '평평 리클라인 지원'],
+                        en: ['FamilyFix 360 Pro base compatible', 'Lie-flat recline support']
+                    },
+                    details: PRODUCT_DETAILS.carSeat
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'Joie i-Pivot 360 (회전형·최신)', en: 'Joie i-Pivot 360 (rotating, latest)' },
+                    summary: { ko: 'i-Size 회전형 최신 라인업.', en: 'Latest i-Size rotating line.' },
+                    focus: {
+                        ko: ['360° 회전', 'i-Size 인증', '다단 리클라인과 헤드레스트 조절'],
+                        en: ['360° rotation', 'i-Size certified', 'Multiple reclines and headrest adjust']
+                    },
+                    details: PRODUCT_DETAILS.carSeat
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'Joie i-Spin 360 (회전형·이전)', en: 'Joie i-Spin 360 (rotating, previous)' },
+                    summary: { ko: 'i-Pivot 이전 세대 대표 라인.', en: 'Previous generation rotating line.' },
+                    focus: {
+                        ko: ['360° 회전', 'Tri-Protect 헤드레스트', 'Guard Surround 측면 보호'],
+                        en: ['360° rotation', 'Tri-Protect headrest', 'Guard Surround side protection']
+                    },
+                    details: PRODUCT_DETAILS.carSeat
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'Britax DUALFIX 5Z (회전형·최신)', en: 'Britax DUALFIX 5Z (rotating, latest)' },
+                    summary: { ko: 'i-Size 회전형 상위 라인.', en: 'Latest i-Size rotating line.' },
+                    focus: {
+                        ko: ['360° 회전', 'i-Size(R129) 기준', 'VARIO BASE 5Z 연동'],
+                        en: ['360° rotation', 'i-Size (R129) compliant', 'Compatible with VARIO BASE 5Z']
+                    },
+                    details: PRODUCT_DETAILS.carSeat
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'Britax DUALFIX Z-LINE (회전형·이전)', en: 'Britax DUALFIX Z-LINE (rotating, previous)' },
+                    summary: { ko: '5Z 이전 세대 라인.', en: 'Previous generation Z-line.' },
+                    focus: {
+                        ko: ['360° 회전', 'Z-LINE 베이스 연동'],
+                        en: ['360° rotation', 'Z-LINE base compatible']
+                    },
+                    details: PRODUCT_DETAILS.carSeat
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'Nuna PIPA aire rx (신생아·최신)', en: 'Nuna PIPA aire rx (infant, latest)' },
+                    summary: { ko: '초경량 인펀트 시트 라인.', en: 'Ultra-light infant seat line.' },
+                    focus: {
+                        ko: ['경량 설계', 'i-Size 인증', '메리노 울 등 통기 소재'],
+                        en: ['Lightweight build', 'i-Size certified', 'Merino wool for breathability']
+                    },
+                    details: PRODUCT_DETAILS.carSeat
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'Nuna PIPA next (신생아·이전)', en: 'Nuna PIPA next (infant, previous)' },
+                    summary: { ko: 'PIPA aire rx 이전 세대 라인.', en: 'Previous generation PIPA line.' },
+                    focus: {
+                        ko: ['가벼운 무게(약 2.8kg)', 'i-Size 인증', '풀커버 캐노피'],
+                        en: ['Lightweight (~2.8kg)', 'i-Size certified', 'Full-cover canopy']
+                    },
+                    details: PRODUCT_DETAILS.carSeat
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'Ergobaby Omni Breeze (올인원)', en: 'Ergobaby Omni Breeze (all-in-one)' },
+                    summary: { ko: '메쉬 통기성과 올인원 포지션.', en: 'Breathable mesh with all-in-one positions.' },
+                    focus: {
+                        ko: ['SoftFlex 메쉬로 통기성 강화', '신생아~유아 올인원 포지션', '요추 지지 벨트'],
+                        en: ['SoftFlex mesh for airflow', 'All-in-one carry positions', 'Lumbar support belt']
+                    },
+                    details: PRODUCT_DETAILS.carrier
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'BabyBjörn Harmony (프리미엄)', en: 'BabyBjörn Harmony (premium)' },
+                    summary: { ko: '부드러운 메쉬와 체형 분산에 강점.', en: 'Soft mesh with strong weight distribution.' },
+                    focus: {
+                        ko: ['부드러운 메쉬 소재', '신생아~36개월 사용', '허리/등 지지 설계'],
+                        en: ['Soft mesh fabric', 'Newborn to toddler use', 'Back and waist support']
+                    },
+                    details: PRODUCT_DETAILS.carrier
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'Tula Explore (멀티 포지션)', en: 'Tula Explore (multi-position)' },
+                    summary: { ko: '전면 안기/마주보기/등착용 지원.', en: 'Front inward/outward and back carry support.' },
+                    focus: {
+                        ko: ['전면 안기/마주보기/등착용', '신생아 패널/헤드서포트', '체중 3.6kg 이상 권장'],
+                        en: ['Front in/out and back carry', 'Newborn panel and head support', 'Recommended from 3.6 kg']
+                    },
+                    details: PRODUCT_DETAILS.carrier
+                },
+                {
+                    type: 'product',
+                    title: { ko: 'LÍLLÉbaby Complete All Seasons', en: 'LÍLLÉbaby Complete All Seasons' },
+                    summary: { ko: '온도 조절 패널과 다포지션.', en: 'Temperature control panel and multiple positions.' },
+                    focus: {
+                        ko: ['6가지 착용 포지션', '통풍/보온 패널 전환', '요추 지지/수납 포켓'],
+                        en: ['Six carry positions', 'All-season temp panel', 'Lumbar support and storage']
+                    },
+                    details: PRODUCT_DETAILS.carrier
+                },
+                {
+                    type: 'product',
+                    title: { ko: '포그내 맥스 (4-in-1 힙시트)', en: 'Pognae Max (4-in-1 hip seat)' },
+                    summary: { ko: '힙시트+캐리 결합형 대표 라인.', en: '4-in-1 hip seat + carrier line.' },
+                    focus: {
+                        ko: ['4-in-1 구성(힙시트/캐리 결합)', 'IHDI 인증 브랜드', '장시간 착용용 보강 구조'],
+                        en: ['4-in-1 hip seat + carrier', 'IHDI-certified brand', 'Reinforced support for longer wear']
+                    },
+                    details: PRODUCT_DETAILS.carrier
                 }
             ]
+
         },
         {
             id: 'weaning',
