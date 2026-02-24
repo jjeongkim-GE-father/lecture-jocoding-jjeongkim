@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Dinner Menu Recommendation</title>
+    <title id="page-title">Care Map 0-36</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background-orbs" aria-hidden="true"></div>
+    <div class="background-texture" aria-hidden="true"></div>
 
     <div class="top-controls">
         <button id="lang-toggle">한국어</button>
@@ -18,106 +18,98 @@
     </div>
 
     <header class="site-header">
-        <div class="brand">Dinner Atlas</div>
+        <div class="brand" id="brand">Care Map 0-36</div>
         <nav class="site-nav">
-            <button class="nav-link" id="nav-menu">Menu</button>
-            <button class="nav-link" id="nav-collections">Collections</button>
-            <button class="nav-link" id="nav-about">About</button>
+            <button class="nav-link" data-target="stages" id="nav-stages">Stages</button>
+            <button class="nav-link" data-target="hot" id="nav-hot">Hot Now</button>
+            <button class="nav-link" data-target="regions" id="nav-regions">Regions</button>
+            <button class="nav-link" data-target="formula" id="nav-formula">Formula</button>
         </nav>
     </header>
 
     <main class="page">
-        <section class="hero">
+        <section class="hero" id="hero">
             <div class="hero-text">
-                <p class="tagline" id="tagline">Curated dinner ideas for every mood.</p>
-                <h1 id="main-heading">What's for Dinner?</h1>
+                <p class="tagline" id="tagline">Pregnancy to 36 months, mapped clearly.</p>
+                <h1 id="main-heading">Korea-first parenting guide, clean & data-led.</h1>
                 <p class="sub-heading" id="sub-heading">
-                    Pick from a wide global lineup, each with a short description so you can decide fast.
+                    Stage-based essentials, category cards, and hot keyword clusters—built for quick decisions.
                 </p>
                 <div class="hero-cta">
-                    <button id="recommend-button">Recommend 3 Menus</button>
-                    <div class="menu-count" id="menu-count">40 dishes in rotation</div>
+                    <button id="jump-stages">Explore Stages</button>
+                    <div class="hero-note" id="hero-note">Korean & English versions included</div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-pill" id="meta-window">Last 1 year trend window</div>
+                    <div class="meta-pill" id="meta-sources">Sources: Naver DataLab + Google Trends</div>
                 </div>
             </div>
+            <div class="hero-panel">
+                <div class="hero-panel-title" id="hero-panel-title">Quick Filters</div>
+                <div class="filter-group" id="stage-group-filter"></div>
+                <div class="filter-group" id="stage-filter"></div>
+                <div class="filter-note" id="filter-note">Pick a stage to see Top 5 essentials + 8-12 category cards.</div>
+            </div>
+        </section>
 
-            <div class="hero-card">
-                <div class="menu-display">
-                    <div id="recommendations-container">
-                        <p id="instruction-text">Click the button for recommendations!</p>
-                    </div>
+        <section class="section" id="stages">
+            <div class="section-header">
+                <h2 id="stages-title">Stage Playbook</h2>
+                <p id="stages-subtitle">Pregnancy, postpartum, and baby months with concise, actionable cards.</p>
+            </div>
+            <div id="stage-cards" class="stage-grid"></div>
+        </section>
+
+        <section class="section" id="hot">
+            <div class="section-header">
+                <h2 id="hot-title">Hot Keyword Clusters (KR)</h2>
+                <p id="hot-subtitle">Combined view of Naver DataLab and Google Trends over the past year.</p>
+            </div>
+            <div id="hot-clusters" class="cluster-grid"></div>
+            <div class="source-note" id="hot-note">
+                Actual search volumes require DataLab export + Trends capture. Current entries are placeholders.
+            </div>
+        </section>
+
+        <section class="section" id="regions">
+            <div class="section-header">
+                <h2 id="regions-title">Postpartum Massage by Region</h2>
+                <p id="regions-subtitle">Special city + province grouping with suggested providers.</p>
+            </div>
+            <div id="region-grid" class="region-grid"></div>
+            <div class="source-note" id="region-note">
+                Provider lists should be verified with local directories before publishing.
+            </div>
+        </section>
+
+        <section class="section" id="formula">
+            <div class="section-header">
+                <h2 id="formula-title">Formula Guide (KR)</h2>
+                <p id="formula-subtitle">Price bands + ingredient styles, organized for comparison.</p>
+            </div>
+            <div class="formula-grid">
+                <div class="formula-card">
+                    <h3 id="formula-price-title">Price Bands (Naver Shopping baseline)</h3>
+                    <ul id="formula-price"></ul>
+                </div>
+                <div class="formula-card">
+                    <h3 id="formula-ingredient-title">Ingredient Styles</h3>
+                    <ul id="formula-ingredients"></ul>
+                </div>
+                <div class="formula-card">
+                    <h3 id="formula-hot-title">Top Products / Lines</h3>
+                    <ul id="formula-hot"></ul>
                 </div>
             </div>
         </section>
 
-        <section class="feature-row">
-            <div class="feature-card">
-                <div class="feature-title" id="feature-title-1">Global Variety</div>
-                <p class="feature-desc" id="feature-desc-1">Korean classics, noodles, grills, and comfort food from around the world.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-title" id="feature-title-2">Fast Decisions</div>
-                <p class="feature-desc" id="feature-desc-2">Short, clear descriptions make it easy to pick what fits tonight.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-title" id="feature-title-3">Always Fresh</div>
-                <p class="feature-desc" id="feature-desc-3">Hit the button again for a new trio every time.</p>
-            </div>
-        </section>
-
-        <section class="contact-section">
-            <div class="contact-card">
-                <div>
-                    <p class="contact-eyebrow" id="contact-eyebrow">Partnership</p>
-                    <h2 class="contact-title" id="contact-title">Let's Collaborate</h2>
-                    <p class="contact-subtitle" id="contact-subtitle">
-                        Share your proposal and we'll get back within 2 business days.
-                    </p>
-                </div>
-                <form class="contact-form" action="https://formspree.io/f/meelrogp" method="POST">
-                    <label class="form-field">
-                        <span id="label-name">Name</span>
-                        <input type="text" name="name" placeholder="Your name" required>
-                    </label>
-                    <label class="form-field">
-                        <span id="label-email">Email</span>
-                        <input type="email" name="email" placeholder="name@email.com" required>
-                    </label>
-                    <label class="form-field">
-                        <span id="label-company">Company</span>
-                        <input type="text" name="company" placeholder="Company or brand">
-                    </label>
-                    <label class="form-field">
-                        <span id="label-message">Message</span>
-                        <textarea name="message" rows="4" placeholder="Tell us about your partnership idea..." required></textarea>
-                    </label>
-                    <button class="form-submit" type="submit" id="form-submit">Send inquiry</button>
-                    <p class="form-note" id="form-note">We will only use this to reply to your inquiry.</p>
-                </form>
-            </div>
-        </section>
-
-        <section class="comments-section">
-            <div class="comments-card">
-                <h2 class="comments-title">Comments</h2>
-                <div id="disqus_thread"></div>
-                <script>
-                    /**
-                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                    /*
-                    var disqus_config = function () {
-                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                    };
-                    */
-                    (function() { // DON'T EDIT BELOW THIS LINE
-                    var d = document, s = d.createElement('script');
-                    s.src = 'https://productbuilder-dxmlwhwoa4.disqus.com/embed.js';
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                    })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <section class="section" id="disclaimer">
+            <div class="disclaimer-card">
+                <h3 id="disclaimer-title">Important Notes</h3>
+                <p id="disclaimer-text">
+                    This page offers planning cues only and does not replace medical advice. Always check product safety
+                    standards, ingredient labels, and consult professionals for health-related decisions.
+                </p>
             </div>
         </section>
     </main>

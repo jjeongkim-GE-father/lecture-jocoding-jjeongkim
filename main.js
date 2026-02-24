@@ -1,434 +1,556 @@
-const recommendButton = document.getElementById('recommend-button');
-const recommendationsContainer = document.getElementById('recommendations-container');
 const themeToggle = document.getElementById('theme-toggle');
 const langToggle = document.getElementById('lang-toggle');
 const body = document.body;
 
+const stageGroupFilter = document.getElementById('stage-group-filter');
+const stageFilter = document.getElementById('stage-filter');
+const stageCards = document.getElementById('stage-cards');
+const hotClusters = document.getElementById('hot-clusters');
+const regionGrid = document.getElementById('region-grid');
+const formulaPrice = document.getElementById('formula-price');
+const formulaIngredients = document.getElementById('formula-ingredients');
+const formulaHot = document.getElementById('formula-hot');
+
+const jumpStages = document.getElementById('jump-stages');
+
+const textEls = {
+    pageTitle: document.getElementById('page-title'),
+    brand: document.getElementById('brand'),
+    tagline: document.getElementById('tagline'),
+    mainHeading: document.getElementById('main-heading'),
+    subHeading: document.getElementById('sub-heading'),
+    heroNote: document.getElementById('hero-note'),
+    metaWindow: document.getElementById('meta-window'),
+    metaSources: document.getElementById('meta-sources'),
+    heroPanelTitle: document.getElementById('hero-panel-title'),
+    filterNote: document.getElementById('filter-note'),
+    stagesTitle: document.getElementById('stages-title'),
+    stagesSubtitle: document.getElementById('stages-subtitle'),
+    hotTitle: document.getElementById('hot-title'),
+    hotSubtitle: document.getElementById('hot-subtitle'),
+    hotNote: document.getElementById('hot-note'),
+    regionsTitle: document.getElementById('regions-title'),
+    regionsSubtitle: document.getElementById('regions-subtitle'),
+    regionNote: document.getElementById('region-note'),
+    formulaTitle: document.getElementById('formula-title'),
+    formulaSubtitle: document.getElementById('formula-subtitle'),
+    formulaPriceTitle: document.getElementById('formula-price-title'),
+    formulaIngredientTitle: document.getElementById('formula-ingredient-title'),
+    formulaHotTitle: document.getElementById('formula-hot-title'),
+    disclaimerTitle: document.getElementById('disclaimer-title'),
+    disclaimerText: document.getElementById('disclaimer-text'),
+    navStages: document.getElementById('nav-stages'),
+    navHot: document.getElementById('nav-hot'),
+    navRegions: document.getElementById('nav-regions'),
+    navFormula: document.getElementById('nav-formula')
+};
+
 const translations = {
     en: {
-        pageTitle: 'Dinner Menu Recommendation',
-        mainHeading: "What's for Dinner?",
-        tagline: 'Curated dinner ideas for every mood.',
-        subHeading: 'Pick from a wide global lineup, each with a short description so you can decide fast.',
-        instruction: 'Click the button for recommendations!',
-        recommendBtn: 'Recommend 3 Menus',
+        pageTitle: 'Care Map 0-36',
+        brand: 'Care Map 0-36',
+        tagline: 'Pregnancy to 36 months, mapped clearly.',
+        mainHeading: 'Korea-first parenting guide, clean & data-led.',
+        subHeading: 'Stage-based essentials, category cards, and hot keyword clusters—built for quick decisions.',
+        heroNote: 'Korean & English versions included',
+        metaWindow: 'Last 1 year trend window',
+        metaSources: 'Sources: Naver DataLab + Google Trends',
+        heroPanelTitle: 'Quick Filters',
+        filterNote: 'Pick a stage to see Top 5 essentials + 8-12 category cards.',
+        stagesTitle: 'Stage Playbook',
+        stagesSubtitle: 'Pregnancy, postpartum, and baby months with concise, actionable cards.',
+        hotTitle: 'Hot Keyword Clusters (KR)',
+        hotSubtitle: 'Combined view of Naver DataLab and Google Trends over the past year.',
+        hotNote: 'Actual search volumes require DataLab export + Trends capture. Current entries are placeholders.',
+        regionsTitle: 'Postpartum Massage by Region',
+        regionsSubtitle: 'Special city + province grouping with suggested providers.',
+        regionNote: 'Provider lists should be verified with local directories before publishing.',
+        formulaTitle: 'Formula Guide (KR)',
+        formulaSubtitle: 'Price bands + ingredient styles, organized for comparison.',
+        formulaPriceTitle: 'Price Bands (Naver Shopping baseline)',
+        formulaIngredientTitle: 'Ingredient Styles',
+        formulaHotTitle: 'Top Products / Lines',
+        disclaimerTitle: 'Important Notes',
+        disclaimerText: 'This page offers planning cues only and does not replace medical advice. Always check product safety standards, ingredient labels, and consult professionals for health-related decisions.',
+        navStages: 'Stages',
+        navHot: 'Hot Now',
+        navRegions: 'Regions',
+        navFormula: 'Formula',
+        stageTop5: 'Top 5 Essentials',
         themeDark: 'Dark Mode',
         themeLight: 'Light Mode',
         langBtn: '한국어',
-        thinking: 'Thinking...',
-        navMenu: 'Menu',
-        navCollections: 'Collections',
-        navAbout: 'About',
-        menuCount: (count) => `${count} dishes in rotation`,
-        contact: {
-            eyebrow: 'Partnership',
-            title: "Let's Collaborate",
-            subtitle: "Share your proposal and we'll get back within 2 business days.",
-            labels: {
-                name: 'Name',
-                email: 'Email',
-                company: 'Company',
-                message: 'Message'
-            },
-            placeholders: {
-                name: 'Your name',
-                email: 'name@email.com',
-                company: 'Company or brand',
-                message: 'Tell us about your partnership idea...'
-            },
-            submit: 'Send inquiry',
-            note: 'We will only use this to reply to your inquiry.'
-        },
-        features: [
-            {
-                title: 'Global Variety',
-                desc: 'Korean classics, noodles, grills, and comfort food from around the world.'
-            },
-            {
-                title: 'Fast Decisions',
-                desc: 'Short, clear descriptions make it easy to pick what fits tonight.'
-            },
-            {
-                title: 'Always Fresh',
-                desc: 'Hit the button again for a new trio every time.'
-            }
-        ],
-        menus: [
-            { name: 'Kimchi Jjigae', desc: 'Spicy kimchi stew with pork and tofu.', category: 'Korean · Stew' },
-            { name: 'Bulgogi', desc: 'Sweet-savory marinated beef grilled thin.', category: 'Korean · Grill' },
-            { name: 'Bibimbap', desc: 'Mixed rice bowl with vegetables and egg.', category: 'Korean · Bowl' },
-            { name: 'Tteokbokki', desc: 'Chewy rice cakes in a spicy sauce.', category: 'Korean · Street' },
-            { name: 'Korean Fried Chicken', desc: 'Crispy chicken glazed with sweet heat.', category: 'Korean · Fried' },
-            { name: 'Japchae', desc: 'Glass noodles stir-fried with vegetables.', category: 'Korean · Noodles' },
-            { name: 'Samgyeopsal', desc: 'Grilled pork belly with lettuce wraps.', category: 'Korean · BBQ' },
-            { name: 'Doenjang Jjigae', desc: 'Savory soybean paste stew with tofu.', category: 'Korean · Stew' },
-            { name: 'Jeyuk Bokkeum', desc: 'Spicy stir-fried pork with garlic.', category: 'Korean · Stir-fry' },
-            { name: 'Kimbap', desc: 'Seaweed rice rolls with classic fillings.', category: 'Korean · Roll' },
-            { name: 'Sundubu Jjigae', desc: 'Soft tofu stew with seafood and chili.', category: 'Korean · Stew' },
-            { name: 'Galbi', desc: 'Marinated short ribs grilled over flame.', category: 'Korean · Grill' },
-            { name: 'Haemul Pajeon', desc: 'Seafood scallion pancake with crisp edges.', category: 'Korean · Pancake' },
-            { name: 'Naengmyeon', desc: 'Chilled buckwheat noodles in tangy broth.', category: 'Korean · Noodles' },
-            { name: 'Bossam', desc: 'Tender pork wrapped with kimchi and greens.', category: 'Korean · Wraps' },
-            { name: 'Dak Galbi', desc: 'Spicy stir-fried chicken with cabbage.', category: 'Korean · Stir-fry' },
-            { name: 'Kalguksu', desc: 'Knife-cut noodles in a warm broth.', category: 'Korean · Noodles' },
-            { name: 'Gamjatang', desc: 'Pork bone soup with potatoes and herbs.', category: 'Korean · Soup' },
-            { name: 'Haejangguk', desc: 'Hearty hangover soup with rich broth.', category: 'Korean · Soup' },
-            { name: 'Kimchi Fried Rice', desc: 'Fried rice with kimchi and egg on top.', category: 'Korean · Rice' },
-            { name: 'Yukhoe', desc: 'Seasoned raw beef with sesame and pear.', category: 'Korean · Raw' },
-            { name: 'Seolleongtang', desc: 'Milky ox bone soup with rice.', category: 'Korean · Soup' },
-            { name: 'Ramen', desc: 'Rich broth with noodles and toppings.', category: 'Japanese · Noodles' },
-            { name: 'Miso Ramen', desc: 'Savory miso-based ramen with corn.', category: 'Japanese · Noodles' },
-            { name: 'Udon', desc: 'Thick wheat noodles in savory broth.', category: 'Japanese · Noodles' },
-            { name: 'Tempura', desc: 'Lightly battered shrimp and vegetables.', category: 'Japanese · Fry' },
-            { name: 'Sushi', desc: 'Vinegared rice with fish and vegetables.', category: 'Japanese · Rice' },
-            { name: 'Sashimi Bowl', desc: 'Fresh sliced fish over seasoned rice.', category: 'Japanese · Bowl' },
-            { name: 'Tonkatsu', desc: 'Breaded pork cutlet with tangy sauce.', category: 'Japanese · Cutlet' },
-            { name: 'Katsudon', desc: 'Crispy pork cutlet simmered with egg.', category: 'Japanese · Bowl' },
-            { name: 'Oyakodon', desc: 'Chicken and egg over warm rice.', category: 'Japanese · Bowl' },
-            { name: 'Okonomiyaki', desc: 'Savory cabbage pancake with toppings.', category: 'Japanese · Griddle' },
-            { name: 'Gyoza', desc: 'Pan-seared dumplings with garlic dip.', category: 'Japanese · Dumplings' },
-            { name: 'Takoyaki', desc: 'Octopus-filled savory snack balls.', category: 'Japanese · Street' },
-            { name: 'Pad Thai', desc: 'Stir-fried noodles with tamarind and peanuts.', category: 'Thai · Noodles' },
-            { name: 'Green Curry', desc: 'Coconut curry with herbs and vegetables.', category: 'Thai · Curry' },
-            { name: 'Tom Yum', desc: 'Hot and sour shrimp soup with lemongrass.', category: 'Thai · Soup' },
-            { name: 'Massaman Curry', desc: 'Mild curry with peanuts and potatoes.', category: 'Thai · Curry' },
-            { name: 'Khao Pad', desc: 'Thai-style fried rice with aromatics.', category: 'Thai · Rice' },
-            { name: 'Larb', desc: 'Herb-packed minced meat salad.', category: 'Thai · Salad' },
-            { name: 'Pho', desc: 'Beef broth noodle soup with fresh herbs.', category: 'Vietnamese · Soup' },
-            { name: 'Banh Mi', desc: 'Baguette sandwich with pickles and meat.', category: 'Vietnamese · Sandwich' },
-            { name: 'Bun Cha', desc: 'Grilled pork with noodles and herbs.', category: 'Vietnamese · Grill' },
-            { name: 'Goi Cuon', desc: 'Fresh spring rolls with shrimp and herbs.', category: 'Vietnamese · Rolls' },
-            { name: 'Mapo Tofu', desc: 'Silky tofu in spicy bean sauce.', category: 'Chinese · Stir-fry' },
-            { name: 'Jajangmyeon', desc: 'Noodles with black bean sauce.', category: 'Chinese · Noodles' },
-            { name: 'Jjamppong', desc: 'Spicy seafood noodle soup.', category: 'Chinese · Soup' },
-            { name: 'Sweet and Sour Pork', desc: 'Crispy pork in a tangy glaze.', category: 'Chinese · Fried' },
-            { name: 'Dim Sum', desc: 'Assorted dumplings and small plates.', category: 'Chinese · Small plates' },
-            { name: 'Kung Pao Chicken', desc: 'Spicy stir-fry with peanuts and chili.', category: 'Chinese · Stir-fry' },
-            { name: 'Peking Duck', desc: 'Crispy duck with pancakes and scallions.', category: 'Chinese · Roast' },
-            { name: 'Beef Chow Fun', desc: 'Wide rice noodles stir-fried with beef.', category: 'Chinese · Noodles' },
-            { name: 'Dan Dan Noodles', desc: 'Spicy sesame noodles with minced pork.', category: 'Chinese · Noodles' },
-            { name: 'Hot Pot', desc: 'Simmering broth with meats and veggies.', category: 'Chinese · Hot pot' },
-            { name: 'Wonton Soup', desc: 'Light broth with pork dumplings.', category: 'Chinese · Soup' },
-            { name: 'Butter Chicken', desc: 'Creamy tomato curry with chicken.', category: 'Indian · Curry' },
-            { name: 'Chicken Tikka Masala', desc: 'Charred chicken in spiced sauce.', category: 'Indian · Curry' },
-            { name: 'Palak Paneer', desc: 'Spinach curry with soft cheese.', category: 'Indian · Vegetarian' },
-            { name: 'Biryani', desc: 'Fragrant rice with meat and spices.', category: 'Indian · Rice' },
-            { name: 'Chana Masala', desc: 'Chickpea curry with warm spices.', category: 'Indian · Vegetarian' },
-            { name: 'Margherita Pizza', desc: 'Tomato, mozzarella, and basil.', category: 'Italian · Pizza' },
-            { name: 'Carbonara', desc: 'Creamy pasta with pancetta and pepper.', category: 'Italian · Pasta' },
-            { name: 'Lasagna', desc: 'Layered pasta with meat and cheese.', category: 'Italian · Pasta' },
-            { name: 'Risotto', desc: 'Slow-cooked creamy rice with parmesan.', category: 'Italian · Rice' },
-            { name: 'Gnocchi', desc: 'Soft potato dumplings with sauce.', category: 'Italian · Pasta' },
-            { name: 'Pesto Pasta', desc: 'Herby basil sauce with twirled pasta.', category: 'Italian · Pasta' },
-            { name: 'Paella', desc: 'Spanish rice with seafood and saffron.', category: 'Spanish · Rice' },
-            { name: 'Moussaka', desc: 'Baked eggplant casserole with meat.', category: 'Greek · Bake' },
-            { name: 'Greek Salad', desc: 'Feta, olives, tomatoes, and herbs.', category: 'Mediterranean · Salad' },
-            { name: 'Hummus Plate', desc: 'Creamy chickpea spread with pita.', category: 'Middle Eastern · Meze' },
-            { name: 'Shawarma', desc: 'Spiced meat wrap with garlic sauce.', category: 'Middle Eastern · Wrap' },
-            { name: 'Falafel Plate', desc: 'Chickpea fritters with tahini.', category: 'Middle Eastern · Vegetarian' },
-            { name: 'Tacos', desc: 'Soft tortillas with seasoned fillings.', category: 'Mexican · Street' },
-            { name: 'Burrito Bowl', desc: 'Rice, beans, protein, and salsa.', category: 'Mexican · Bowl' },
-            { name: 'Fajitas', desc: 'Sizzling peppers with grilled meat.', category: 'Mexican · Grill' },
-            { name: 'Arepas', desc: 'Corn cakes stuffed with savory fillings.', category: 'Latin · Street' },
-            { name: 'Empanadas', desc: 'Baked turnovers with spiced meat.', category: 'Latin · Snack' },
-            { name: 'Ceviche', desc: 'Citrus-marinated seafood with herbs.', category: 'Latin · Seafood' },
-            { name: 'Feijoada', desc: 'Brazilian black bean stew with pork.', category: 'Latin · Stew' },
-            { name: 'Nasi Goreng', desc: 'Indonesian fried rice with sweet soy.', category: 'Southeast · Rice' },
-            { name: 'Rendang', desc: 'Slow-braised beef in coconut spices.', category: 'Southeast · Stew' },
-            { name: 'Laksa', desc: 'Spicy coconut noodle soup.', category: 'Southeast · Soup' },
-            { name: 'Hainanese Chicken Rice', desc: 'Poached chicken with fragrant rice.', category: 'Southeast · Rice' },
-            { name: 'Chicken Satay', desc: 'Grilled skewers with peanut sauce.', category: 'Southeast · Grill' },
-            { name: 'Steak', desc: 'Grilled steak with herb butter.', category: 'American · Grill' },
-            { name: 'Cheeseburger', desc: 'Juicy burger with melted cheese.', category: 'American · Burger' },
-            { name: 'BBQ Ribs', desc: 'Slow-cooked ribs with smoky glaze.', category: 'American · BBQ' },
-            { name: 'Pulled Pork Sandwich', desc: 'Tender pork with tangy slaw.', category: 'American · Sandwich' },
-            { name: 'Chicken Parmesan', desc: 'Breaded chicken with marinara and cheese.', category: 'American · Classic' },
-            { name: 'Fish and Chips', desc: 'Crispy fish with golden fries.', category: 'British · Fry' },
-            { name: 'Beef Stroganoff', desc: 'Creamy mushroom beef over noodles.', category: 'European · Classic' },
-            { name: 'Shepherd\'s Pie', desc: 'Savory meat topped with mashed potatoes.', category: 'British · Bake' },
-            { name: 'Chili Con Carne', desc: 'Spicy beef and bean chili.', category: 'American · Stew' },
-            { name: 'Mac and Cheese', desc: 'Baked pasta in creamy cheese sauce.', category: 'American · Comfort' },
-            { name: 'Caesar Salad', desc: 'Romaine, parmesan, and garlic croutons.', category: 'Salad · Classic' },
-            { name: 'Lobster Roll', desc: 'Chilled lobster with buttered roll.', category: 'Seafood · Sandwich' },
-            { name: 'Clam Chowder', desc: 'Creamy soup with clams and potatoes.', category: 'Seafood · Soup' },
-            { name: 'Quinoa Bowl', desc: 'Protein bowl with roasted vegetables.', category: 'Healthy · Bowl' },
-            { name: 'Caprese Salad', desc: 'Tomato, mozzarella, and basil.', category: 'Salad · Italian' },
-            { name: 'Veggie Buddha Bowl', desc: 'Grains, greens, and bright toppings.', category: 'Healthy · Bowl' }
-        ]
+        filterAll: 'All',
+        filterGroupLabel: 'Groups'
     },
     ko: {
-        pageTitle: '저녁 메뉴 추천',
-        mainHeading: '오늘 저녁 뭐 먹지?',
-        tagline: '오늘 분위기에 딱 맞는 저녁 큐레이션.',
-        subHeading: '전 세계 메뉴를 넓게 준비했어요. 설명을 보며 빠르게 결정하세요.',
-        instruction: '버튼을 눌러 추천을 받아보세요!',
-        recommendBtn: '메뉴 3개 추천받기',
+        pageTitle: '케어 맵 0-36',
+        brand: '케어 맵 0-36',
+        tagline: '임신부터 36개월까지 한눈에 정리.',
+        mainHeading: '한국 시장 중심의 간결한 육아 가이드.',
+        subHeading: '구간별 필수 Top 5와 카테고리 카드, 그리고 핫 키워드까지 빠르게 확인하세요.',
+        heroNote: '한국어 / 영어 버전 제공',
+        metaWindow: '최근 1년 트렌드 구간',
+        metaSources: '출처: 네이버 데이터랩 + 구글 트렌드',
+        heroPanelTitle: '빠른 필터',
+        filterNote: '구간을 선택하면 필수 Top 5 + 카테고리 카드 8~12개를 볼 수 있어요.',
+        stagesTitle: '구간별 플레이북',
+        stagesSubtitle: '임신, 산후, 생후 월령별로 핵심만 정리했어요.',
+        hotTitle: '핫 키워드 클러스터 (KR)',
+        hotSubtitle: '네이버 데이터랩과 구글 트렌드의 최근 1년을 합산해 정리합니다.',
+        hotNote: '실제 검색량은 데이터랩/트렌드 추출이 필요합니다. 현재는 템플릿 상태입니다.',
+        regionsTitle: '지역별 산후마사지',
+        regionsSubtitle: '특별시 + 도 단위로 정리한 추천 업체 카드입니다.',
+        regionNote: '게시 전 지역 디렉터리에서 업체 정보를 반드시 확인하세요.',
+        formulaTitle: '분유 가이드 (KR)',
+        formulaSubtitle: '가격대 + 성분 스타일 기준으로 비교하세요.',
+        formulaPriceTitle: '가격대 (네이버쇼핑 기준)',
+        formulaIngredientTitle: '성분 스타일',
+        formulaHotTitle: '주요 제품 / 라인',
+        disclaimerTitle: '안내 사항',
+        disclaimerText: '이 페이지는 계획 참고용이며 의학적 조언을 대신하지 않습니다. 제품 안전 기준, 성분표를 확인하고 건강 관련 결정은 전문가와 상의하세요.',
+        navStages: '구간',
+        navHot: '핫 키워드',
+        navRegions: '지역별',
+        navFormula: '분유',
+        stageTop5: '필수 Top 5',
         themeDark: '다크 모드',
         themeLight: '라이트 모드',
         langBtn: 'English',
-        thinking: '고민 중...',
-        navMenu: '메뉴',
-        navCollections: '컬렉션',
-        navAbout: '소개',
-        menuCount: (count) => `${count}가지 메뉴가 준비되어 있어요`,
-        contact: {
-            eyebrow: '제휴 문의',
-            title: '함께 협업해요',
-            subtitle: '간단히 제안 내용을 알려주시면 2영업일 내에 답변드릴게요.',
-            labels: {
-                name: '이름',
-                email: '이메일',
-                company: '회사',
-                message: '메시지'
-            },
-            placeholders: {
-                name: '이름을 입력하세요',
-                email: 'name@email.com',
-                company: '회사 또는 브랜드',
-                message: '제휴/협업 제안을 간단히 적어주세요.'
-            },
-            submit: '문의 보내기',
-            note: '문의 답변을 위해서만 사용됩니다.'
+        filterAll: '전체',
+        filterGroupLabel: '그룹'
+    }
+};
+
+const DATA = {
+    groups: [
+        {
+            id: 'all',
+            label: { ko: '전체', en: 'All' }
         },
-        features: [
-            {
-                title: '글로벌 다양성',
-                desc: '한식부터 면요리, 그릴, 전 세계의 든든한 메뉴까지.'
+        {
+            id: 'pregnancy',
+            label: { ko: '임신', en: 'Pregnancy' }
+        },
+        {
+            id: 'postpartum',
+            label: { ko: '산후 0-6주', en: 'Postpartum 0-6w' }
+        },
+        {
+            id: 'baby-0-12',
+            label: { ko: '생후 0-12개월', en: '0-12 months' }
+        },
+        {
+            id: 'baby-13-36',
+            label: { ko: '생후 13-36개월', en: '13-36 months' }
+        }
+    ],
+    stages: [
+        {
+            id: 'preg-1',
+            group: 'pregnancy',
+            label: { ko: '임신 1기', en: 'Trimester 1' },
+            range: { ko: '임신 1~13주', en: 'Weeks 1-13' },
+            top5: {
+                ko: ['산전 진료 일정 정리', '입덧 관리용 간식/음료', '기초 영양 체크(엽산 등)', '편안한 수면 환경', '일상 동선 단순화'],
+                en: ['Prenatal schedule setup', 'Light snacks for nausea', 'Baseline nutrition check (folate, etc.)', 'Comfort-first sleep setup', 'Simplified daily routines']
             },
-            {
-                title: '빠른 결정',
-                desc: '짧고 명확한 설명으로 오늘의 선택이 쉬워져요.'
+            cards: [
+                { category: { ko: '건강', en: 'Health' }, title: { ko: '산전 체크리스트', en: 'Prenatal checklist' }, desc: { ko: '병원 일정, 검사 항목, 필요한 기록을 한 장에 정리해요.', en: 'Keep visits, tests, and records in a one-page list.' } },
+                { category: { ko: '생활', en: 'Lifestyle' }, title: { ko: '입덧 대비 키트', en: 'Nausea kit' }, desc: { ko: '미지근한 음료, 크래커, 향 완화용 아이템을 묶어요.', en: 'Bundle mild drinks, crackers, and scent reducers.' } },
+                { category: { ko: '수면', en: 'Sleep' }, title: { ko: '자세 변화', en: 'Posture tweaks' }, desc: { ko: '옆잠/베개 높이 조절로 편안한 수면감을 찾습니다.', en: 'Adjust pillows and side-sleep support for comfort.' } },
+                { category: { ko: '정보', en: 'Info' }, title: { ko: '보험/지원금', en: 'Benefits map' }, desc: { ko: '지역별 지원금과 보험 혜택을 정리해둡니다.', en: 'List local benefits and insurance options early.' } },
+                { category: { ko: '이동', en: 'Mobility' }, title: { ko: '동선 단순화', en: 'Route simplification' }, desc: { ko: '피로를 줄이기 위해 동선을 간단히 세팅해요.', en: 'Reduce fatigue by simplifying daily routes.' } },
+                { category: { ko: '기록', en: 'Tracking' }, title: { ko: '증상 로그', en: 'Symptom log' }, desc: { ko: '컨디션 변화를 짧게 기록해 상담에 활용합니다.', en: 'Track small changes for easier consultations.' } },
+                { category: { ko: '식단', en: 'Food' }, title: { ko: '균형 식단', en: 'Balanced meals' }, desc: { ko: '자극적인 음식은 줄이고 가볍게 구성합니다.', en: 'Keep meals light and balanced for stability.' } },
+                { category: { ko: '정리', en: 'Planning' }, title: { ko: '출산 일정 표', en: 'Due date board' }, desc: { ko: '가족과 공유할 일정표를 미리 만들어둡니다.', en: 'Create a shared calendar for key milestones.' } }
+            ]
+        },
+        {
+            id: 'preg-2',
+            group: 'pregnancy',
+            label: { ko: '임신 2기', en: 'Trimester 2' },
+            range: { ko: '임신 14~27주', en: 'Weeks 14-27' },
+            top5: {
+                ko: ['편안한 의류/속옷', '중기 운동 루틴', '태교/생활 리듬', '출산 준비 리스트', '가정 내 안전 점검'],
+                en: ['Comfort clothing basics', 'Light movement routine', 'Daily rhythm planning', 'Birth-prep checklist', 'Home safety sweep']
             },
-            {
-                title: '늘 새로운 조합',
-                desc: '버튼을 다시 누르면 언제든 새로운 3가지가 나와요.'
-            }
+            cards: [
+                { category: { ko: '의류', en: 'Wear' }, title: { ko: '복부 압박 최소화', en: 'Low-pressure wear' }, desc: { ko: '허리 압박이 적은 의류로 교체합니다.', en: 'Switch to low-pressure waist options.' } },
+                { category: { ko: '생활', en: 'Lifestyle' }, title: { ko: '가벼운 스트레칭', en: 'Gentle stretching' }, desc: { ko: '짧은 스트레칭으로 순환을 돕습니다.', en: 'Short stretches can support circulation.' } },
+                { category: { ko: '준비', en: 'Prep' }, title: { ko: '출산 준비 체크', en: 'Birth prep list' }, desc: { ko: '병원/출산용품 체크리스트를 확정해요.', en: 'Finalize hospital and supply checklists.' } },
+                { category: { ko: '공간', en: 'Space' }, title: { ko: '아기 공간 구상', en: 'Baby corner plan' }, desc: { ko: '수면/수유 동선을 고려해 배치합니다.', en: 'Plan layout with sleep and feeding flow.' } },
+                { category: { ko: '정보', en: 'Info' }, title: { ko: '교육 클래스', en: 'Prenatal classes' }, desc: { ko: '출산/육아 클래스 일정을 확인해둡니다.', en: 'Check local class schedules early.' } },
+                { category: { ko: '건강', en: 'Health' }, title: { ko: '부기 관리', en: 'Swelling care' }, desc: { ko: '물 섭취와 다리 휴식 시간을 관리합니다.', en: 'Balance hydration with leg rest time.' } },
+                { category: { ko: '기록', en: 'Tracking' }, title: { ko: '체형 변화 기록', en: 'Body change notes' }, desc: { ko: '필요한 사이즈 변경 시점 파악에 도움돼요.', en: 'Track size changes for future adjustments.' } },
+                { category: { ko: '커뮤니티', en: 'Community' }, title: { ko: '정보 공유', en: 'Peer notes' }, desc: { ko: '비슷한 시기의 경험을 공유해 참고합니다.', en: 'Swap notes with peers at similar stages.' } }
+            ]
+        },
+        {
+            id: 'preg-3',
+            group: 'pregnancy',
+            label: { ko: '임신 3기', en: 'Trimester 3' },
+            range: { ko: '임신 28~40주', en: 'Weeks 28-40' },
+            top5: {
+                ko: ['출산 가방 준비', '산후 도우미/마사지 후보 조사', '신생아 기본 용품', '이동 동선 점검', '출산 후 회복 계획'],
+                en: ['Hospital bag ready', 'Postpartum care shortlist', 'Newborn essentials', 'Mobility plan', 'Recovery planning']
+            },
+            cards: [
+                { category: { ko: '준비', en: 'Prep' }, title: { ko: '출산 가방', en: 'Hospital bag' }, desc: { ko: '엄마/아기 필수품을 카테고리별로 포장해요.', en: 'Pack mom and baby essentials by category.' } },
+                { category: { ko: '생활', en: 'Lifestyle' }, title: { ko: '휴식 루틴', en: 'Rest routine' }, desc: { ko: '수면/휴식 시간을 넉넉히 확보합니다.', en: 'Reserve extra time for rest and sleep.' } },
+                { category: { ko: '공간', en: 'Space' }, title: { ko: '신생아 존', en: 'Newborn zone' }, desc: { ko: '기저귀, 수유, 수면 동선을 한 곳에 모아요.', en: 'Cluster diaper, feeding, and sleep flow.' } },
+                { category: { ko: '안전', en: 'Safety' }, title: { ko: '차량 이동 준비', en: 'Car readiness' }, desc: { ko: '카시트 설치 점검을 미리 마칩니다.', en: 'Install and check the car seat early.' } },
+                { category: { ko: '서비스', en: 'Services' }, title: { ko: '산후 케어 옵션', en: 'Postpartum options' }, desc: { ko: '산후마사지/도우미 업체 후보군을 만듭니다.', en: 'Draft a shortlist of care providers.' } },
+                { category: { ko: '기록', en: 'Tracking' }, title: { ko: '출산 계획서', en: 'Birth plan' }, desc: { ko: '의사와 공유할 간단한 계획서를 준비합니다.', en: 'Prepare a concise plan to discuss.' } },
+                { category: { ko: '쇼핑', en: 'Shopping' }, title: { ko: '신생아 의류', en: 'Newborn wear' }, desc: { ko: '세탁/교체 주기를 고려해 수량을 맞춰요.', en: 'Match quantity to laundry frequency.' } },
+                { category: { ko: '지원', en: 'Support' }, title: { ko: '가족 역할 분담', en: 'Role split' }, desc: { ko: '출산 직후 역할을 미리 정리해 둡니다.', en: 'Align responsibilities before delivery.' } }
+            ]
+        },
+        {
+            id: 'post-0-6w',
+            group: 'postpartum',
+            label: { ko: '산후 0-6주', en: 'Postpartum 0-6w' },
+            range: { ko: '회복 초기', en: 'Early recovery' },
+            top5: {
+                ko: ['충분한 휴식', '회복 식단', '산후마사지 후보', '수유/분유 루틴', '가족 지원 체계'],
+                en: ['Rest time secured', 'Recovery-focused meals', 'Massage shortlist', 'Feeding routine', 'Family support plan']
+            },
+            cards: [
+                { category: { ko: '회복', en: 'Recovery' }, title: { ko: '회복 일정표', en: 'Recovery schedule' }, desc: { ko: '수면, 식사, 체크업 시간을 단순화합니다.', en: 'Simplify sleep, meals, and checkups.' } },
+                { category: { ko: '케어', en: 'Care' }, title: { ko: '산후마사지 옵션', en: 'Massage options' }, desc: { ko: '출장/센터형 장단점을 비교해요.', en: 'Compare home-visit vs. center care.' } },
+                { category: { ko: '수유', en: 'Feeding' }, title: { ko: '수유 루틴', en: 'Feeding rhythm' }, desc: { ko: '수유/분유 시간을 기록해 패턴을 봅니다.', en: 'Track feeding times to spot patterns.' } },
+                { category: { ko: '생활', en: 'Lifestyle' }, title: { ko: '집안 동선', en: 'Home flow' }, desc: { ko: '필요한 물건을 한 곳에 모아 둡니다.', en: 'Cluster essentials within arm reach.' } },
+                { category: { ko: '위생', en: 'Hygiene' }, title: { ko: '세탁 루틴', en: 'Laundry rhythm' }, desc: { ko: '아기/엄마 세탁 동선을 분리합니다.', en: 'Separate baby and mom laundry flow.' } },
+                { category: { ko: '지원', en: 'Support' }, title: { ko: '도움 요청 리스트', en: 'Help list' }, desc: { ko: '도움 받을 항목을 구체적으로 정리합니다.', en: 'List specific tasks others can help with.' } },
+                { category: { ko: '정리', en: 'Planning' }, title: { ko: '산후 체크리스트', en: 'Postpartum list' }, desc: { ko: '재고/소모품 확인일을 지정합니다.', en: 'Set dates to check supplies.' } },
+                { category: { ko: '마음', en: 'Mind' }, title: { ko: '컨디션 메모', en: 'Mood notes' }, desc: { ko: '하루 한 줄로 컨디션을 기록합니다.', en: 'Write one-line daily notes.' } }
+            ]
+        }
+    ],
+    hotClusters: [
+        {
+            title: { ko: '수면/수면교육', en: 'Sleep' },
+            keywords: ['수면교육', '수면패턴', '수면등', '백색소음', '스와들'],
+            note: { ko: 'Naver+Trends 합산 템플릿', en: 'Template from Naver+Trends' }
+        },
+        {
+            title: { ko: '외출/이동', en: 'Outing' },
+            keywords: ['유모차', '카시트', '아기띠', '외출가방', '휴대용 보온'],
+            note: { ko: 'Naver+Trends 합산 템플릿', en: 'Template from Naver+Trends' }
+        },
+        {
+            title: { ko: '이유식/식단', en: 'Weaning' },
+            keywords: ['이유식레시피', '베이비쿡', '스푼', '스팀', '자기주도'],
+            note: { ko: 'Naver+Trends 합산 템플릿', en: 'Template from Naver+Trends' }
+        },
+        {
+            title: { ko: '피부/위생', en: 'Skin' },
+            keywords: ['보습크림', '아토', '로션', '온습도계', '욕조'],
+            note: { ko: 'Naver+Trends 합산 템플릿', en: 'Template from Naver+Trends' }
+        }
+    ],
+    regions: [
+        { name: { ko: '서울', en: 'Seoul' }, providers: ['업체 리스트 추가', '출장/센터형 구분'] },
+        { name: { ko: '인천', en: 'Incheon' }, providers: ['업체 리스트 추가', '출장/센터형 구분'] },
+        { name: { ko: '경기남부', en: 'Gyeonggi South' }, providers: ['수원/용인/성남 중심', '업체 리스트 추가'] },
+        { name: { ko: '경기북부', en: 'Gyeonggi North' }, providers: ['고양/의정부 중심', '업체 리스트 추가'] },
+        { name: { ko: '충청남도', en: 'Chungnam' }, providers: ['천안/아산 중심', '업체 리스트 추가'] },
+        { name: { ko: '충청북도', en: 'Chungbuk' }, providers: ['청주 중심', '업체 리스트 추가'] },
+        { name: { ko: '전라남도', en: 'Jeonnam' }, providers: ['여수/순천 중심', '업체 리스트 추가'] },
+        { name: { ko: '전라북도', en: 'Jeonbuk' }, providers: ['전주 중심', '업체 리스트 추가'] },
+        { name: { ko: '경상남도', en: 'Gyeongnam' }, providers: ['창원/김해 중심', '업체 리스트 추가'] },
+        { name: { ko: '경상북도', en: 'Gyeongbuk' }, providers: ['포항/구미 중심', '업체 리스트 추가'] },
+        { name: { ko: '강원도', en: 'Gangwon' }, providers: ['춘천/원주 중심', '업체 리스트 추가'] },
+        { name: { ko: '제주도', en: 'Jeju' }, providers: ['제주시 중심', '업체 리스트 추가'] }
+    ],
+    formula: {
+        priceBands: [
+            { ko: '2~3만원대 (800g 기준, 예시 입력)', en: '20-30k KRW band (800g baseline)' },
+            { ko: '3~4만원대 (800g 기준, 예시 입력)', en: '30-40k KRW band (800g baseline)' },
+            { ko: '4만원 이상 (프리미엄/특수 라인)', en: '40k+ KRW (premium/special lines)' }
         ],
-        menus: [
-            { name: '김치찌개', desc: '김치, 돼지고기, 두부가 어우러진 매콤한 찌개.', category: '한식 · 찌개' },
-            { name: '불고기', desc: '달콤짭짤하게 양념한 소고기 구이.', category: '한식 · 구이' },
-            { name: '비빔밥', desc: '나물과 고기, 계란을 비벼 먹는 한 그릇.', category: '한식 · 덮밥' },
-            { name: '떡볶이', desc: '쫄깃한 떡을 매콤달콤하게 볶은 길거리 메뉴.', category: '한식 · 분식' },
-            { name: '양념치킨', desc: '바삭하게 튀긴 치킨에 달콤한 소스를 더한 맛.', category: '한식 · 튀김' },
-            { name: '잡채', desc: '당면과 채소를 고소하게 볶아낸 면요리.', category: '한식 · 면' },
-            { name: '삼겹살', desc: '두툼한 돼지고기를 구워 쌈과 함께.', category: '한식 · 바비큐' },
-            { name: '된장찌개', desc: '구수한 된장 베이스의 집밥 찌개.', category: '한식 · 찌개' },
-            { name: '제육볶음', desc: '매콤하게 볶아낸 돼지고기 볶음.', category: '한식 · 볶음' },
-            { name: '김밥', desc: '다양한 재료를 말아낸 한입 롤.', category: '한식 · 롤' },
-            { name: '순두부찌개', desc: '부드러운 순두부와 해물이 들어간 찌개.', category: '한식 · 찌개' },
-            { name: '갈비', desc: '양념한 갈비를 숯불에 구운 메뉴.', category: '한식 · 구이' },
-            { name: '해물파전', desc: '해물과 파를 듬뿍 넣어 부친 전.', category: '한식 · 전' },
-            { name: '냉면', desc: '새콤한 육수에 말아 먹는 냉면.', category: '한식 · 면' },
-            { name: '보쌈', desc: '삶은 돼지고기를 김치와 곁들인 메뉴.', category: '한식 · 쌈' },
-            { name: '닭갈비', desc: '매콤한 닭고기를 철판에 볶은 요리.', category: '한식 · 볶음' },
-            { name: '칼국수', desc: '칼국수 면을 따뜻한 육수에 넣은 요리.', category: '한식 · 면' },
-            { name: '감자탕', desc: '돼지등뼈와 감자를 푹 끓인 국물.', category: '한식 · 국물' },
-            { name: '해장국', desc: '진한 국물로 속을 달래주는 탕.', category: '한식 · 국물' },
-            { name: '김치볶음밥', desc: '김치와 밥을 볶아 고소한 맛을 낸 메뉴.', category: '한식 · 밥' },
-            { name: '육회', desc: '신선한 소고기를 양념해 먹는 요리.', category: '한식 · 생' },
-            { name: '설렁탕', desc: '뽀얀 사골 국물에 밥을 말아 먹는 탕.', category: '한식 · 국물' },
-            { name: '라면', desc: '깊은 국물과 면이 어우러진 따뜻한 한 그릇.', category: '일식 · 면' },
-            { name: '미소라멘', desc: '된장 베이스 국물의 라멘.', category: '일식 · 면' },
-            { name: '우동', desc: '쫄깃한 면발의 따뜻한 국물 요리.', category: '일식 · 면' },
-            { name: '튀김', desc: '바삭하게 튀긴 새우와 채소.', category: '일식 · 튀김' },
-            { name: '초밥', desc: '식초밥에 생선과 재료를 올린 메뉴.', category: '일식 · 밥' },
-            { name: '사시미 덮밥', desc: '신선한 회를 밥 위에 올린 덮밥.', category: '일식 · 덮밥' },
-            { name: '돈가스', desc: '두툼한 돈육을 바삭하게 튀겨낸 커틀릿.', category: '일식 · 커틀릿' },
-            { name: '가츠동', desc: '돈가스를 계란과 함께 덮밥으로 만든 메뉴.', category: '일식 · 덮밥' },
-            { name: '오야코동', desc: '닭고기와 계란을 올린 따뜻한 덮밥.', category: '일식 · 덮밥' },
-            { name: '오코노미야키', desc: '양배추와 재료를 부쳐 만든 일본식 팬케이크.', category: '일식 · 철판' },
-            { name: '교자', desc: '바삭하게 구운 만두와 간장 소스.', category: '일식 · 만두' },
-            { name: '타코야키', desc: '문어가 들어간 동글한 길거리 간식.', category: '일식 · 스트리트' },
-            { name: '팟타이', desc: '타마린드 소스로 볶은 태국식 볶음면.', category: '태국 · 면' },
-            { name: '그린커리', desc: '코코넛과 허브가 어우러진 태국식 커리.', category: '태국 · 커리' },
-            { name: '똠얌꿍', desc: '레몬그라스 향이 강한 매콤새콤 수프.', category: '태국 · 수프' },
-            { name: '마싸만커리', desc: '부드럽고 고소한 태국식 커리.', category: '태국 · 커리' },
-            { name: '카오팟', desc: '향신료로 볶아낸 태국식 볶음밥.', category: '태국 · 밥' },
-            { name: '라브', desc: '허브가득한 다진 고기 샐러드.', category: '태국 · 샐러드' },
-            { name: '쌀국수', desc: '진한 육수와 허브가 어우러진 베트남 국수.', category: '베트남 · 수프' },
-            { name: '반미', desc: '바게트에 피클과 고기를 넣은 샌드위치.', category: '베트남 · 샌드위치' },
-            { name: '분짜', desc: '구운 돼지고기와 쌀국수를 곁들인 메뉴.', category: '베트남 · 그릴' },
-            { name: '고이꾸온', desc: '새우와 채소를 넣은 신선한 월남쌈.', category: '베트남 · 롤' },
-            { name: '마파두부', desc: '부드러운 두부를 매콤한 소스로 볶은 요리.', category: '중식 · 볶음' },
-            { name: '짜장면', desc: '춘장 소스를 올린 중식 면요리.', category: '중식 · 면' },
-            { name: '짬뽕', desc: '매콤한 해산물 국물의 면요리.', category: '중식 · 수프' },
-            { name: '탕수육', desc: '바삭한 돼지고기에 새콤달콤 소스를 곁들임.', category: '중식 · 튀김' },
-            { name: '딤섬', desc: '한입 크기의 중국식 만두와 소요리.', category: '중식 · 소요리' },
-            { name: '궁보계정', desc: '매콤한 닭고기와 견과류 볶음.', category: '중식 · 볶음' },
-            { name: '북경오리', desc: '바삭하게 구운 오리를 얇게 썰어 먹는 요리.', category: '중식 · 로스트' },
-            { name: '차오허펀', desc: '넓은 쌀국수를 소고기와 볶아낸 요리.', category: '중식 · 면' },
-            { name: '탄탄면', desc: '고소하고 매콤한 소스를 올린 면요리.', category: '중식 · 면' },
-            { name: '훠궈', desc: '끓는 육수에 재료를 넣어 먹는 전골.', category: '중식 · 전골' },
-            { name: '완탕국', desc: '맑은 국물에 만두를 넣은 국.', category: '중식 · 수프' },
-            { name: '버터치킨', desc: '부드러운 크림 토마토 커리와 치킨.', category: '인도 · 커리' },
-            { name: '치킨 티카 마살라', desc: '향신료에 구운 치킨을 소스에 더한 요리.', category: '인도 · 커리' },
-            { name: '팔락 파니르', desc: '시금치 커리에 치즈를 넣은 채식 메뉴.', category: '인도 · 채식' },
-            { name: '비리야니', desc: '향신료를 넣은 밥과 고기의 조화.', category: '인도 · 밥' },
-            { name: '차나 마살라', desc: '병아리콩 커리에 향신료를 더한 메뉴.', category: '인도 · 채식' },
-            { name: '마르게리타 피자', desc: '토마토와 모차렐라의 클래식 조합.', category: '이탈리아 · 피자' },
-            { name: '까르보나라', desc: '크리미한 소스와 베이컨의 파스타.', category: '이탈리아 · 파스타' },
-            { name: '라자냐', desc: '파스타와 치즈를 겹겹이 쌓은 오븐 요리.', category: '이탈리아 · 파스타' },
-            { name: '리소토', desc: '천천히 끓여낸 부드러운 크림 리소토.', category: '이탈리아 · 밥' },
-            { name: '뇨끼', desc: '부드러운 감자 반죽을 소스에 곁들인 요리.', category: '이탈리아 · 파스타' },
-            { name: '페스토 파스타', desc: '바질 향 가득한 소스를 더한 파스타.', category: '이탈리아 · 파스타' },
-            { name: '빠에야', desc: '해산물과 사프란을 넣은 스페인식 밥.', category: '스페인 · 밥' },
-            { name: '무사카', desc: '가지와 고기를 겹겹이 구운 요리.', category: '그리스 · 오븐' },
-            { name: '그릭 샐러드', desc: '페타치즈와 올리브, 토마토의 상큼함.', category: '지중해 · 샐러드' },
-            { name: '후무스 플레이트', desc: '병아리콩을 갈아 만든 딥과 피타.', category: '중동 · 메제' },
-            { name: '샤와르마', desc: '향신료 고기를 얇게 썰어 만든 랩.', category: '중동 · 랩' },
-            { name: '팔라펠 플레이트', desc: '병아리콩으로 만든 바삭한 볼과 타히니.', category: '중동 · 채식' },
-            { name: '타코', desc: '토르티야에 고기와 채소를 넣은 길거리 메뉴.', category: '멕시코 · 스트리트' },
-            { name: '부리또 볼', desc: '밥과 콩, 단백질, 살사를 담은 한 그릇.', category: '멕시코 · 볼' },
-            { name: '파히타', desc: '구운 고기와 채소를 곁들인 메뉴.', category: '멕시코 · 그릴' },
-            { name: '아레파', desc: '옥수수 빵에 속을 채운 남미 메뉴.', category: '라틴 · 스트리트' },
-            { name: '엠파나다', desc: '고기나 야채를 넣어 구운 파이.', category: '라틴 · 스낵' },
-            { name: '세비체', desc: '라임에 절인 해산물 요리.', category: '라틴 · 해산물' },
-            { name: '페이조아다', desc: '검은콩과 돼지고기를 끓인 브라질 스튜.', category: '라틴 · 스튜' },
-            { name: '나시고렝', desc: '달콤한 간장으로 볶은 인도네시아식 볶음밥.', category: '동남아 · 밥' },
-            { name: '른당', desc: '코코넛 향이 진한 매콤한 소고기 스튜.', category: '동남아 · 스튜' },
-            { name: '락사', desc: '코코넛 향이 있는 매콤한 국수 수프.', category: '동남아 · 수프' },
-            { name: '하이난 치킨라이스', desc: '부드러운 닭고기와 향긋한 밥의 조합.', category: '동남아 · 밥' },
-            { name: '사테', desc: '땅콩 소스에 찍어 먹는 꼬치구이.', category: '동남아 · 그릴' },
-            { name: '스테이크', desc: '허브 버터를 올린 풍미 가득한 구이.', category: '아메리칸 · 그릴' },
-            { name: '치즈버거', desc: '두툼한 패티와 치즈의 클래식 조합.', category: '아메리칸 · 버거' },
-            { name: '바비큐 립', desc: '훈연 향이 나는 바비큐 갈비.', category: '아메리칸 · 바비큐' },
-            { name: '풀드포크 샌드위치', desc: '결결이 찢은 돼지고기와 슬로가 있는 샌드위치.', category: '아메리칸 · 샌드위치' },
-            { name: '치킨 파마산', desc: '치킨 커틀릿에 토마토 소스와 치즈를 올린 메뉴.', category: '아메리칸 · 클래식' },
-            { name: '피쉬 앤 칩스', desc: '바삭한 생선과 감자튀김의 조합.', category: '영국 · 튀김' },
-            { name: '비프 스트로가노프', desc: '소고기와 버섯 크림소스를 곁들인 요리.', category: '유럽 · 클래식' },
-            { name: '셰퍼드 파이', desc: '고기와 감자를 오븐에 구운 파이.', category: '영국 · 오븐' },
-            { name: '칠리 콘 카르네', desc: '매콤한 소고기와 콩의 스튜.', category: '아메리칸 · 스튜' },
-            { name: '맥 앤 치즈', desc: '치즈 소스에 버무린 파스타.', category: '아메리칸 · 컴포트' },
-            { name: '시저 샐러드', desc: '로메인과 파마산, 크루통의 조합.', category: '샐러드 · 클래식' },
-            { name: '랍스터 롤', desc: '버터 롤에 랍스터 살을 채운 샌드위치.', category: '해산물 · 샌드위치' },
-            { name: '클램 차우더', desc: '조개와 감자가 들어간 크리미한 수프.', category: '해산물 · 수프' },
-            { name: '퀴노아 볼', desc: '구운 채소와 곡물이 들어간 건강 볼.', category: '헬시 · 볼' },
-            { name: '카프레제 샐러드', desc: '토마토와 모차렐라, 바질의 조합.', category: '샐러드 · 이탈리아' },
-            { name: '비건 부다 볼', desc: '곡물과 채소를 담은 균형 잡힌 볼.', category: '헬시 · 볼' }
+        ingredients: [
+            { ko: '일반 분유: 기본 영양 설계', en: 'Standard: baseline nutrition design' },
+            { ko: '부분 가수분해: 소화 배려형', en: 'Partially hydrolyzed: gentler digestion' },
+            { ko: '완전 가수분해/특수: 알레르기 관리용', en: 'Extensively hydrolyzed: allergy management' },
+            { ko: '유기농/산양: 원료 선호도 기반', en: 'Organic/Goat: ingredient preference' },
+            { ko: '무유당/저유당: 필요 시 의사 상담', en: 'Lactose-reduced: consult professionals' }
+        ],
+        hot: [
+            { ko: '제품/라인 추가 예정', en: 'Add products/lines here' },
+            { ko: '네이버쇼핑 기준 업데이트 필요', en: 'Needs Naver Shopping update' }
         ]
     }
 };
 
-let currentLang = localStorage.getItem('lang') || 'en';
-
-function updateLanguage() {
-    const t = translations[currentLang];
-    document.getElementById('page-title').textContent = t.pageTitle;
-    document.getElementById('main-heading').textContent = t.mainHeading;
-    document.getElementById('tagline').textContent = t.tagline;
-    document.getElementById('sub-heading').textContent = t.subHeading;
-
-    const instruction = document.getElementById('instruction-text');
-    if (instruction) instruction.textContent = t.instruction;
-
-    recommendButton.textContent = t.recommendBtn;
-    langToggle.textContent = t.langBtn;
-    document.getElementById('nav-menu').textContent = t.navMenu;
-    document.getElementById('nav-collections').textContent = t.navCollections;
-    document.getElementById('nav-about').textContent = t.navAbout;
-    document.getElementById('menu-count').textContent = t.menuCount(t.menus.length);
-    document.getElementById('contact-eyebrow').textContent = t.contact.eyebrow;
-    document.getElementById('contact-title').textContent = t.contact.title;
-    document.getElementById('contact-subtitle').textContent = t.contact.subtitle;
-    document.getElementById('label-name').textContent = t.contact.labels.name;
-    document.getElementById('label-email').textContent = t.contact.labels.email;
-    document.getElementById('label-company').textContent = t.contact.labels.company;
-    document.getElementById('label-message').textContent = t.contact.labels.message;
-    document.getElementById('form-submit').textContent = t.contact.submit;
-    document.getElementById('form-note').textContent = t.contact.note;
-
-    const nameInput = document.querySelector('input[name=\"name\"]');
-    const emailInput = document.querySelector('input[name=\"email\"]');
-    const companyInput = document.querySelector('input[name=\"company\"]');
-    const messageInput = document.querySelector('textarea[name=\"message\"]');
-
-    if (nameInput) nameInput.placeholder = t.contact.placeholders.name;
-    if (emailInput) emailInput.placeholder = t.contact.placeholders.email;
-    if (companyInput) companyInput.placeholder = t.contact.placeholders.company;
-    if (messageInput) messageInput.placeholder = t.contact.placeholders.message;
-
-    const featureTitle1 = document.getElementById('feature-title-1');
-    const featureTitle2 = document.getElementById('feature-title-2');
-    const featureTitle3 = document.getElementById('feature-title-3');
-    const featureDesc1 = document.getElementById('feature-desc-1');
-    const featureDesc2 = document.getElementById('feature-desc-2');
-    const featureDesc3 = document.getElementById('feature-desc-3');
-
-    featureTitle1.textContent = t.features[0].title;
-    featureTitle2.textContent = t.features[1].title;
-    featureTitle3.textContent = t.features[2].title;
-    featureDesc1.textContent = t.features[0].desc;
-    featureDesc2.textContent = t.features[1].desc;
-    featureDesc3.textContent = t.features[2].desc;
-
-    const isDark = body.classList.contains('dark');
-    themeToggle.textContent = isDark ? t.themeLight : t.themeDark;
-    localStorage.setItem('lang', currentLang);
-}
-
-function renderRecommendations(items) {
-    recommendationsContainer.innerHTML = '';
-
-    items.forEach((menu) => {
-        const itemDiv = document.createElement('article');
-        itemDiv.classList.add('recommend-item');
-
-        const title = document.createElement('h3');
-        title.classList.add('recommend-title');
-        title.textContent = menu.name;
-
-        const meta = document.createElement('div');
-        meta.classList.add('recommend-meta');
-        meta.textContent = menu.category;
-
-        const desc = document.createElement('p');
-        desc.classList.add('recommend-desc');
-        desc.textContent = menu.desc;
-
-        itemDiv.appendChild(title);
-        itemDiv.appendChild(meta);
-        itemDiv.appendChild(desc);
-        recommendationsContainer.appendChild(itemDiv);
-    });
-}
-
-// Initial Language Load
-updateLanguage();
-
-langToggle.addEventListener('click', () => {
-    currentLang = currentLang === 'en' ? 'ko' : 'en';
-    updateLanguage();
+const MONTH_TEMPLATE = (monthNumber) => ({
+    id: `m-${monthNumber}`,
+    group: 'baby-0-12',
+    label: { ko: `생후 ${monthNumber}개월`, en: `Month ${monthNumber}` },
+    range: { ko: `생후 ${monthNumber}개월`, en: `Month ${monthNumber}` },
+    top5: {
+        ko: ['수면/수유 리듬 확인', '기저귀/의류 사이즈 점검', '피부 보습 루틴', '외출 준비 체크', '아기 기록 앱 업데이트'],
+        en: ['Check sleep/feeding rhythm', 'Review diaper/clothing sizes', 'Skin moisture routine', 'Outing readiness', 'Update baby log']
+    },
+    cards: [
+        { category: { ko: '수면', en: 'Sleep' }, title: { ko: '수면 루틴', en: 'Sleep routine' }, desc: { ko: '잠드는 루틴을 2~3단계로 단순화해요.', en: 'Simplify bedtime into 2-3 steps.' } },
+        { category: { ko: '수유', en: 'Feeding' }, title: { ko: '수유 기록', en: 'Feeding log' }, desc: { ko: '수유/분유 시간을 짧게 기록합니다.', en: 'Track feeding times briefly.' } },
+        { category: { ko: '피부', en: 'Skin' }, title: { ko: '보습 체크', en: 'Moisture check' }, desc: { ko: '목욕 후 보습 타이밍을 맞춥니다.', en: 'Moisturize after bath consistently.' } },
+        { category: { ko: '외출', en: 'Outing' }, title: { ko: '외출 가방', en: 'Outing bag' }, desc: { ko: '기저귀/수유/여벌 구성만 남깁니다.', en: 'Keep only diaper, feed, spare items.' } },
+        { category: { ko: '놀이', en: 'Play' }, title: { ko: '시각 자극', en: 'Visual play' }, desc: { ko: '대비 강한 패턴으로 시각 자극을 줍니다.', en: 'Use high-contrast visuals for play.' } },
+        { category: { ko: '정리', en: 'Planning' }, title: { ko: '소모품 재고', en: 'Supplies check' }, desc: { ko: '기저귀, 물티슈 재고를 체크합니다.', en: 'Check diaper and wipe stock.' } },
+        { category: { ko: '환경', en: 'Environment' }, title: { ko: '온습도 관리', en: 'Temp/humidity' }, desc: { ko: '실내 온습도 범위를 일정하게 유지합니다.', en: 'Maintain stable room conditions.' } },
+        { category: { ko: '기록', en: 'Tracking' }, title: { ko: '사진 기록', en: 'Photo log' }, desc: { ko: '월령별 변화 기록용 사진을 남깁니다.', en: 'Capture monthly milestones.' } }
+    ]
 });
 
-// Theme Logic
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme === 'dark') {
-    body.classList.add('dark');
-    updateLanguage();
+const TODDLER_TEMPLATE = (start, end) => ({
+    id: `m-${start}-${end}`,
+    group: 'baby-13-36',
+    label: { ko: `생후 ${start}-${end}개월`, en: `Months ${start}-${end}` },
+    range: { ko: `생후 ${start}~${end}개월`, en: `Months ${start}-${end}` },
+    top5: {
+        ko: ['활동량 증가 대비', '간식/식사 루틴', '외출 안전 체크', '언어/놀이 자극', '수면 리듬 유지'],
+        en: ['Prepare for higher activity', 'Snack/meal routine', 'Outdoor safety check', 'Language/play stimulation', 'Keep sleep rhythm']
+    },
+    cards: [
+        { category: { ko: '놀이', en: 'Play' }, title: { ko: '대근육 놀이', en: 'Gross motor' }, desc: { ko: '걷기/뛰기 놀이 공간을 확보합니다.', en: 'Create safe space for moving play.' } },
+        { category: { ko: '외출', en: 'Outing' }, title: { ko: '외출 안전', en: 'Outing safety' }, desc: { ko: '손잡이/유모차 안전을 재확인합니다.', en: 'Recheck stroller and grip safety.' } },
+        { category: { ko: '식사', en: 'Meals' }, title: { ko: '식사 루틴', en: 'Meal routine' }, desc: { ko: '식사 시간과 간식 규칙을 정합니다.', en: 'Set meal times and snack rules.' } },
+        { category: { ko: '언어', en: 'Language' }, title: { ko: '말 자극', en: 'Speech cues' }, desc: { ko: '짧은 문장으로 반복 대화를 합니다.', en: 'Use short sentences repeatedly.' } },
+        { category: { ko: '수면', en: 'Sleep' }, title: { ko: '수면 환경', en: 'Sleep setup' }, desc: { ko: '낮잠/밤잠 루틴을 유지합니다.', en: 'Keep nap and bedtime routine.' } },
+        { category: { ko: '정리', en: 'Planning' }, title: { ko: '장난감 정리', en: 'Toy organization' }, desc: { ko: '사용 빈도 기준으로 정리합니다.', en: 'Organize by usage frequency.' } },
+        { category: { ko: '안전', en: 'Safety' }, title: { ko: '가정 안전', en: 'Home safety' }, desc: { ko: '모서리 보호와 잠금 장치를 점검합니다.', en: 'Check corner guards and locks.' } },
+        { category: { ko: '습관', en: 'Habits' }, title: { ko: '자조 습관', en: 'Self-help' }, desc: { ko: '간단한 자조 활동을 늘려봅니다.', en: 'Encourage simple self-help steps.' } }
+    ]
+});
+
+for (let i = 0; i <= 12; i += 1) {
+    DATA.stages.push(MONTH_TEMPLATE(i));
 }
+
+[[13,15],[16,18],[19,21],[22,24],[25,27],[28,30],[31,33],[34,36]].forEach(([start, end]) => {
+    DATA.stages.push(TODDLER_TEMPLATE(start, end));
+});
+
+let currentLang = 'ko';
+let selectedGroup = 'all';
+let selectedStage = 'all';
+
+const setText = () => {
+    const t = translations[currentLang];
+    Object.entries(textEls).forEach(([key, el]) => {
+        if (!el || !t[key]) return;
+        el.textContent = t[key];
+    });
+    themeToggle.textContent = body.classList.contains('dark') ? t.themeLight : t.themeDark;
+    langToggle.textContent = t.langBtn;
+};
+
+const buildFilterButton = (label, isActive, onClick) => {
+    const btn = document.createElement('button');
+    btn.className = `filter-btn${isActive ? ' active' : ''}`;
+    btn.textContent = label;
+    btn.addEventListener('click', onClick);
+    return btn;
+};
+
+const renderFilters = () => {
+    stageGroupFilter.innerHTML = '';
+    stageFilter.innerHTML = '';
+
+    DATA.groups.forEach(group => {
+        const label = group.label[currentLang];
+        stageGroupFilter.appendChild(
+            buildFilterButton(label, selectedGroup === group.id, () => {
+                selectedGroup = group.id;
+                selectedStage = 'all';
+                renderFilters();
+                renderStages();
+            })
+        );
+    });
+
+    const stagesForGroup = DATA.stages.filter(stage => selectedGroup === 'all' || stage.group === selectedGroup);
+    stageFilter.appendChild(
+        buildFilterButton(translations[currentLang].filterAll, selectedStage === 'all', () => {
+            selectedStage = 'all';
+            renderFilters();
+            renderStages();
+        })
+    );
+
+    stagesForGroup.forEach(stage => {
+        stageFilter.appendChild(
+            buildFilterButton(stage.label[currentLang], selectedStage === stage.id, () => {
+                selectedStage = stage.id;
+                renderFilters();
+                renderStages();
+            })
+        );
+    });
+};
+
+const renderStages = () => {
+    stageCards.innerHTML = '';
+    let filtered = DATA.stages;
+    if (selectedGroup !== 'all') {
+        filtered = filtered.filter(stage => stage.group === selectedGroup);
+    }
+    if (selectedStage !== 'all') {
+        filtered = filtered.filter(stage => stage.id === selectedStage);
+    }
+
+    filtered.forEach(stage => {
+        const card = document.createElement('div');
+        card.className = 'stage-card';
+
+        const header = document.createElement('div');
+        header.className = 'stage-header';
+        header.innerHTML = `
+            <div class="stage-tag">${stage.label[currentLang]}</div>
+            <div class="stage-title">${stage.range[currentLang]}</div>
+            <div class="stage-sub">${translations[currentLang].stageTop5}</div>
+        `;
+
+        const top5 = document.createElement('div');
+        top5.className = 'stage-top5';
+        stage.top5[currentLang].forEach(item => {
+            const line = document.createElement('div');
+            line.textContent = `• ${item}`;
+            top5.appendChild(line);
+        });
+
+        const list = document.createElement('div');
+        list.className = 'card-list';
+        stage.cards.forEach(cardItem => {
+            const item = document.createElement('div');
+            item.className = 'card-item';
+            item.innerHTML = `
+                <div class="card-category">${cardItem.category[currentLang]}</div>
+                <div class="card-title">${cardItem.title[currentLang]}</div>
+                <div class="card-desc">${cardItem.desc[currentLang]}</div>
+            `;
+            list.appendChild(item);
+        });
+
+        card.appendChild(header);
+        card.appendChild(top5);
+        card.appendChild(list);
+        stageCards.appendChild(card);
+    });
+};
+
+const renderHotClusters = () => {
+    hotClusters.innerHTML = '';
+    DATA.hotClusters.forEach(cluster => {
+        const card = document.createElement('div');
+        card.className = 'cluster-card';
+        const title = document.createElement('div');
+        title.className = 'cluster-title';
+        title.textContent = cluster.title[currentLang];
+        const keywords = document.createElement('div');
+        keywords.className = 'cluster-keywords';
+        cluster.keywords.forEach(keyword => {
+            const pill = document.createElement('span');
+            pill.className = 'keyword-pill';
+            pill.textContent = keyword;
+            keywords.appendChild(pill);
+        });
+        const note = document.createElement('div');
+        note.className = 'card-desc';
+        note.textContent = cluster.note[currentLang];
+        card.appendChild(title);
+        card.appendChild(keywords);
+        card.appendChild(note);
+        hotClusters.appendChild(card);
+    });
+};
+
+const renderRegions = () => {
+    regionGrid.innerHTML = '';
+    DATA.regions.forEach(region => {
+        const card = document.createElement('div');
+        card.className = 'region-card';
+        const title = document.createElement('div');
+        title.className = 'region-title';
+        title.textContent = region.name[currentLang];
+        const list = document.createElement('div');
+        list.className = 'region-list';
+        region.providers.forEach(item => {
+            const line = document.createElement('div');
+            line.textContent = `• ${item}`;
+            list.appendChild(line);
+        });
+        card.appendChild(title);
+        card.appendChild(list);
+        regionGrid.appendChild(card);
+    });
+};
+
+const renderFormula = () => {
+    formulaPrice.innerHTML = '';
+    formulaIngredients.innerHTML = '';
+    formulaHot.innerHTML = '';
+
+    DATA.formula.priceBands.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item[currentLang];
+        formulaPrice.appendChild(li);
+    });
+
+    DATA.formula.ingredients.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item[currentLang];
+        formulaIngredients.appendChild(li);
+    });
+
+    DATA.formula.hot.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item[currentLang];
+        formulaHot.appendChild(li);
+    });
+};
+
+const initNav = () => {
+    document.querySelectorAll('.nav-link').forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.dataset.target;
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    if (jumpStages) {
+        jumpStages.addEventListener('click', () => {
+            const target = document.getElementById('stages');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+};
+
+const renderAll = () => {
+    setText();
+    renderFilters();
+    renderStages();
+    renderHotClusters();
+    renderRegions();
+    renderFormula();
+};
+
+langToggle.addEventListener('click', () => {
+    currentLang = currentLang === 'ko' ? 'en' : 'ko';
+    renderAll();
+});
 
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark');
-    const isDark = body.classList.contains('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    updateLanguage();
+    setText();
 });
 
-recommendButton.addEventListener('click', () => {
-    const t = translations[currentLang];
-    recommendationsContainer.innerHTML = `
-        <div class="skeleton-card"></div>
-        <div class="skeleton-card"></div>
-        <div class="skeleton-card"></div>
-    `;
-
-    setTimeout(() => {
-        const selectedMenus = getRandomMenus(t.menus, 3);
-        renderRecommendations(selectedMenus);
-    }, 500);
-});
-
-function getRandomMenus(menuList, count) {
-    const shuffled = [...menuList].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
-}
+initNav();
+renderAll();
