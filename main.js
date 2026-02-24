@@ -78,8 +78,9 @@ const translations = {
         detailReason: 'Why it matters',
         detailCaution: 'Caution',
         detailTiming: 'Best timing',
-        detailChecklist: 'Quick checklist'
-        ,detailHow: 'How to do it'
+        detailChecklist: 'Quick checklist',
+        detailHow: 'How to do it',
+        detailFocus: 'Key specifics'
     },
     ko: {
         pageTitle: '몽글맵',
@@ -113,7 +114,8 @@ const translations = {
         detailCaution: '주의사항',
         detailTiming: '추천 시기',
         detailChecklist: '체크리스트',
-        detailHow: '실행 방법'
+        detailHow: '실행 방법',
+        detailFocus: '구체 포인트'
     }
 };
 
@@ -130,6 +132,57 @@ const details = (reasonKo, reasonEn, cautionKo, cautionEn, timingKo, timingEn, c
     timing: { ko: timingKo, en: timingEn },
     checklist: { ko: checkKo, en: checkEn }
 });
+
+const getFocusPoints = (cardItem, lang) => {
+    const categoryKo = cardItem.category.ko;
+    const focusMapKo = {
+        수유: ['기록 항목: 시작/끝 시간, 수유량, 아기 반응', '간격은 2~3일 단위로 평균 확인'],
+        수면: ['루틴은 2~3단계로 짧게', '조도·소음·온도 고정'],
+        발달: ['관찰 포인트 1~2개만', '짧게 자주 반복'],
+        안전: ['위험물 제거 + 안전 장치 확인', '외출 전 체크리스트로 점검'],
+        위생: ['접촉면은 미지근한 물로 세척', '자극/발진 시 중단 및 상담'],
+        피부: ['목욕 직후 3분 이내 보습', '향/알코올 성분은 최소화'],
+        놀이: ['자극은 약하게 시작', '5~10분 짧게 여러 번'],
+        건강: ['증상/체온/식욕 간단 기록', '이상 징후는 바로 상담'],
+        정리: ['필수/선택 분리 후 관리', '주 1회 재고/일정 업데이트'],
+        준비: ['필수/선택 분리 후 관리', '주 1회 재고/일정 업데이트'],
+        계획: ['필수/선택 분리 후 관리', '주 1회 재고/일정 업데이트'],
+        소통: ['눈맞춤·미소·반응 따라하기', '과자극 시 바로 쉬기'],
+        정서: ['눈맞춤·미소·반응 따라하기', '과자극 시 바로 쉬기'],
+        운동: ['하루 여러 번 짧게', '안전한 바닥/보호자 관찰'],
+        환경: ['동선 1~2m 이내로 정리', '바닥·가구 위험 요소 제거'],
+        공간: ['동선 1~2m 이내로 정리', '바닥·가구 위험 요소 제거'],
+        생활: ['휴대 키트를 한 파우치에', '외출은 짧게 시작'],
+        식단: ['새 음식은 1~3일 간격', '소량 → 점진 증량'],
+        정보: ['신청 기한/예약일 체크', '한 곳에 링크/연락처 모으기'],
+        기록: ['한 줄 요약 + 체크리스트', '주기적으로 패턴 확인']
+    };
+    const focusMapEn = {
+        Feeding: ['Log start/end time, amount, and reactions', 'Review averages every 2–3 days'],
+        Sleep: ['Keep routine to 2–3 short steps', 'Fix light/noise/temperature'],
+        Development: ['Track 1–2 cues only', 'Short and frequent practice'],
+        Safety: ['Remove hazards and check safety gear', 'Use a quick outing checklist'],
+        Hygiene: ['Clean contact surfaces with lukewarm water', 'Pause and consult if irritation'],
+        Skin: ['Moisturize within 3 minutes after bath', 'Minimize fragrance/alcohol'],
+        Play: ['Start with gentle stimulation', '5–10 minute short sessions'],
+        Health: ['Log symptoms, temp, appetite', 'Consult promptly for warning signs'],
+        Planning: ['Separate must-have vs optional', 'Update stock/schedule weekly'],
+        Prep: ['Separate must-have vs optional', 'Update stock/schedule weekly'],
+        Communication: ['Mirror eye contact and responses', 'Pause if overstimulated'],
+        Bonding: ['Mirror eye contact and responses', 'Pause if overstimulated'],
+        Movement: ['Short sessions, many times daily', 'Safe floor + supervision'],
+        Environment: ['Keep care flow within 1–2 meters', 'Remove floor/furniture hazards'],
+        Space: ['Keep care flow within 1–2 meters', 'Remove floor/furniture hazards'],
+        Lifestyle: ['Pack a single go-pouch', 'Start with short outings'],
+        Food: ['Introduce new foods 1–3 days apart', 'Start small, increase gradually'],
+        Info: ['Track deadlines/appointments', 'Centralize links/contacts'],
+        Tracking: ['One-line summaries + checklist', 'Review patterns regularly']
+    };
+    if (lang === 'ko') {
+        return focusMapKo[categoryKo] || ['핵심 포인트 2가지를 정해 간단히 실행', '짧고 자주 반복하면서 반응 체크'];
+    }
+    return focusMapEn[cardItem.category.en] || ['Pick two key actions', 'Short, frequent practice with observation'];
+};
 
 const DATA = {
     groups: [
@@ -608,12 +661,10 @@ const DATA = {
             items: [
                 {
                     type: 'product',
-                    title: { ko: '부가부 폭스 5 유모차', en: 'Bugaboo Fox 5 stroller' },
-                    summary: { ko: '도심·장거리 모두 쓰는 프리미엄 유모차.', en: 'Premium stroller for city and long walks.' },
-                    price: { ko: '약 2,118,500원', en: 'Approx. ₩2,118,500' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/7741197606' },
+                    title: { ko: '부가부 폭스 5 (디럭스)', en: 'Bugaboo Fox 5 (full-size)' },
+                    summary: { ko: '프리미엄 디럭스 라인업 대표.', en: 'Premium full-size stroller line.' },
                     details: details(
-                        ['안정적인 핸들링과 충격 완화가 강점입니다.'],
+                        ['승차감과 핸들링 안정성이 강점입니다.'],
                         ['Known for smooth handling and suspension.'],
                         ['차량 적재 공간을 확인하세요.'],
                         ['Check car trunk size before purchase.'],
@@ -625,10 +676,98 @@ const DATA = {
                 },
                 {
                     type: 'product',
-                    title: { ko: '리안 캐리 휴대용 유모차', en: 'Rian Carry compact stroller' },
+                    title: { ko: '스토케 익스플로리 (디럭스)', en: 'Stokke Xplory (full-size)' },
+                    summary: { ko: '시트 높이가 높은 디럭스 라인.', en: 'High-seat premium stroller line.' },
+                    details: details(
+                        ['교감과 시야 확보에 유리합니다.'],
+                        ['Elevated seat supports interaction.'],
+                        ['차량 적재 공간을 확인하세요.'],
+                        ['Check trunk size.'],
+                        ['신생아~유아기 사용.'],
+                        ['Use from newborn to toddler.'],
+                        ['높이 조절', '접이 크기'],
+                        ['Seat height', 'Fold size']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '잉글레시나 앱티카 (디럭스)', en: 'Inglesina Aptica (full-size)' },
+                    summary: { ko: '승차감이 좋은 디럭스 라인.', en: 'Full-size stroller with smooth ride.' },
+                    details: details(
+                        ['충격 흡수와 안정성에 강점.'],
+                        ['Known for cushioning and stability.'],
+                        ['보관 공간을 확인하세요.'],
+                        ['Check storage space.'],
+                        ['신생아~유아기 사용.'],
+                        ['Use from newborn to toddler.'],
+                        ['바퀴 관리', '시트 각도'],
+                        ['Wheel care', 'Seat recline']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '부가부 비 (절충형)', en: 'Bugaboo Bee (midweight)' },
+                    summary: { ko: '도심형 절충 라인업.', en: 'City-friendly midweight line.' },
+                    details: details(
+                        ['디럭스보다 가볍고 휴대용보다 안정적.'],
+                        ['Lighter than full-size, steadier than travel.'],
+                        ['핸들링을 확인하세요.'],
+                        ['Check handling feel.'],
+                        ['생후 3~6개월 이후 중심.'],
+                        ['Often after 3-6 months.'],
+                        ['무게', '접이 크기'],
+                        ['Weight', 'Fold size']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '베이비젠 요요2 (휴대용)', en: 'Babyzen YOYO2 (travel)' },
+                    summary: { ko: '기내 반입급 휴대용 라인업.', en: 'Popular travel stroller size.' },
+                    details: details(
+                        ['이동이 많은 가정에 적합합니다.'],
+                        ['Great for frequent travel.'],
+                        ['지면 충격 흡수는 제한적일 수 있어요.'],
+                        ['Cushioning can be limited.'],
+                        ['생후 6개월 이후 추천.'],
+                        ['Often after 6 months.'],
+                        ['접이 간편성', '어깨 스트랩'],
+                        ['Easy fold', 'Carry strap']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '부가부 버터플라이 (휴대용)', en: 'Bugaboo Butterfly (compact)' },
+                    summary: { ko: '원터치 접이 휴대용 라인업.', en: 'One-touch fold compact stroller.' },
+                    details: details(
+                        ['대중교통·여행에 유리합니다.'],
+                        ['Ideal for transit and travel.'],
+                        ['장거리 주행은 제한적일 수 있어요.'],
+                        ['Long rides may be less comfy.'],
+                        ['생후 6개월 이후 사용 권장.'],
+                        ['Recommended after 6 months.'],
+                        ['접이 속도', '무게 확인'],
+                        ['Fold speed', 'Weight check']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '줄즈 에어+ (휴대용)', en: 'Joolz Aer+ (compact)' },
+                    summary: { ko: '경량 휴대용 라인업.', en: 'Lightweight compact line.' },
+                    details: details(
+                        ['가벼운 외출에 적합합니다.'],
+                        ['Great for short outings.'],
+                        ['노면 충격 확인 필요.'],
+                        ['Check for road cushioning.'],
+                        ['생후 6개월 이후 추천.'],
+                        ['Recommended after 6 months.'],
+                        ['접이 간편성', '무게'],
+                        ['Easy fold', 'Weight']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '리안 캐리 (휴대용)', en: 'Rian Carry (compact)' },
                     summary: { ko: '가볍고 접기 쉬운 휴대용 모델.', en: 'Lightweight, easy-fold travel model.' },
-                    price: { ko: '약 146,770원', en: 'Approx. ₩146,770' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/8397615052' },
                     details: details(
                         ['근거리 이동과 대중교통에 유리합니다.'],
                         ['Good for short trips and transit.'],
@@ -642,10 +781,53 @@ const DATA = {
                 },
                 {
                     type: 'product',
-                    title: { ko: '싸이벡스 솔루션 M-Fix 카시트', en: 'Cybex Solution M-Fix car seat' },
-                    summary: { ko: '주니어용 등받이 카시트.', en: 'High-back booster style seat.' },
-                    price: { ko: '약 198,000원', en: 'Approx. ₩198,000' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/340559415' },
+                    title: { ko: '맥시코시 코랄 360 (신생아 카시트)', en: 'Maxi-Cosi Coral 360 (infant seat)' },
+                    summary: { ko: '분리형 캐리로 편한 신생아 카시트.', en: 'Infant seat with detachable carry shell.' },
+                    details: details(
+                        ['신생아 안전 이동에 필수입니다.'],
+                        ['Essential for newborn travel.'],
+                        ['설치 각도 확인 필수.'],
+                        ['Check recline angle.'],
+                        ['신생아~12개월 중심.'],
+                        ['Best for newborn to ~12 months.'],
+                        ['ISOFIX 호환', '캐리 분리'],
+                        ['ISOFIX compatibility', 'Detachable carrier']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '조이 아이스핀 360 (회전형)', en: 'Joie i-Spin 360 (rotating)' },
+                    summary: { ko: '회전형으로 탑승이 편한 카시트.', en: 'Rotating car seat for easier loading.' },
+                    details: details(
+                        ['탑승 동선이 편리합니다.'],
+                        ['Easier in/out flow.'],
+                        ['체형/연령 조건 확인.'],
+                        ['Check age/size fit.'],
+                        ['영아~유아기 사용.'],
+                        ['Use from infant to toddler.'],
+                        ['회전 잠금', '각도 표시'],
+                        ['Rotation lock', 'Angle indicator']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '브라이텍스 어드밴서픽스 (컨버터블)', en: 'Britax Advansafix (convertible)' },
+                    summary: { ko: '장기간 사용하는 컨버터블 카시트.', en: 'Long-use convertible seat.' },
+                    details: details(
+                        ['영아기 이후 장기간 사용 가능.'],
+                        ['Suitable for long-term use.'],
+                        ['차량 호환성 확인 필요.'],
+                        ['Check vehicle compatibility.'],
+                        ['유아기 중심.'],
+                        ['Primarily for toddler stage.'],
+                        ['벨트 고정', '각도 조절'],
+                        ['Belt routing', 'Recline control']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '싸이벡스 솔루션 (주니어)', en: 'Cybex Solution (booster)' },
+                    summary: { ko: '주니어용 등받이 부스터.', en: 'High-back booster style seat.' },
                     details: details(
                         ['성장에 맞춘 높이 조절이 가능해요.'],
                         ['Adjustable headrest supports growth.'],
@@ -659,10 +841,8 @@ const DATA = {
                 },
                 {
                     type: 'product',
-                    title: { ko: '에르고베이비 옴니 브리즈 아기띠', en: 'Ergobaby Omni Breeze carrier' },
+                    title: { ko: '에르고베이비 옴니 브리즈 (구조형)', en: 'Ergobaby Omni Breeze (structured)' },
                     summary: { ko: '신생아부터 사용 가능한 메쉬 아기띠.', en: 'Breathable carrier for newborn to toddler.' },
-                    price: { ko: '약 217,000원', en: 'Approx. ₩217,000' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/7665053824' },
                     details: details(
                         ['통풍성과 지지력이 장점입니다.'],
                         ['Breathable with strong support.'],
@@ -676,10 +856,38 @@ const DATA = {
                 },
                 {
                     type: 'product',
-                    title: { ko: '쥬쥬비 B.F.F 기저귀가방', en: 'JuJube B.F.F diaper bag' },
-                    summary: { ko: '수납이 많고 가방 형태가 단정한 모델.', en: 'Structured diaper bag with ample storage.' },
-                    price: { ko: '약 127,950원', en: 'Approx. ₩127,950' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/802030094' },
+                    title: { ko: '슬링 아기띠 (신생아)', en: 'Ring sling (newborn)' },
+                    summary: { ko: '짧은 시간 밀착 케어에 적합.', en: 'Close-contact sling for newborns.' },
+                    details: details(
+                        ['신생아 초기 밀착에 유리합니다.'],
+                        ['Great for early newborn holds.'],
+                        ['기도 확보 확인 필수.'],
+                        ['Ensure airway is clear.'],
+                        ['신생아 초기 중심.'],
+                        ['Best for early newborn stage.'],
+                        ['자세 확인', '밀착도 조절'],
+                        ['Position check', 'Tightness control']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '힙시트 아기띠', en: 'Hip seat carrier' },
+                    summary: { ko: '걸음마 전후 체중 분산에 유리.', en: 'Good weight distribution for toddlers.' },
+                    details: details(
+                        ['허리 부담을 줄이는 데 도움.'],
+                        ['Helps reduce back strain.'],
+                        ['장시간 사용은 피하세요.'],
+                        ['Avoid long continuous use.'],
+                        ['생후 6~36개월 중심.'],
+                        ['Best for 6-36 months.'],
+                        ['허리벨트', '미끄럼 방지'],
+                        ['Waist belt', 'Non-slip seat']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '쥬쥬비 B.F.F (기저귀가방)', en: 'JuJube B.F.F diaper bag' },
+                    summary: { ko: '수납이 많고 형태가 단정한 가방.', en: 'Structured diaper bag with ample storage.' },
                     details: details(
                         ['수납 분리가 잘되어 외출이 편합니다.'],
                         ['Organized compartments help outings.'],
@@ -689,6 +897,21 @@ const DATA = {
                         ['Best when outings increase.'],
                         ['기저귀 파우치', '방수 구획'],
                         ['Diaper pouch', 'Water-resistant sections']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '유모차 라이너', en: 'Stroller liner' },
+                    summary: { ko: '통풍·땀 흡수에 도움이 되는 라이너.', en: 'Breathable liner for comfort.' },
+                    details: details(
+                        ['여름철 땀 관리에 도움됩니다.'],
+                        ['Helps with sweat control.'],
+                        ['세탁 가능 여부 확인.'],
+                        ['Check washability.'],
+                        ['외출이 잦은 시기.'],
+                        ['When outings increase.'],
+                        ['통풍 소재', '고정 밴드'],
+                        ['Breathable material', 'Fixing straps']
                     )
                 }
             ]
@@ -747,10 +970,8 @@ const DATA = {
             items: [
                 {
                     type: 'product',
-                    title: { ko: '타이니러브 클래식 유니콘 모빌', en: 'Tiny Love classic mobile' },
+                    title: { ko: '타이니러브 클래식 모빌', en: 'Tiny Love classic mobile' },
                     summary: { ko: '초기 시각 자극용 대표 모빌.', en: 'Classic visual-stimulation mobile.' },
-                    price: { ko: '약 109,000원', en: 'Approx. ₩109,000' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/7294554121' },
                     details: details(
                         ['대비 패턴과 음악으로 초기 시각 발달에 도움.'],
                         ['Contrasts and music support early visual focus.'],
@@ -764,10 +985,83 @@ const DATA = {
                 },
                 {
                     type: 'product',
+                    title: { ko: '흑백 대비 카드', en: 'Black-and-white cards' },
+                    summary: { ko: '초기 시각 자극용 대비 카드.', en: 'High-contrast visual cards.' },
+                    details: details(
+                        ['짧게 보여주며 시각 초점을 돕습니다.'],
+                        ['Supports early visual focus.'],
+                        ['가까이 들이대지 마세요.'],
+                        ['Avoid placing too close.'],
+                        ['생후 0~3개월 중심.'],
+                        ['Best for 0-3 months.'],
+                        ['짧은 노출', '부드러운 말걸기'],
+                        ['Short exposure', 'Soft talking']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '플레이매트', en: 'Play mat' },
+                    summary: { ko: '터미타임과 감각 자극에 도움.', en: 'Supports tummy time and sensory play.' },
+                    details: details(
+                        ['바닥 생활의 기본 아이템입니다.'],
+                        ['Basic floor-play item.'],
+                        ['바닥 미끄럼을 확인하세요.'],
+                        ['Check for non-slip base.'],
+                        ['생후 1~6개월 중심.'],
+                        ['Best for 1-6 months.'],
+                        ['세탁 가능 여부', '두께'],
+                        ['Washable', 'Thickness']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '오볼 딸랑이', en: 'Oball rattle' },
+                    summary: { ko: '잡기 쉬운 소근육 장난감.', en: 'Easy-grip fine-motor toy.' },
+                    details: details(
+                        ['잡기 놀이와 촉감 자극에 도움.'],
+                        ['Supports grasping and tactile play.'],
+                        ['작은 부품 없는지 확인.'],
+                        ['Ensure no small parts.'],
+                        ['생후 2~8개월 중심.'],
+                        ['Best for 2-8 months.'],
+                        ['손에 닿는 크기', '세척 가능 여부'],
+                        ['Size check', 'Washable']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '치발기', en: 'Teether' },
+                    summary: { ko: '구강 탐색기 감각 놀이.', en: 'Supports gum relief and sensory play.' },
+                    details: details(
+                        ['구강 탐색기에 유용합니다.'],
+                        ['Useful during mouthing phase.'],
+                        ['세척/소독 확인.'],
+                        ['Check cleaning guidelines.'],
+                        ['생후 4~10개월 중심.'],
+                        ['Best for 4-10 months.'],
+                        ['무독성 소재', '손잡이 크기'],
+                        ['Non-toxic material', 'Grip size']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '촉감 사운드북', en: 'Sensory sound book' },
+                    summary: { ko: '촉감과 소리를 함께 자극.', en: 'Combines texture and sound play.' },
+                    details: details(
+                        ['손으로 만지며 탐색합니다.'],
+                        ['Encourages tactile exploration.'],
+                        ['찢김 위험 확인.'],
+                        ['Check for tear resistance.'],
+                        ['생후 6~18개월 중심.'],
+                        ['Best for 6-18 months.'],
+                        ['세탁 가능', '모서리 마감'],
+                        ['Washable', 'Safe edges']
+                    )
+                },
+                {
+                    type: 'product',
                     title: { ko: '피셔프라이스 러닝홈', en: 'Fisher-Price learning home' },
                     summary: { ko: '잡고 서기/놀이 기능이 함께 있는 장난감.', en: 'Activity center for standing and play.' },
-                    price: { ko: '약 344,100원', en: 'Approx. ₩344,100' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/8202260129' },
                     details: details(
                         ['붙잡고 서기 연습에 도움됩니다.'],
                         ['Supports pull-to-stand practice.'],
@@ -781,10 +1075,38 @@ const DATA = {
                 },
                 {
                     type: 'product',
-                    title: { ko: '레고 듀플로 소방차 10969', en: 'LEGO DUPLO 10969' },
+                    title: { ko: '소프트 볼', en: 'Soft ball set' },
+                    summary: { ko: '대근육·감각 놀이용.', en: 'Gross motor and sensory play.' },
+                    details: details(
+                        ['움직임과 촉감 자극에 도움.'],
+                        ['Supports movement and sensory input.'],
+                        ['공 크기/재질 확인.'],
+                        ['Check ball size/material.'],
+                        ['생후 12개월 이후 중심.'],
+                        ['Best after 12 months.'],
+                        ['세척 가능', '안전 매트'],
+                        ['Washable', 'Safe mat']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '실로폰/뮤직 토이', en: 'Xylophone/music toy' },
+                    summary: { ko: '리듬 감각과 원인-결과 놀이.', en: 'Rhythm and cause-effect play.' },
+                    details: details(
+                        ['소리 반응 놀이에 좋습니다.'],
+                        ['Great for sound response play.'],
+                        ['소리는 짧게.'],
+                        ['Keep sound play brief.'],
+                        ['생후 12개월 이후.'],
+                        ['After 12 months.'],
+                        ['음량 조절', '모서리 마감'],
+                        ['Volume control', 'Safe edges']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '레고 듀플로', en: 'LEGO DUPLO' },
                     summary: { ko: '큰 블록으로 안전하게 쌓기 놀이.', en: 'Large blocks for safe stacking.' },
-                    price: { ko: '약 79,900원', en: 'Approx. ₩79,900' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/5471211886' },
                     details: details(
                         ['손-눈 협응과 상상 놀이에 도움.'],
                         ['Supports hand-eye and pretend play.'],
@@ -798,36 +1120,17 @@ const DATA = {
                 },
                 {
                     type: 'product',
-                    title: { ko: '졸리베이비 5종 플레이매트', en: 'Jollybaby play mat' },
-                    summary: { ko: '감각 자극 요소가 많은 놀이 매트.', en: 'Sensory-rich play mat.' },
-                    price: { ko: '약 37,800원', en: 'Approx. ₩37,800' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/5264078935' },
+                    title: { ko: '주방놀이 세트', en: 'Pretend kitchen set' },
+                    summary: { ko: '상상 놀이 확장에 도움.', en: 'Supports pretend play.' },
                     details: details(
-                        ['터미타임과 감각 자극에 도움.'],
-                        ['Supports tummy time and sensory play.'],
-                        ['너무 큰 장난감은 조절하세요.'],
-                        ['Rotate toys if overstimulated.'],
-                        ['생후 1~6개월 중심.'],
-                        ['Best for 1-6 months.'],
-                        ['세탁 가능 여부', '바닥 미끄럼'],
-                        ['Washable?', 'Non-slip base']
-                    )
-                },
-                {
-                    type: 'product',
-                    title: { ko: '디즈니베이비 오볼 딸랑이', en: 'Disney Baby Oball rattle' },
-                    summary: { ko: '잡기 쉬운 소근육 장난감.', en: 'Easy-grip fine-motor toy.' },
-                    price: { ko: '약 116,730원', en: 'Approx. ₩116,730' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/8465898056' },
-                    details: details(
-                        ['잡기 놀이와 촉감 자극에 도움.'],
-                        ['Supports grasping and tactile play.'],
-                        ['작은 부품 없는지 확인.'],
-                        ['Ensure no small parts.'],
-                        ['생후 2~8개월 중심.'],
-                        ['Best for 2-8 months.'],
-                        ['손에 닿는 크기', '세척 가능 여부'],
-                        ['Size check', 'Washable']
+                        ['역할 놀이가 늘어나는 시기에 적합.'],
+                        ['Fits role-play stage.'],
+                        ['작은 부품 확인.'],
+                        ['Check for small parts.'],
+                        ['생후 24개월 이후 중심.'],
+                        ['Best after 24 months.'],
+                        ['수납 박스', '안전 재질'],
+                        ['Storage box', 'Safe materials']
                     )
                 }
             ]
@@ -843,10 +1146,38 @@ const DATA = {
             items: [
                 {
                     type: 'product',
+                    title: { ko: '아기 그림책 세트', en: 'Picture book set' },
+                    summary: { ko: '짧은 문장과 선명한 그림 중심.', en: 'Short sentences with clear visuals.' },
+                    details: details(
+                        ['매일 짧게 읽어주는 습관이 중요합니다.'],
+                        ['Daily short reading helps.'],
+                        ['지나치게 긴 책은 피하세요.'],
+                        ['Avoid overly long books.'],
+                        ['생후 0~24개월 전반.'],
+                        ['Across 0-24 months.'],
+                        ['반복 읽기', '아기 반응 관찰'],
+                        ['Repeat readings', 'Watch responses']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '사운드북', en: 'Sound book' },
+                    summary: { ko: '버튼을 누르는 상호작용 책.', en: 'Interactive button sound book.' },
+                    details: details(
+                        ['원인-결과 인지에 도움됩니다.'],
+                        ['Supports cause-effect learning.'],
+                        ['사용 시간은 짧게.'],
+                        ['Keep usage time short.'],
+                        ['생후 12개월 이후.'],
+                        ['After 12 months.'],
+                        ['배터리 점검', '음량 조절'],
+                        ['Battery check', 'Volume control']
+                    )
+                },
+                {
+                    type: 'product',
                     title: { ko: '레인보우 온 세이펜', en: 'RainbowOn SayPen' },
                     summary: { ko: '소리 나는 책과 함께 쓰는 학습 펜.', en: 'Audio pen for interactive books.' },
-                    price: { ko: '약 153,000원', en: 'Approx. ₩153,000' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/8168184419' },
                     details: details(
                         ['반복 듣기로 언어 자극을 제공합니다.'],
                         ['Supports repetitive listening.'],
@@ -860,10 +1191,8 @@ const DATA = {
                 },
                 {
                     type: 'product',
-                    title: { ko: '몬테소리 한글 단어 카드 168', en: 'Montessori word cards 168' },
+                    title: { ko: '몬테소리 단어 카드', en: 'Montessori word cards' },
                     summary: { ko: '기초 단어 카드를 활용한 놀이.', en: 'Basic word cards for play.' },
-                    price: { ko: '약 51,920원', en: 'Approx. ₩51,920' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/7841302884' },
                     details: details(
                         ['단어-이미지 연결을 돕습니다.'],
                         ['Supports word-image matching.'],
@@ -877,10 +1206,23 @@ const DATA = {
                 },
                 {
                     type: 'product',
+                    title: { ko: '플래시카드', en: 'Flash cards' },
+                    summary: { ko: '짧은 단어 자극에 유용.', en: 'Good for quick word exposure.' },
+                    details: details(
+                        ['짧게 보여주고 반응을 봅니다.'],
+                        ['Show briefly and observe.'],
+                        ['강요하지 마세요.'],
+                        ['Avoid pressure.'],
+                        ['말이 늘기 시작하는 시기.'],
+                        ['When vocabulary grows.'],
+                        ['3~5장씩', '짧은 세션'],
+                        ['3-5 cards', 'Short sessions']
+                    )
+                },
+                {
+                    type: 'product',
                     title: { ko: '한글/알파벳 벽보', en: 'Hangul/Alphabet poster' },
                     summary: { ko: '벽에 붙이는 시각 학습 포스터.', en: 'Visual learning wall poster.' },
-                    price: { ko: '약 7,800원', en: 'Approx. ₩7,800' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/3340913014' },
                     details: details(
                         ['자주 노출로 글자 친숙도를 높입니다.'],
                         ['Repeated exposure builds familiarity.'],
@@ -894,10 +1236,8 @@ const DATA = {
                 },
                 {
                     type: 'product',
-                    title: { ko: '브레드이발소 사운드 포스터', en: 'Sound poster' },
+                    title: { ko: '사운드 포스터', en: 'Sound poster' },
                     summary: { ko: '누르면 소리 나는 벽보형 학습 도구.', en: 'Press-to-sound learning poster.' },
-                    price: { ko: '약 9,900원', en: 'Approx. ₩9,900' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/7513491413' },
                     details: details(
                         ['원인-결과 놀이와 언어 자극에 도움.'],
                         ['Supports cause-effect and language.'],
@@ -911,10 +1251,8 @@ const DATA = {
                 },
                 {
                     type: 'product',
-                    title: { ko: '몬테소리 문화 카드', en: 'Montessori culture cards' },
+                    title: { ko: '문화 카드(자연/생활)', en: 'Culture cards' },
                     summary: { ko: '생활·자연 주제 카드로 확장 학습.', en: 'Topic cards for broader learning.' },
-                    price: { ko: '약 52,900원', en: 'Approx. ₩52,900' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/8076134211' },
                     details: details(
                         ['시야를 넓히는 주제 놀이에 도움.'],
                         ['Helps broaden topic exposure.'],
@@ -924,6 +1262,21 @@ const DATA = {
                         ['When curiosity grows.'],
                         ['카드 정리', '짧은 놀이'],
                         ['Card storage', 'Short sessions']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '대형 퍼즐', en: 'Large-piece puzzle' },
+                    summary: { ko: '손-눈 협응과 집중에 도움.', en: 'Supports hand-eye and focus.' },
+                    details: details(
+                        ['큰 조각부터 시작합니다.'],
+                        ['Start with large pieces.'],
+                        ['작은 부품 주의.'],
+                        ['Avoid small parts.'],
+                        ['생후 24개월 이후.'],
+                        ['After 24 months.'],
+                        ['보관함', '관찰 놀이'],
+                        ['Storage box', 'Supervised play']
                     )
                 }
             ]
@@ -953,87 +1306,122 @@ const DATA = {
                 ),
                 {
                     type: 'product',
-                    title: { ko: '매일유업 앱솔루트 궁 1단계', en: 'Maeil Absolute Organic Step 1' },
-                    summary: { ko: '유기농 라인 대표 제품.', en: 'Popular organic line.' },
-                    price: { ko: '약 101,700원 (800g x 3캔)', en: 'Approx. ₩101,700 (800g x 3)' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/7908379023' },
+                    title: { ko: '앱솔루트 명작', en: 'Absolute Masterpiece' },
+                    summary: { ko: '국내 메이저 라인업 대표.', en: 'Major domestic line.' },
                     details: details(
-                        ['유기농 라인을 찾는 가정에 적합.'],
-                        ['Good for those seeking organic line.'],
-                        ['원료 확인이 필요합니다.'],
-                        ['Check ingredient details.'],
-                        ['신생아~6개월 중심.'],
-                        ['Newborn to 6 months.'],
-                        ['용량 확인', '보관 방법'],
-                        ['Check pack size', 'Storage method']
+                        ['국내 메이저 라인 비교 시 포함.'],
+                        ['Include when comparing local lines.'],
+                        ['아기 반응을 확인하세요.'],
+                        ['Monitor baby tolerance.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['단계 확인', '보관 방법'],
+                        ['Check stage', 'Storage']
                     )
                 },
                 {
                     type: 'product',
-                    title: { ko: '남양 임페리얼 XO 1단계', en: 'Namyang Imperial XO Step 1' },
+                    title: { ko: '임페리얼XO', en: 'Imperial XO' },
+                    summary: { ko: '국내 프리미엄 라인업.', en: 'Domestic premium line.' },
+                    details: details(
+                        ['프리미엄 라인 비교 시 포함.'],
+                        ['Include for premium comparisons.'],
+                        ['알레르기 반응 확인.'],
+                        ['Watch for allergies.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['단계 확인', '유통기한'],
+                        ['Check stage', 'Expiry date']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '아이배냇 골든저지', en: 'Ivenet Golden Jersey' },
                     summary: { ko: '국내 대표 라인 중 하나.', en: 'One of mainstream lines.' },
-                    price: { ko: '약 18,600원 (1캔)', en: 'Approx. ₩18,600 (1 can)' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/1386787220' },
                     details: details(
-                        ['국내에서 널리 사용되는 라인입니다.'],
-                        ['Widely used domestic line.'],
-                        ['아기 반응을 관찰하세요.'],
-                        ['Observe baby response.'],
-                        ['신생아~6개월 중심.'],
-                        ['Newborn to 6 months.'],
-                        ['구매 단위 확인', '보관 방법'],
-                        ['Check pack size', 'Storage method']
-                    )
-                },
-                {
-                    type: 'product',
-                    title: { ko: '일동후디스 산양분유 1단계', en: 'Ildong Foodis Goat Milk Step 1' },
-                    summary: { ko: '산양유 기반 라인.', en: 'Goat milk-based option.' },
-                    price: { ko: '약 49,390원 (800g)', en: 'Approx. ₩49,390 (800g)' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/8175711802' },
-                    details: details(
-                        ['산양유 기반을 선호하는 경우 선택.'],
-                        ['Option for goat milk preference.'],
-                        ['소화 반응은 개인차가 큽니다.'],
-                        ['Digestive response varies.'],
-                        ['신생아~6개월 중심.'],
-                        ['Newborn to 6 months.'],
-                        ['원료 확인', '알레르기 체크'],
-                        ['Check ingredients', 'Allergy check']
-                    )
-                },
-                {
-                    type: 'product',
-                    title: { ko: '파스퇴르 위드맘 1단계', en: 'Pasteur Withmom Step 1' },
-                    summary: { ko: '국내 주력 라인 중 하나.', en: 'Mainstream domestic line.' },
-                    price: { ko: '약 73,900원 (750g x 2)', en: 'Approx. ₩73,900 (750g x 2)' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/6206146405' },
-                    details: details(
-                        ['균형 영양 라인으로 사용됩니다.'],
-                        ['Used as balanced nutrition line.'],
-                        ['아기 반응 확인이 필요합니다.'],
-                        ['Observe baby response.'],
-                        ['신생아~6개월 중심.'],
-                        ['Newborn to 6 months.'],
-                        ['보관 방법', '용량 확인'],
-                        ['Storage', 'Pack size']
-                    )
-                },
-                {
-                    type: 'product',
-                    title: { ko: '힙 콤비오틱 1단계', en: 'HiPP Combiotic Step 1' },
-                    summary: { ko: '수입 유기농 라인 대표.', en: 'Popular imported organic line.' },
-                    price: { ko: '약 49,800원 (800g)', en: 'Approx. ₩49,800 (800g)' },
-                    source: { label: 'Coupang', url: 'https://www.coupang.com/vp/products/2334734623' },
-                    details: details(
-                        ['수입 유기농 라인을 찾는 경우 고려.'],
-                        ['Consider for imported organic preference.'],
-                        ['수입 제품은 배송/재고 변동이 큽니다.'],
-                        ['Import stock may vary.'],
-                        ['신생아~6개월 중심.'],
-                        ['Newborn to 6 months.'],
+                        ['국내 주요 브랜드 라인 비교에 포함.'],
+                        ['Include in domestic line comparisons.'],
+                        ['개별 아기 반응을 확인하세요.'],
+                        ['Check baby tolerance.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
                         ['유통기한 확인', '보관 방법'],
                         ['Check expiry', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '압타밀 프로푸트라', en: 'Aptamil Profutura' },
+                    summary: { ko: '수입 프리미엄 라인.', en: 'Premium imported line.' },
+                    details: details(
+                        ['수입 프리미엄 라인을 찾는 경우 고려.'],
+                        ['Consider imported premium lines.'],
+                        ['수입 제품은 재고 변동 가능.'],
+                        ['Imported stock may vary.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['유통기한 확인', '보관 방법'],
+                        ['Check expiry', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '힙 콤비오틱', en: 'HiPP Combiotic' },
+                    summary: { ko: '수입 유기농 라인 대표.', en: 'Popular imported organic line.' },
+                    details: details(
+                        ['유기농 라인 비교 시 포함.'],
+                        ['Include for organic comparisons.'],
+                        ['수입 제품은 배송 변동 주의.'],
+                        ['Imported delivery may vary.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['유통기한 확인', '보관 방법'],
+                        ['Check expiry', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '산양유 라인업', en: 'Goat milk line' },
+                    summary: { ko: '산양유 기반 라인 비교용.', en: 'Category for goat milk options.' },
+                    details: details(
+                        ['산양유 라인을 비교할 때 참고.'],
+                        ['Check when comparing goat milk options.'],
+                        ['알레르기 반응 주의.'],
+                        ['Watch for allergies.'],
+                        ['상황에 맞게 선택.'],
+                        ['Select based on needs.'],
+                        ['성분 확인', '변화 기록'],
+                        ['Check ingredients', 'Track changes']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '민감 케어 라인', en: 'Sensitive care line' },
+                    summary: { ko: '민감 케어용 라인업.', en: 'Sensitive care formula line.' },
+                    details: details(
+                        ['민감/소화 케어 라인 비교 시 참고.'],
+                        ['Consider for sensitive digestion options.'],
+                        ['전문가 상담을 권장합니다.'],
+                        ['Consult a clinician if needed.'],
+                        ['문제가 있을 때 선택.'],
+                        ['Use if issues arise.'],
+                        ['성분 확인', '상담 기록'],
+                        ['Check ingredients', 'Consult notes']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '무유당/저유당 라인', en: 'Low/zero lactose line' },
+                    summary: { ko: '소화 이슈 대응 라인.', en: 'Line for lactose-related needs.' },
+                    details: details(
+                        ['특수 상황에서 선택합니다.'],
+                        ['Use for specific needs.'],
+                        ['의료진 상담 후 선택.'],
+                        ['Choose with clinician guidance.'],
+                        ['상황에 따라 사용.'],
+                        ['Use as needed.'],
+                        ['성분 확인', '변화 기록'],
+                        ['Check ingredients', 'Track changes']
                     )
                 }
             ]
@@ -1954,6 +2342,19 @@ const openModal = (stage) => {
 
         panel.appendChild(summary);
 
+        const focus = document.createElement('div');
+        focus.className = 'card-detail';
+        focus.textContent = translations[currentLang].detailFocus;
+        const focusList = document.createElement('ul');
+        focusList.className = 'accordion-list';
+        getFocusPoints(cardItem, currentLang).forEach(point => {
+            const li = document.createElement('li');
+            li.textContent = point;
+            focusList.appendChild(li);
+        });
+        panel.appendChild(focus);
+        panel.appendChild(focusList);
+
         const how = document.createElement('div');
         how.className = 'card-detail';
         how.textContent = translations[currentLang].detailHow;
@@ -1961,22 +2362,6 @@ const openModal = (stage) => {
         howList.className = 'accordion-list';
         const timingSummary = cardItem.details.timing[currentLang].join(', ');
         const checklistSummary = cardItem.details.checklist[currentLang].join(', ');
-        [timingSummary, checklistSummary].forEach(text => {
-            if (!text) return;
-            const li = document.createElement('li');
-            li.textContent = text;
-            howList.appendChild(li);
-        });
-        panel.appendChild(how);
-        panel.appendChild(howList);
-
-        const how = document.createElement('div');
-        how.className = 'card-detail';
-        how.textContent = translations[currentLang].detailHow;
-        const howList = document.createElement('ul');
-        howList.className = 'accordion-list';
-        const timingSummary = item.details.timing[currentLang].join(', ');
-        const checklistSummary = item.details.checklist[currentLang].join(', ');
         [timingSummary, checklistSummary].forEach(text => {
             if (!text) return;
             const li = document.createElement('li');
@@ -2089,6 +2474,19 @@ const openThemeModal = (theme) => {
         summary.textContent = item.summary[currentLang];
 
         panel.appendChild(summary);
+
+        const focus = document.createElement('div');
+        focus.className = 'card-detail';
+        focus.textContent = translations[currentLang].detailFocus;
+        const focusList = document.createElement('ul');
+        focusList.className = 'accordion-list';
+        getFocusPoints(item, currentLang).forEach(point => {
+            const li = document.createElement('li');
+            li.textContent = point;
+            focusList.appendChild(li);
+        });
+        panel.appendChild(focus);
+        panel.appendChild(focusList);
 
         if (item.price) {
             const price = document.createElement('div');
