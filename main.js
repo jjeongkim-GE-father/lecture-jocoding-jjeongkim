@@ -56,7 +56,7 @@ const translations = {
         subHeading: 'From pregnancy to 36 months, find essentials and care notes in a soft, simple flow.',
         heroNote: 'Click a stage to open detailed cards',
         metaWindow: 'Basic care guide · Korea-first',
-        metaSources: 'Sources: CDC · WHO · AAP',
+        metaSources: 'Sources: CDC · WHO · KR Public Health',
         heroPanelTitle: 'Quick Filters',
         filterNote: 'Pick a stage to open the full checklist.',
         stagesTitle: 'Stage Playbook',
@@ -93,7 +93,7 @@ const translations = {
         subHeading: '임신부터 36개월까지, 필수 포인트를 차분하게 정리했습니다.',
         heroNote: '구간을 클릭하면 상세 카드가 열려요',
         metaWindow: '기본 육아 가이드 · 한국 중심',
-        metaSources: '출처: CDC · WHO · AAP',
+        metaSources: '출처: CDC · WHO · 보건소 자료',
         heroPanelTitle: '빠른 필터',
         filterNote: '구간을 선택하면 상세 체크리스트가 열립니다.',
         stagesTitle: '구간별 플레이북',
@@ -757,6 +757,18 @@ const monthData = [
             ),
             card('건강', 'Health', '진료 체크', 'Checkups', '성장/수유 상태를 확인합니다.', 'Monitor growth and feeding.',
                 details(['초기 건강 상태 점검에 중요합니다.'], ['Important for early health tracking.'], ['걱정되는 증상은 즉시 상담.'], ['Ask about concerns promptly.'], ['예정된 진료 일정에 맞춰.'], ['Follow scheduled visits.'], ['체중 기록', '질문 리스트'], ['Weight log', 'Question list'])
+            ),
+            card('건강', 'Health', '영유아 건강검진 일정', 'Infant screening schedule', '국가 영유아 건강검진 일정을 확인합니다.', 'Check the national infant screening schedule.',
+                details(
+                    ['국가 건강검진으로 성장/발달 점검을 지원합니다.'],
+                    ['National screenings support growth and development checks.'],
+                    ['해당 기간 내 예약이 필요합니다.'],
+                    ['Book within the designated window.'],
+                    ['1차: 생후 14~35일', '2차: 생후 4~6개월', '3차: 생후 9~12개월', '4차: 생후 18~24개월', '5차: 생후 30~36개월'],
+                    ['1st: 14-35 days', '2nd: 4-6 months', '3rd: 9-12 months', '4th: 18-24 months', '5th: 30-36 months'],
+                    ['지정 기관 확인', '검진표 준비'],
+                    ['Find a designated clinic', 'Prepare the screening form']
+                )
             ),
             card('정서', 'Bonding', '교감 시간', 'Bonding time', '부드럽게 말하고 눈을 맞춥니다.', 'Speak softly, make eye contact.',
                 details(['정서 안정에 도움됩니다.'], ['Supports emotional bonding.'], ['피곤할 때는 짧게.'], ['Keep it short if tired.'], ['매일 여러 번 짧게.'], ['Several short times daily.'], ['스킨십', '부드러운 목소리'], ['Skin contact', 'Soft voice'])
