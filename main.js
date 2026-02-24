@@ -134,6 +134,11 @@ const details = (reasonKo, reasonEn, cautionKo, cautionEn, timingKo, timingEn, c
 });
 
 const getFocusPoints = (cardItem, lang) => {
+    if (!cardItem.category) {
+        return lang === 'ko'
+            ? ['핵심 포인트 2가지를 정해 간단히 실행', '짧고 자주 반복하면서 반응 체크']
+            : ['Pick two key actions', 'Short, frequent practice with observation'];
+    }
     const categoryKo = cardItem.category.ko;
     const focusMapKo = {
         수유: ['기록 항목: 시작/끝 시간, 수유량, 아기 반응', '간격은 2~3일 단위로 평균 확인'],
@@ -2670,3 +2675,13 @@ if (themeModalClose && themeModal) {
         }
     });
 }
+
+document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    if (stageModal && stageModal.classList.contains('show')) {
+        closeModal();
+    }
+    if (themeModal && themeModal.classList.contains('show')) {
+        closeThemeModal();
+    }
+});
