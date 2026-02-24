@@ -22,7 +22,6 @@
         <nav class="site-nav">
             <button class="nav-link" data-target="stages" id="nav-stages">Stages</button>
             <button class="nav-link" data-target="hot" id="nav-hot">Hot Now</button>
-            <button class="nav-link" data-target="regions" id="nav-regions">Regions</button>
             <button class="nav-link" data-target="formula" id="nav-formula">Formula</button>
         </nav>
     </header>
@@ -71,17 +70,6 @@
             </div>
         </section>
 
-        <section class="section" id="regions">
-            <div class="section-header">
-                <h2 id="regions-title">Postpartum Massage by Region</h2>
-                <p id="regions-subtitle">Special city + province grouping with suggested providers.</p>
-            </div>
-            <div id="region-grid" class="region-grid"></div>
-            <div class="source-note" id="region-note">
-                Provider lists should be verified with local directories before publishing.
-            </div>
-        </section>
-
         <section class="section" id="formula">
             <div class="section-header">
                 <h2 id="formula-title">Formula Guide (KR)</h2>
@@ -113,6 +101,22 @@
             </div>
         </section>
     </main>
+
+    <div class="modal" id="stage-modal" aria-hidden="true">
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="modal-header">
+                <div>
+                    <div class="modal-tag" id="modal-tag">Stage</div>
+                    <h3 id="modal-title">Stage Details</h3>
+                </div>
+                <button class="modal-close" id="modal-close">Close</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-top5" id="modal-top5"></div>
+                <div class="modal-cards" id="modal-cards"></div>
+            </div>
+        </div>
+    </div>
 
     <script src="main.js"></script>
 </body>
