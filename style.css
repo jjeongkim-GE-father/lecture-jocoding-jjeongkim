@@ -577,6 +577,36 @@ p {
     font-size: 16px;
 }
 
+.modal-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.section-pill {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.section-pill:hover {
+    border-color: var(--accent);
+    color: var(--text);
+    background: var(--surface-alt);
+}
+
+.section-pill.active {
+    border-color: var(--accent-strong);
+    color: var(--text);
+    background: var(--accent-soft);
+}
+
 .modal-cards {
     display: grid;
     gap: 12px;
