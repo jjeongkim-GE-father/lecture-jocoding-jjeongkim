@@ -2169,17 +2169,12 @@ const DATA = {
         {
             id: 'formula',
             title: { ko: '분유', en: 'Formula' },
-            subtitle: { ko: '국산/수입 + 특성별 라인 정리', en: 'Domestic/imported + specialty lines' },
+            subtitle: { ko: '국산/수입 + 산양유/민감케어 라인', en: 'Domestic/imported + goat/sensitive lines' },
             summary: {
-                ko: ['국산/수입 분류', '산양유/민감케어/무유당 라인', '제품 토글로 비교'],
-                en: ['Domestic/imported split', 'Goat/sensitive/low-lactose lines', 'Compare with toggles']
+                ko: ['국산 분유', '수입 분유', '산양유 라인', '민감 케어'],
+                en: ['Domestic', 'Imported', 'Goat milk', 'Sensitive care']
             },
             sections: [
-                {
-                    id: 'guides',
-                    title: { ko: '기준/가이드', en: 'Guides' },
-                    items: [FORMULA_ITEMS.priceGuide, FORMULA_ITEMS.ingredientStyles]
-                },
                 {
                     id: 'domestic',
                     title: { ko: '국산 분유', en: 'Domestic' },
@@ -2234,11 +2229,6 @@ const DATA = {
                         FORMULA_ITEMS.hippCombiotic,
                         FORMULA_ITEMS.sensitiveCare
                     ]
-                },
-                {
-                    id: 'low-lactose',
-                    title: { ko: '무유당/저유당', en: 'Low/zero lactose' },
-                    items: [FORMULA_ITEMS.lowLactose]
                 }
             ]
         }
