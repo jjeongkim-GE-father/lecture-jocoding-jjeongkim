@@ -2624,12 +2624,12 @@ const toddlerStages = [
     }
 ];
 
-monthData.forEach(entry => {
-    DATA.stages.push(buildMonthStage(entry.month, entry.titleKo, entry.titleEn, entry.top5, entry.top5En, entry.cards));
-});
-
 monthStages.forEach(entry => {
     DATA.stages.push(buildMonthStage(entry.month, `생후 ${entry.month}개월`, `Month ${entry.month}`, entry.top5, entry.top5En, entry.cards));
+});
+
+monthData.forEach(entry => {
+    DATA.stages.push(buildMonthStage(entry.month, entry.titleKo, entry.titleEn, entry.top5, entry.top5En, entry.cards));
 });
 
 toddlerStages.forEach(stage => {
