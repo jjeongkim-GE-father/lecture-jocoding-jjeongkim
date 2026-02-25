@@ -699,7 +699,64 @@ const DATA = {
                 ),
                 card('수면', 'Sleep', '수면 신호 관찰', 'Sleep cues', '하품/눈비빔 등 졸림 신호를 봅니다.', 'Watch for sleepy cues.',
                     details(['타이밍이 맞으면 잠이 쉬워집니다.'], ['Timing helps smoother sleep.'], ['과피로는 피하세요.'], ['Avoid overtiredness.'], ['신호 보이면 바로 준비.'], ['Start routine when cues appear.'], ['졸림 신호 메모', '낮잠 기록'], ['Cue notes', 'Nap log'])
-                )
+                ),
+                {
+                    type: 'product',
+                    title: { ko: '러브투드림 스와들업', en: 'Love to Dream Swaddle UP' },
+                    summary: { ko: '팔을 위로 올린 자세를 유지하는 스와들업.', en: 'Arms-up swaddle designed for self-soothing.' },
+                    focus: {
+                        ko: ['팔을 위로 올린 자세', '이중 지퍼로 교체 편의', '힙 건강 설계 인증'],
+                        en: ['Arms-up position', 'Two-way zipper for easy changes', 'Hip-healthy design']
+                    },
+                    details: details(
+                        ['모로반사 완화로 수면 안정에 도움됩니다.'],
+                        ['May help reduce startle reflex for steadier sleep.'],
+                        ['뒤집기 시작 시 즉시 중단하세요.'],
+                        ['Stop swaddling once rolling begins.'],
+                        ['신생아기~뒤집기 전까지.'],
+                        ['Newborn to pre-rolling stage.'],
+                        ['사이즈/체중 범위', '통기성 소재'],
+                        ['Size/weight range', 'Breathable fabric']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '헤일로 슬립색 스와들', en: 'HALO SleepSack Swaddle' },
+                    summary: { ko: '팔을 넣고/빼고 조절 가능한 스와들.', en: 'Adjustable swaddle with arms in or out.' },
+                    focus: {
+                        ko: ['3가지 착용 방식(팔 넣기/빼기)', '이중 지퍼로 기저귀 교체', '병원 사용으로 알려진 라인'],
+                        en: ['3-way adjustable arms in/out', 'Inverted zipper for diaper changes', 'Hospital-recognized swaddle']
+                    },
+                    details: details(
+                        ['포대기처럼 감싸 안정감을 줍니다.'],
+                        ['Provides a snug, calming wrap.'],
+                        ['등으로 눕혀 재우는 것이 기본입니다.'],
+                        ['Always place baby on their back.'],
+                        ['신생아기~뒤집기 전까지.'],
+                        ['Newborn to pre-rolling stage.'],
+                        ['사이즈/토그 확인', '지퍼 상태'],
+                        ['Size/TOG rating', 'Zipper check']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '스와들미 오리지널 스와들', en: 'SwaddleMe Original Swaddle' },
+                    summary: { ko: '벨크로 윙으로 고정하는 기본형 스와들.', en: 'Classic swaddle with adjustable hook-and-loop wings.' },
+                    focus: {
+                        ko: ['조절형 윙으로 밀착', '부드러운 면 소재', '단계별 사이즈 선택'],
+                        en: ['Adjustable wings for snug fit', 'Soft cotton fabric', 'Stage-based sizing']
+                    },
+                    details: details(
+                        ['모로반사로 깨는 것을 줄이는 데 도움됩니다.'],
+                        ['Helps minimize startle wake-ups.'],
+                        ['가중치(무게추) 스와들은 피하세요.'],
+                        ['Avoid weighted swaddles.'],
+                        ['신생아기~뒤집기 전까지.'],
+                        ['Newborn to pre-rolling stage.'],
+                        ['사이즈/체중 범위', '벨크로 접착 상태'],
+                        ['Size/weight range', 'Fastener check']
+                    )
+                }
             ]
         },
         {
@@ -1139,14 +1196,52 @@ const DATA = {
             title: { ko: '놀이/장난감', en: 'Play & Toys' },
             subtitle: { ko: '발달 단계별 놀이 선택', en: 'Stage-based play picks' },
             summary: {
-                ko: ['감각 자극', '대근육/소근육 놀이', '짧고 자주'],
-                en: ['Sensory play', 'Gross/fine motor', 'Short and frequent']
+                ko: ['감각 자극', '아기체육관/에듀테이블', '대근육/소근육 놀이'],
+                en: ['Sensory play', 'Play gyms & activity tables', 'Gross/fine motor']
             },
             sections: [
                 {
                     id: 'sensory',
                     title: { ko: '감각/인지 놀이', en: 'Sensory & cognitive' },
                     items: [
+                        {
+                            type: 'product',
+                            title: { ko: '러브에브리 플레이 짐 (아기체육관)', en: 'Lovevery Play Gym' },
+                            summary: { ko: '발달 존과 가이드가 있는 프리미엄 아기체육관.', en: 'Premium play gym with developmental zones and guide.' },
+                            focus: {
+                                ko: ['5개 발달 존으로 단계별 자극', '플레이 가이드 포함', '탈착 토이·카드 구성'],
+                                en: ['5 developmental zones for stage-based play', 'Play guide included', 'Detachable toys and card sets']
+                            },
+                            details: details(
+                                ['감각·인지 자극을 단계별로 지원합니다.'],
+                                ['Supports stage-based sensory and cognitive play.'],
+                                ['장난감 고정 상태를 수시로 확인하세요.'],
+                                ['Check toy attachments regularly.'],
+                                ['신생아~12개월 중심.'],
+                                ['Best for newborn to 12 months.'],
+                                ['존 구성', '세탁/관리 편의'],
+                                ['Zone layout', 'Washability']
+                            )
+                        },
+                        {
+                            type: 'product',
+                            title: { ko: '피셔프라이스 킥앤플레이 피아노 짐', en: 'Fisher-Price Deluxe Kick & Play Piano Gym' },
+                            summary: { ko: '피아노+토이아치 구성의 다기능 아기체육관.', en: 'Multi-function play gym with piano and toy arch.' },
+                            focus: {
+                                ko: ['탈착 피아노와 라이트 키', '3단계 스마트 스테이지', '토이 아치+연결 토이 구성'],
+                                en: ['Removable piano with light-up keys', '3 Smart Stages levels', 'Toy arch with linkable toys']
+                            },
+                            details: details(
+                                ['다양한 놀이 자세 전환을 돕습니다.'],
+                                ['Supports multiple play positions as baby grows.'],
+                                ['음량과 배터리 상태를 확인하세요.'],
+                                ['Check volume and batteries.'],
+                                ['신생아~36개월.'],
+                                ['Birth to 36 months.'],
+                                ['피아노 분리 사용', '세탁 가능 여부'],
+                                ['Removable piano', 'Washable mat']
+                            )
+                        },
                         {
                             type: 'product',
                             title: { ko: '타이니러브 클래식 모빌', en: 'Tiny Love classic mobile' },
@@ -1366,6 +1461,50 @@ const DATA = {
                                 ['Best after 24 months.'],
                                 ['수납 박스', '안전 재질'],
                                 ['Storage box', 'Safe materials']
+                            )
+                        }
+                    ]
+                },
+                {
+                    id: 'edu-table',
+                    title: { ko: '에듀테이블', en: 'Activity tables' },
+                    items: [
+                        {
+                            type: 'product',
+                            title: { ko: '피셔프라이스 러닝 테이블', en: 'Fisher-Price Around the Town Learning Table' },
+                            summary: { ko: '노래/문구와 버튼 놀이가 많은 학습 테이블.', en: 'Learning table with songs, phrases, and button play.' },
+                            focus: {
+                                ko: ['120+ 노래·문구', '스마트 스테이지 3단계', '테이블 다리로 성장 단계 확장'],
+                                en: ['120+ songs & phrases', 'Smart Stages 3 levels', 'Grows with removable legs']
+                            },
+                            details: details(
+                                ['손 조작과 언어 자극에 도움됩니다.'],
+                                ['Supports fine motor and language play.'],
+                                ['서서 사용할 때 미끄럼 방지 확인.'],
+                                ['Ensure stability for standing play.'],
+                                ['6~36개월.'],
+                                ['6–36 months.'],
+                                ['배터리 포함 여부', '다리 높이 조절'],
+                                ['Battery needs', 'Leg height setup']
+                            )
+                        },
+                        {
+                            type: 'product',
+                            title: { ko: '스킵합 렛츠 롤 액티비티 테이블', en: 'Skip Hop Explore & More Activity Table' },
+                            summary: { ko: '20가지 활동 요소가 들어간 액티비티 테이블.', en: 'Activity table packed with 20 play elements.' },
+                            focus: {
+                                ko: ['2단계 놀이(바닥/테이블)', '20가지 활동 요소', '라이트업 피아노와 볼 놀이'],
+                                en: ['2 stages (floor/table)', '20 activity elements', 'Light-up piano and ball play']
+                            },
+                            details: details(
+                                ['탐색 놀이와 원인-결과 자극에 좋습니다.'],
+                                ['Great for exploration and cause-effect play.'],
+                                ['부품 고정 상태를 확인하세요.'],
+                                ['Check parts are secure.'],
+                                ['6~36개월.'],
+                                ['6–36 months.'],
+                                ['배터리 필요', '조립 난이도 확인'],
+                                ['Battery required', 'Assembly check']
                             )
                         }
                     ]
