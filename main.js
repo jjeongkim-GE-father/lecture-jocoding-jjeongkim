@@ -1206,7 +1206,7 @@ const DATA = {
         {
             id: 'post-0-6w',
             group: 'postpartum',
-            label: { ko: '산후 0-6주', en: 'Postpartum 0-6w' },
+            label: { ko: '회복 초기', en: 'Postpartum 0-6w' },
             range: { ko: '회복 초기', en: 'Early recovery' },
             top5: {
                 ko: ['충분한 휴식', '수유/분유 루틴', '회복 식단', '집안 동선 정리', '도움 요청 리스트'],
