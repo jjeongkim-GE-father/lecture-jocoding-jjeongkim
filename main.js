@@ -2169,15 +2169,15 @@ const DATA = {
         {
             id: 'formula',
             title: { ko: '분유', en: 'Formula' },
-            subtitle: { ko: '가격대·성분·대표 제품 정리', en: 'Price bands, ingredients, and picks' },
+            subtitle: { ko: '국산/수입 + 특성별 라인 정리', en: 'Domestic/imported + specialty lines' },
             summary: {
-                ko: ['가격대별 비교', '성분 스타일 파악', '대표 제품 후보'],
-                en: ['Compare price bands', 'Ingredient styles', 'Top product picks']
+                ko: ['국산/수입 분류', '산양유/민감케어/무유당 라인', '제품 토글로 비교'],
+                en: ['Domestic/imported split', 'Goat/sensitive/low-lactose lines', 'Compare with toggles']
             },
             sections: [
                 {
                     id: 'guides',
-                    title: { ko: '가이드', en: 'Guides' },
+                    title: { ko: '기준/가이드', en: 'Guides' },
                     items: [FORMULA_ITEMS.priceGuide, FORMULA_ITEMS.ingredientStyles]
                 },
                 {
