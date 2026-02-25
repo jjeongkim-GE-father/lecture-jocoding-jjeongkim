@@ -577,6 +577,25 @@ const FORMULA_ITEMS = {
             ['Check stage', 'Ingredient label']
         )
     },
+    absoluteSensitive: {
+        type: 'product',
+        title: { ko: '앱솔루트 센서티브', en: 'Absolute Sensitive' },
+        summary: { ko: '국내 민감 케어 컨셉 조제유 라인.', en: 'Korean sensitive-care formula line.' },
+        focus: {
+            ko: ['베타-팔미트산 강조', '트리플 프리바이오틱스(GOS/FOS/라피노스)', '단계별 제품 확인'],
+            en: ['Beta-palmitic acid focus', 'Triple prebiotics (GOS/FOS/raffinose)', 'Check stage-specific products']
+        },
+        details: details(
+            ['민감 케어 라인업 비교 시 참고할 수 있습니다.'],
+            ['A reference option within sensitive-care lines.'],
+            ['알레르기/소화 이슈는 의료진 상담이 우선입니다.'],
+            ['Consult clinicians for allergy/digestion concerns.'],
+            ['단계별 라인업 확인.'],
+            ['Verify stage-specific variants.'],
+            ['성분표 확인', '아기 반응 기록'],
+            ['Check ingredients', 'Track baby response']
+        )
+    },
     illuma: {
         type: 'product',
         title: { ko: '일루마', en: 'Illuma' },
@@ -855,7 +874,7 @@ const DATA = {
     groups: [
         { id: 'all', label: { ko: '전체', en: 'All' } },
         { id: 'pregnancy', label: { ko: '임신', en: 'Pregnancy' } },
-        { id: 'postpartum', label: { ko: '산후 0-6주', en: 'Postpartum 0-6w' } },
+        { id: 'postpartum', label: { ko: '출산 직후', en: 'Postpartum 0-6w' } },
         { id: 'baby-0-12', label: { ko: '생후 0-12개월', en: '0-12 months' } },
         { id: 'baby-13-36', label: { ko: '생후 13-36개월', en: '13-36 months' } }
     ],
@@ -2322,6 +2341,7 @@ const DATA = {
                     title: { ko: '국산 분유', en: 'Domestic' },
                     items: [
                         FORMULA_ITEMS.absoluteMasterpiece,
+                        FORMULA_ITEMS.absoluteSensitive,
                         FORMULA_ITEMS.imperialXO,
                         FORMULA_ITEMS.ivenetGoldenJersey,
                         FORMULA_ITEMS.pasteurWithMom,
@@ -2364,6 +2384,7 @@ const DATA = {
                     id: 'sensitive',
                     title: { ko: '민감 케어', en: 'Sensitive care' },
                     items: [
+                        FORMULA_ITEMS.absoluteSensitive,
                         FORMULA_ITEMS.novolacGold,
                         FORMULA_ITEMS.newOriginA2,
                         FORMULA_ITEMS.ivenetGoldenJersey,
