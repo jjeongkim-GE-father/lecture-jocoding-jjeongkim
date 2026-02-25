@@ -43,12 +43,27 @@ const textEls = {
     stagesSubtitle: document.getElementById('stages-subtitle'),
     hotTitle: document.getElementById('hot-title'),
     hotSubtitle: document.getElementById('hot-subtitle'),
+    partnershipTitle: document.getElementById('partnership-title'),
+    partnershipTitleNote: document.getElementById('partnership-title-note'),
+    partnershipSubtitle: document.getElementById('partnership-subtitle'),
+    partnershipNameLabel: document.getElementById('partnership-name-label'),
+    partnershipEmailLabel: document.getElementById('partnership-email-label'),
+    partnershipCompanyLabel: document.getElementById('partnership-company-label'),
+    partnershipMessageLabel: document.getElementById('partnership-message-label'),
+    partnershipSubmit: document.getElementById('partnership-submit'),
     disclaimerTitle: document.getElementById('disclaimer-title'),
     disclaimerText: document.getElementById('disclaimer-text'),
     modalClose: document.getElementById('modal-close'),
     themeModalClose: document.getElementById('theme-modal-close'),
     navStages: document.getElementById('nav-stages'),
     navHot: document.getElementById('nav-hot')
+};
+
+const placeholderEls = {
+    partnershipName: document.getElementById('partnership-name'),
+    partnershipEmail: document.getElementById('partnership-email'),
+    partnershipCompany: document.getElementById('partnership-company'),
+    partnershipMessage: document.getElementById('partnership-message')
 };
 
 const translations = {
@@ -71,6 +86,18 @@ const translations = {
         stagesSubtitle: 'Tap a stage to see Top 5 essentials + detailed cards.',
         hotTitle: 'Parenting Themes',
         hotSubtitle: 'Play, learning, outings, and formula picks in one place.',
+        partnershipTitle: 'Partner with Mongle Map',
+        partnershipTitleNote: '(Partnership Inquiry)',
+        partnershipSubtitle: 'Share a few details and we will get back to you quickly.',
+        partnershipNameLabel: 'Name',
+        partnershipEmailLabel: 'Email',
+        partnershipCompanyLabel: 'Company/Brand',
+        partnershipMessageLabel: 'Partnership Details',
+        partnershipSubmit: 'Send Partnership Inquiry',
+        partnershipNamePlaceholder: 'Jane Doe',
+        partnershipEmailPlaceholder: 'hello@monglemap.com',
+        partnershipCompanyPlaceholder: 'Mongle Map',
+        partnershipMessagePlaceholder: 'Tell us about the partnership you would like to propose.',
         disclaimerTitle: 'Important Notes',
         disclaimerText: 'This page offers planning cues only and does not replace medical advice. Always check product safety standards, ingredient labels, and consult professionals for health-related decisions.',
         navStages: 'Care Stages',
@@ -112,6 +139,18 @@ const translations = {
         stagesSubtitle: '구간을 눌러 필수 Top 5와 상세 카드를 확인하세요.',
         hotTitle: '육아 테마',
         hotSubtitle: '놀이, 교육, 외출, 분유까지 한 번에.',
+        partnershipTitle: '몽글맵과 함께 해요',
+        partnershipTitleNote: '(제휴 문의)',
+        partnershipSubtitle: '간단한 정보만 남겨주시면 빠르게 연락드릴게요.',
+        partnershipNameLabel: '이름',
+        partnershipEmailLabel: '이메일',
+        partnershipCompanyLabel: '회사/브랜드',
+        partnershipMessageLabel: '제휴 내용',
+        partnershipSubmit: '제휴 문의 보내기',
+        partnershipNamePlaceholder: '홍길동',
+        partnershipEmailPlaceholder: 'hello@monglemap.com',
+        partnershipCompanyPlaceholder: '몽글맵',
+        partnershipMessagePlaceholder: '어떤 제휴를 제안하고 싶으신가요?',
         disclaimerTitle: '안내 사항',
         disclaimerText: '이 페이지는 계획 참고용이며 의학적 조언을 대신하지 않습니다. 제품 안전 기준, 성분표를 확인하고 건강 관련 결정은 전문가와 상의하세요.',
         navStages: '육아월별가이드',
@@ -3034,6 +3073,18 @@ const setText = () => {
     }
     themeToggle.textContent = body.classList.contains('dark') ? t.themeLight : t.themeDark;
     langToggle.textContent = t.langBtn;
+    if (placeholderEls.partnershipName) {
+        placeholderEls.partnershipName.placeholder = t.partnershipNamePlaceholder;
+    }
+    if (placeholderEls.partnershipEmail) {
+        placeholderEls.partnershipEmail.placeholder = t.partnershipEmailPlaceholder;
+    }
+    if (placeholderEls.partnershipCompany) {
+        placeholderEls.partnershipCompany.placeholder = t.partnershipCompanyPlaceholder;
+    }
+    if (placeholderEls.partnershipMessage) {
+        placeholderEls.partnershipMessage.placeholder = t.partnershipMessagePlaceholder;
+    }
 };
 
 const buildFilterButton = (label, isActive, onClick) => {
