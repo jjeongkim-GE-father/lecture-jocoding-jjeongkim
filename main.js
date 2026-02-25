@@ -24,6 +24,7 @@ const themeModalCards = document.getElementById('theme-modal-cards');
 const themeModalClose = document.getElementById('theme-modal-close');
 
 const jumpStages = document.getElementById('jump-stages');
+const jumpThemes = document.getElementById('jump-themes');
 
 const textEls = {
     pageTitle: document.getElementById('page-title'),
@@ -65,6 +66,7 @@ const translations = {
         themeFilterLabel: 'Themes',
         filterNote: 'Pick a stage or theme to jump.',
         jumpStages: 'Explore Months',
+        jumpThemes: 'Explore Themes',
         stagesTitle: 'Stage Playbook',
         stagesSubtitle: 'Tap a stage to see Top 5 essentials + detailed cards.',
         hotTitle: 'Parenting Themes',
@@ -105,6 +107,7 @@ const translations = {
         themeFilterLabel: '육아테마',
         filterNote: '월령 또는 테마를 선택하면 해당 섹션으로 이동합니다.',
         jumpStages: '월령 보기',
+        jumpThemes: '테마 보기',
         stagesTitle: '구간별 플레이북',
         stagesSubtitle: '구간을 눌러 필수 Top 5와 상세 카드를 확인하세요.',
         hotTitle: '육아 테마',
@@ -3026,6 +3029,9 @@ const setText = () => {
     if (jumpStages) {
         jumpStages.textContent = t.jumpStages;
     }
+    if (jumpThemes) {
+        jumpThemes.textContent = t.jumpThemes;
+    }
     themeToggle.textContent = body.classList.contains('dark') ? t.themeLight : t.themeDark;
     langToggle.textContent = t.langBtn;
 };
@@ -3504,6 +3510,14 @@ const initNav = () => {
     if (jumpStages) {
         jumpStages.addEventListener('click', () => {
             const target = document.getElementById('stages');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+    if (jumpThemes) {
+        jumpThemes.addEventListener('click', () => {
+            const target = document.getElementById('hot');
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth' });
             }
