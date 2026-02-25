@@ -220,7 +220,8 @@ p {
     border-radius: 999px;
     border: 1px solid var(--border);
     background: var(--surface-alt);
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 600;
     color: var(--muted);
 }
 
