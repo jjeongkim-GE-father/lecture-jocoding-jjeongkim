@@ -56,7 +56,8 @@ const textEls = {
     modalClose: document.getElementById('modal-close'),
     themeModalClose: document.getElementById('theme-modal-close'),
     navStages: document.getElementById('nav-stages'),
-    navHot: document.getElementById('nav-hot')
+    navHot: document.getElementById('nav-hot'),
+    navPartnership: document.getElementById('nav-partnership')
 };
 
 const placeholderEls = {
@@ -102,6 +103,7 @@ const translations = {
         disclaimerText: 'This page offers planning cues only and does not replace medical advice. Always check product safety standards, ingredient labels, and consult professionals for health-related decisions.',
         navStages: 'Care Stages',
         navHot: 'Care Themes',
+        navPartnership: 'Partnership',
         themeDark: 'Dark Mode',
         themeLight: 'Light Mode',
         langBtn: '한국어',
@@ -155,6 +157,7 @@ const translations = {
         disclaimerText: '이 페이지는 계획 참고용이며 의학적 조언을 대신하지 않습니다. 제품 안전 기준, 성분표를 확인하고 건강 관련 결정은 전문가와 상의하세요.',
         navStages: '육아월별가이드',
         navHot: '육아테마',
+        navPartnership: '제휴문의',
         themeDark: '다크 모드',
         themeLight: '라이트 모드',
         langBtn: 'English',
