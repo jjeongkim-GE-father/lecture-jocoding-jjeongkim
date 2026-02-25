@@ -240,6 +240,14 @@ p {
     font-size: 12px;
 }
 
+.filter-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
 .filter-group {
     display: flex;
     flex-wrap: wrap;

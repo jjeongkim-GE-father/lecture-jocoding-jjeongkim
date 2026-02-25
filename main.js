@@ -4,6 +4,7 @@ const body = document.body;
 
 const stageGroupFilter = document.getElementById('stage-group-filter');
 const stageFilter = document.getElementById('stage-filter');
+const themeFilter = document.getElementById('theme-filter');
 const stageCards = document.getElementById('stage-cards');
 const hotClusters = document.getElementById('hot-clusters');
 
@@ -34,6 +35,8 @@ const textEls = {
     metaWindow: document.getElementById('meta-window'),
     metaSources: document.getElementById('meta-sources'),
     heroPanelTitle: document.getElementById('hero-panel-title'),
+    stageFilterLabel: document.getElementById('stage-filter-label'),
+    themeFilterLabel: document.getElementById('theme-filter-label'),
     filterNote: document.getElementById('filter-note'),
     stagesTitle: document.getElementById('stages-title'),
     stagesSubtitle: document.getElementById('stages-subtitle'),
@@ -58,7 +61,9 @@ const translations = {
         metaWindow: 'K-care basic guide',
         metaSources: 'Sources: CDC · WHO · KR Public Health',
         heroPanelTitle: 'Quick Filters',
-        filterNote: 'Pick a stage to open the full checklist.',
+        stageFilterLabel: 'Monthly Stages',
+        themeFilterLabel: 'Themes',
+        filterNote: 'Pick a stage or theme to jump.',
         jumpStages: 'Explore Months',
         stagesTitle: 'Stage Playbook',
         stagesSubtitle: 'Tap a stage to see Top 5 essentials + detailed cards.',
@@ -96,7 +101,9 @@ const translations = {
         metaWindow: 'K-육아 기본 가이드',
         metaSources: '출처: CDC · WHO · 보건소 자료',
         heroPanelTitle: '빠른 필터',
-        filterNote: '구간을 선택하면 상세 체크리스트가 열립니다.',
+        stageFilterLabel: '육아월령',
+        themeFilterLabel: '육아테마',
+        filterNote: '월령 또는 테마를 선택하면 해당 섹션으로 이동합니다.',
         jumpStages: '월령 보기',
         stagesTitle: '구간별 플레이북',
         stagesSubtitle: '구간을 눌러 필수 Top 5와 상세 카드를 확인하세요.',
@@ -104,7 +111,7 @@ const translations = {
         hotSubtitle: '놀이, 교육, 외출, 분유까지 한 번에.',
         disclaimerTitle: '안내 사항',
         disclaimerText: '이 페이지는 계획 참고용이며 의학적 조언을 대신하지 않습니다. 제품 안전 기준, 성분표를 확인하고 건강 관련 결정은 전문가와 상의하세요.',
-        navStages: '육아구간',
+        navStages: '육아월별가이드',
         navHot: '육아테마',
         themeDark: '다크 모드',
         themeLight: '라이트 모드',
@@ -3008,6 +3015,7 @@ toddlerStages.forEach(stage => {
 let currentLang = 'ko';
 let selectedGroup = 'all';
 let selectedStage = 'all';
+let selectedTheme = 'all';
 
 const setText = () => {
     const t = translations[currentLang];
@@ -3033,6 +3041,9 @@ const buildFilterButton = (label, isActive, onClick) => {
 const renderFilters = () => {
     stageGroupFilter.innerHTML = '';
     stageFilter.innerHTML = '';
+    if (themeFilter) {
+        themeFilter.innerHTML = '';
+    }
 
     DATA.groups.forEach(group => {
         const label = group.label[currentLang];
@@ -3061,6 +3072,32 @@ const renderFilters = () => {
                 selectedStage = stage.id;
                 renderFilters();
                 renderStages();
+            })
+        );
+    });
+
+    if (!themeFilter) return;
+    themeFilter.appendChild(
+        buildFilterButton(translations[currentLang].filterAll, selectedTheme === 'all', () => {
+            selectedTheme = 'all';
+            renderFilters();
+            renderHotClusters();
+            const target = document.getElementById('hot');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        })
+    );
+    DATA.themes.forEach(theme => {
+        themeFilter.appendChild(
+            buildFilterButton(theme.title[currentLang], selectedTheme === theme.id, () => {
+                selectedTheme = theme.id;
+                renderFilters();
+                renderHotClusters();
+                const target = document.getElementById('hot');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             })
         );
     });
@@ -3424,7 +3461,10 @@ const closeThemeModal = () => {
 
 const renderHotClusters = () => {
     hotClusters.innerHTML = '';
-    DATA.themes.forEach(theme => {
+    const themes = selectedTheme === 'all'
+        ? DATA.themes
+        : DATA.themes.filter(theme => theme.id === selectedTheme);
+    themes.forEach(theme => {
         const card = document.createElement('div');
         card.className = 'cluster-card';
         const title = document.createElement('div');
