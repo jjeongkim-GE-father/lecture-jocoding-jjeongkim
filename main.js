@@ -1813,6 +1813,310 @@ const DATA = {
                 },
                 {
                     type: 'product',
+                    title: { ko: '압타밀 (네덜란드)', en: 'Aptamil (Netherlands)' },
+                    summary: { ko: '수입 대표 라인으로 성분 밸런스가 좋다고 소개된 제품.', en: 'Imported staple with balanced formula profile.' },
+                    focus: {
+                        ko: ['조제유/네덜란드', '덱스트린·팜유 없음', '올리고당 다양'],
+                        en: ['Formula milk, Netherlands', 'No dextrin or palm oil', 'Multiple oligos']
+                    },
+                    details: details(
+                        ['수입 대표 라인 비교 시 참고합니다.'],
+                        ['Use as a baseline for imported comparisons.'],
+                        ['아기 반응은 개인차가 큽니다.'],
+                        ['Baby tolerance varies.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['수입 재고', '유통기한 확인'],
+                        ['Import stock', 'Check expiry']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '압타밀 에센시스', en: 'Aptamil Essensis' },
+                    summary: { ko: '유기농 A2 수입 라인으로 소개된 프리미엄 제품.', en: 'Premium organic A2 imported line.' },
+                    focus: {
+                        ko: ['A2·유기농', '덱스트린·팜유 없음', '유산균 먹이 충분'],
+                        en: ['A2 organic', 'No dextrin or palm oil', 'Prebiotic-rich']
+                    },
+                    details: details(
+                        ['프리미엄 수입 라인 비교 시 참고.'],
+                        ['Consider when comparing premium imports.'],
+                        ['가격 변동과 재고를 확인하세요.'],
+                        ['Check price and stock availability.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['유통기한 확인', '보관 방법'],
+                        ['Check expiry', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '노발락 골드', en: 'Novolac Gold' },
+                    summary: { ko: '프랑스산 조제유 라인으로 소개된 제품.', en: 'French formula milk line.' },
+                    focus: {
+                        ko: ['조제유/프랑스', '덱스트린·팜유 포함', 'DHA/ARA 함량 확인'],
+                        en: ['Formula milk, France', 'Contains dextrin and palm oil', 'Check DHA/ARA levels']
+                    },
+                    details: details(
+                        ['수입 라인 비교군에 포함합니다.'],
+                        ['Include in imported line comparisons.'],
+                        ['성분표를 반드시 확인하세요.'],
+                        ['Always review the ingredient label.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['유통기한', '보관 방법'],
+                        ['Check expiry', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '뉴오리진 A2 플래티넘', en: 'New Origin A2 Platinum' },
+                    summary: { ko: '뉴질랜드산 A2 분유 라인.', en: 'New Zealand A2 formula line.' },
+                    focus: {
+                        ko: ['A2 단백질', '덱스트린·팜유 없음', '유산균 보강 여부 확인'],
+                        en: ['A2 protein', 'No dextrin or palm oil', 'Check probiotic support']
+                    },
+                    details: details(
+                        ['A2 라인을 비교할 때 참고.'],
+                        ['Consider when comparing A2 lines.'],
+                        ['아기 소화 반응을 관찰하세요.'],
+                        ['Observe digestion response.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['수입 재고', '유통기한'],
+                        ['Import stock', 'Check expiry']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '루비락', en: 'Rubilac' },
+                    summary: { ko: '덴마크산 조제유로 소개된 수입 라인.', en: 'Imported line from Denmark.' },
+                    focus: {
+                        ko: ['식물성 DHA', 'OPO 팜유 구조', '유산균 포함'],
+                        en: ['Plant-based DHA', 'OPO-structured palm oil', 'Includes probiotics']
+                    },
+                    details: details(
+                        ['수입 프리미엄 라인 비교 시 참고.'],
+                        ['Use for premium import comparisons.'],
+                        ['가격과 재고 변동을 확인하세요.'],
+                        ['Check price and stock changes.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['유통기한', '보관 방법'],
+                        ['Check expiry', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '홀레', en: 'Holle' },
+                    summary: { ko: '독일산 유기농 조제식 라인.', en: 'German organic infant formula.' },
+                    focus: {
+                        ko: ['유기농 조제식', '덱스트린·팜유 없음', '성분 표기 확인'],
+                        en: ['Organic infant formula', 'No dextrin or palm oil', 'Check label details']
+                    },
+                    details: details(
+                        ['유기농 조제식 비교 시 참고.'],
+                        ['Consider for organic formula comparisons.'],
+                        ['성분 표기를 꼼꼼히 확인하세요.'],
+                        ['Review labeling details carefully.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['유통기한', '보관 방법'],
+                        ['Check expiry', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '파스퇴르 위드맘', en: 'Pasteur With Mom' },
+                    summary: { ko: '국내 제조 조제유 라인.', en: 'Korean-made formula line.' },
+                    focus: {
+                        ko: ['덱스트린·팜유 없음', 'DHA/ARA 함량 높음', '유산균 먹이 충분'],
+                        en: ['No dextrin or palm oil', 'Higher DHA/ARA', 'Prebiotics included']
+                    },
+                    details: details(
+                        ['국내 라인 비교 시 참고.'],
+                        ['Use for domestic comparisons.'],
+                        ['아기 반응을 확인하세요.'],
+                        ['Monitor baby tolerance.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['단계 확인', '보관 방법'],
+                        ['Check stage', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '파스퇴르 위드맘 제왕', en: 'Pasteur With Mom C-section' },
+                    summary: { ko: '제왕절개 아기용 조제식 라인으로 소개.', en: 'C-section-focused infant formula line.' },
+                    focus: {
+                        ko: ['OPO 구조 팜유', '락토페린 등 흡수 보강', 'DHA/ARA 높음'],
+                        en: ['OPO-structured palm oil', 'Absorption-support ingredients', 'Higher DHA/ARA']
+                    },
+                    details: details(
+                        ['특수 라인은 상담 후 선택 권장.'],
+                        ['Consider clinician guidance for special lines.'],
+                        ['아기 컨디션 변화를 관찰하세요.'],
+                        ['Monitor baby response.'],
+                        ['필요 시기 중심.'],
+                        ['Use as needed.'],
+                        ['단계 확인', '성분표 확인'],
+                        ['Check stage', 'Ingredient label']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '일루마', en: 'Illuma' },
+                    summary: { ko: '아일랜드산 조제유 라인.', en: 'Irish formula milk line.' },
+                    focus: {
+                        ko: ['OPO 구조 팜유 포함', '유산균 포함', 'DHA/ARA 높음'],
+                        en: ['OPO-structured palm oil', 'Includes probiotics', 'Higher DHA/ARA']
+                    },
+                    details: details(
+                        ['수입 프리미엄 라인 비교 시 참고.'],
+                        ['Consider for premium import comparisons.'],
+                        ['가격대와 재고를 확인하세요.'],
+                        ['Check price and availability.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['유통기한', '보관 방법'],
+                        ['Check expiry', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '앱솔루트 산양', en: 'Absolute Goat Milk' },
+                    summary: { ko: '국내 산양유 기반 A2 라인.', en: 'Korean A2 goat milk line.' },
+                    focus: {
+                        ko: ['산양유 A2', '덱스트린 포함', '유산균 2종'],
+                        en: ['Goat milk A2', 'Contains dextrin', 'Two probiotic strains']
+                    },
+                    details: details(
+                        ['산양유 라인 비교 시 참고.'],
+                        ['Consider when comparing goat milk lines.'],
+                        ['알레르기 반응을 관찰하세요.'],
+                        ['Watch for allergies.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['성분표 확인', '보관 방법'],
+                        ['Check ingredients', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '후디스 산양분유', en: 'Foodis Goat Milk Formula' },
+                    summary: { ko: '뉴질랜드산 산양유 조제유.', en: 'New Zealand goat milk formula.' },
+                    focus: {
+                        ko: ['덱스트린·팜유 없음', '유산균 포함', '갈락토올리고당 풍부'],
+                        en: ['No dextrin or palm oil', 'Includes probiotics', 'Rich in GOS']
+                    },
+                    details: details(
+                        ['산양유 라인 비교 시 참고.'],
+                        ['Consider for goat milk comparisons.'],
+                        ['가격 변동을 확인하세요.'],
+                        ['Check price changes.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['유통기한', '보관 방법'],
+                        ['Check expiry', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '뢰벤짠', en: 'Lowenzahn' },
+                    summary: { ko: '오스트리아산 유기농 조제유.', en: 'Austrian organic formula.' },
+                    focus: {
+                        ko: ['유기농 조제유', '덱스트린·팜유 없음', '유산균·올리고당 충분'],
+                        en: ['Organic formula', 'No dextrin or palm oil', 'Probiotics and prebiotics']
+                    },
+                    details: details(
+                        ['유기농 수입 라인 비교 시 참고.'],
+                        ['Use for organic import comparisons.'],
+                        ['성분표와 인증을 확인하세요.'],
+                        ['Check certifications and label.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['유통기한', '보관 방법'],
+                        ['Check expiry', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '카브리타', en: 'Kabrita' },
+                    summary: { ko: '네덜란드산 산양유 A2 수입 라인.', en: 'Dutch A2 goat milk import line.' },
+                    focus: {
+                        ko: ['A2 산양유', 'OPO 구조 팜유 포함', '유산균·올리고당 풍부'],
+                        en: ['A2 goat milk', 'OPO-structured palm oil', 'Rich in pro/prebiotics']
+                    },
+                    details: details(
+                        ['산양유 수입 라인 비교 시 참고.'],
+                        ['Consider when comparing goat milk imports.'],
+                        ['가격대가 높을 수 있습니다.'],
+                        ['Price point can be high.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['유통기한', '보관 방법'],
+                        ['Check expiry', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '아이엠마더', en: 'I Am Mother' },
+                    summary: { ko: '국내 조제유 라인.', en: 'Korean-made formula line.' },
+                    focus: {
+                        ko: ['덱스트린 포함', 'OPO 구조 여부 확인', '유산균 먹이 충분'],
+                        en: ['Contains dextrin', 'Check OPO structure', 'Prebiotics included']
+                    },
+                    details: details(
+                        ['국내 라인 비교 시 참고.'],
+                        ['Use for domestic comparisons.'],
+                        ['아기 반응을 확인하세요.'],
+                        ['Monitor baby tolerance.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['단계 확인', '보관 방법'],
+                        ['Check stage', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '힙 유기농', en: 'HiPP Organic' },
+                    summary: { ko: '독일산 유기농 조제유 라인.', en: 'German organic formula line.' },
+                    focus: {
+                        ko: ['덱스트린 없음', '유기농 팜유 포함', '올리고당 포함'],
+                        en: ['No dextrin', 'Organic palm oil', 'Includes oligos']
+                    },
+                    details: details(
+                        ['유기농 라인 비교 시 참고.'],
+                        ['Consider for organic comparisons.'],
+                        ['성분표 표기를 확인하세요.'],
+                        ['Review label details.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['유통기한', '보관 방법'],
+                        ['Check expiry', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
+                    title: { ko: '트루맘', en: 'True Mom' },
+                    summary: { ko: '호주산 조제유 라인.', en: 'Australian formula line.' },
+                    focus: {
+                        ko: ['덱스트린·팜유 없음', '유산균 먹이 포함', 'DHA/ARA 준수'],
+                        en: ['No dextrin or palm oil', 'Includes prebiotics', 'Adequate DHA/ARA']
+                    },
+                    details: details(
+                        ['수입 라인 비교 시 참고.'],
+                        ['Use for import comparisons.'],
+                        ['아기 반응을 관찰하세요.'],
+                        ['Monitor baby tolerance.'],
+                        ['신생아~12개월 중심.'],
+                        ['Newborn to 12 months.'],
+                        ['유통기한', '보관 방법'],
+                        ['Check expiry', 'Storage method']
+                    )
+                },
+                {
+                    type: 'product',
                     title: { ko: '산양유 라인업', en: 'Goat milk line' },
                     summary: { ko: '산양유 기반 라인 비교용.', en: 'Category for goat milk options.' },
                     focus: {
