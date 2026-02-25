@@ -212,14 +212,14 @@ const FORMULA_ITEMS = {
         title: { ko: '임페리얼XO', en: 'Imperial XO' },
         summary: { ko: '국내 프리미엄 라인업으로 포지션이 높은 제품.', en: 'Domestic premium-positioned line.' },
         focus: {
-            ko: ["프리미엄 라인 비교 기준", "단계별 성분표 확인", "아기 반응 기록"],
-            en: ["Premium comparison baseline", "Check stage ingredients", "Log baby response"]
+            ko: ["남양몰 프리미엄 멤버십 브랜드 라인", "단계별 라인업 중심", "국산 프리미엄 비교용"],
+            en: ["Premium brand line on Namyang Mall", "Stage-based lineup", "Domestic premium comparison"]
         },
         details: details(
-            ['국내 프리미엄 라인 비교군으로 참고.'],
-            ['Use as a premium domestic reference.'],
-            ['가격대와 성분표를 꼭 확인하세요.'],
-            ['Verify price point and ingredient label.'],
+            ['국내 프리미엄 라인으로 비교 기준에 자주 포함됩니다.'],
+            ['Often used as a domestic premium reference.'],
+            ['가격대가 높을 수 있어 구매 전 확인이 필요합니다.'],
+            ['Higher price point; verify before purchase.'],
             ['신생아~12개월 중심.'],
             ['Newborn to 12 months.'],
             ['단계 확인', '유통기한'],
@@ -229,16 +229,16 @@ const FORMULA_ITEMS = {
     ivenetGoldenJersey: {
         type: 'product',
         title: { ko: '아이배냇 골든저지', en: 'Ivenet Golden Jersey' },
-        summary: { ko: '국내 라인 중 비교용으로 많이 보는 제품.', en: 'A domestic line often used for comparison.' },
+        summary: { ko: '저지 원유와 A2 단백질을 강조한 국내 프리미엄 라인.', en: 'Domestic premium line emphasizing Jersey milk and A2.' },
         focus: {
-            ko: ["국내 라인 비교 기준", "성분표·원유 정보 확인", "소화 반응 체크"],
-            en: ["Domestic comparison baseline", "Check ingredients and milk source", "Monitor digestion"]
+            ko: ["저지 원유 100%", "A2 β-카제인 강조", "BB-12 유산균 포함"],
+            en: ["100% Jersey milk", "A2 beta-casein focus", "Includes BB-12 probiotic"]
         },
         details: details(
-            ['국내 라인업을 비교할 때 참고합니다.'],
-            ['Use when comparing domestic lineups.'],
-            ['성분표를 확인하고 아기 반응을 관찰하세요.'],
-            ['Review labels and observe tolerance.'],
+            ['저지 원유와 A2 단백질/유산균 구성이 장점으로 소개됩니다.'],
+            ['Noted for Jersey milk, A2 protein, and probiotics.'],
+            ['프리미엄 라인으로 가격대가 높을 수 있습니다.'],
+            ['Premium positioning can mean higher price.'],
             ['신생아~12개월 중심.'],
             ['Newborn to 12 months.'],
             ['유통기한 확인', '보관 방법'],
@@ -326,14 +326,14 @@ const FORMULA_ITEMS = {
         title: { ko: '노발락 골드', en: 'Novolac Gold' },
         summary: { ko: '프랑스산 조제유 라인.', en: 'French formula milk line.' },
         focus: {
-            ko: ['덱스트린·팜유 포함', 'DHA/ARA 함량 낮은 편', '유산균 없음'],
-            en: ['Contains dextrin and palm oil', 'Lower DHA/ARA', 'No probiotics']
+            ko: ['특수 라인(AC/AR/AD 등) 보유 브랜드', '일반 라인(골드) 포함', '제품별 라벨 확인 필수'],
+            en: ['Brand with special lines (AC/AR/AD)', 'Includes standard Gold line', 'Verify label by variant']
         },
         details: details(
-            ['프랑스산 조제유 라인 비교군으로 참고.'],
-            ['Use as a French formula comparison.'],
-            ['덱스트린·팜유 포함과 낮은 DHA/ARA를 고려하세요.'],
-            ['Consider dextrin/palm oil and lower DHA/ARA.'],
+            ['배앓이/역류/설사 등 증상 목적형 라인을 보유한 브랜드입니다.'],
+            ['Brand offers symptom-focused lines for colic/reflux/diarrhea.'],
+            ['골드 라인은 특수 라인과 구분되어 라벨 확인이 필요합니다.'],
+            ['Gold line differs from special lines; check label.'],
             ['신생아~12개월 중심.'],
             ['Newborn to 12 months.'],
             ['유통기한', '보관 방법'],
@@ -345,14 +345,14 @@ const FORMULA_ITEMS = {
         title: { ko: '뉴오리진 A2 플래티넘', en: 'New Origin A2 Platinum' },
         summary: { ko: '뉴질랜드산 A2 라인으로 알려진 수입 분유.', en: 'Imported New Zealand A2 formula.' },
         focus: {
-            ko: ['A2 단백질', '덱스트린·팜유 없음', '유산균/유산균 먹이 부족'],
-            en: ['A2 protein', 'No dextrin or palm oil', 'Limited pro/prebiotics']
+            ko: ['A2 단백질', '배앓이 걱정 감소 컨셉', '유산균/올리고당 보강 확인'],
+            en: ['A2 protein', 'Digestive-comfort positioning', 'Check pro/prebiotic support']
         },
         details: details(
-            ['A2 단백질과 첨가물 부담이 적은 점이 장점입니다.'],
-            ['A2 protein with fewer additives is a plus.'],
-            ['유산균/올리고당이 부족하므로 장 컨디션을 확인하세요.'],
-            ['Limited pro/prebiotics; watch gut comfort.'],
+            ['A2 단백질로 소화 편안함을 강조하는 라인입니다.'],
+            ['A2 protein positioned for digestive comfort.'],
+            ['유산균/올리고당 구성이 약할 수 있어 확인이 필요합니다.'],
+            ['Pro/prebiotics may be limited; verify on label.'],
             ['신생아~12개월 중심.'],
             ['Newborn to 12 months.'],
             ['수입 재고', '유통기한'],
@@ -516,14 +516,14 @@ const FORMULA_ITEMS = {
         title: { ko: '카브리타', en: 'Kabrita' },
         summary: { ko: '네덜란드산 산양유 A2 수입 라인.', en: 'Dutch A2 goat milk import line.' },
         focus: {
-            ko: ['A2 산양유', 'OPO 구조 팜유', '유산균 2종 + HMO 포함'],
-            en: ['A2 goat milk', 'OPO-structured palm oil', 'Two probiotics + HMO']
+            ko: ['A2 산양유', '소화 편안함 컨셉', '유산균/올리고당 구성'],
+            en: ['A2 goat milk', 'Digestive-comfort positioning', 'Pro/prebiotic blend']
         },
         details: details(
-            ['A2 산양유와 유산균/올리고당 구성이 강점입니다.'],
-            ['Strong in A2 goat milk and pro/prebiotics.'],
-            ['OPO 팜유 포함과 높은 가격대를 고려하세요.'],
-            ['Contains OPO palm oil; high price point.'],
+            ['산양유 기반으로 소화 편안함을 강조합니다.'],
+            ['Goat milk line positioned for easier digestion.'],
+            ['가격대가 높고 성분/함량은 라벨 확인이 필요합니다.'],
+            ['Premium price; verify details on label.'],
             ['신생아~12개월 중심.'],
             ['Newborn to 12 months.'],
             ['유통기한', '보관 방법'],
@@ -2226,7 +2226,14 @@ const DATA = {
                 {
                     id: 'sensitive',
                     title: { ko: '민감 케어', en: 'Sensitive care' },
-                    items: [FORMULA_ITEMS.sensitiveCare]
+                    items: [
+                        FORMULA_ITEMS.novolacGold,
+                        FORMULA_ITEMS.newOriginA2,
+                        FORMULA_ITEMS.ivenetGoldenJersey,
+                        FORMULA_ITEMS.kabrita,
+                        FORMULA_ITEMS.hippCombiotic,
+                        FORMULA_ITEMS.sensitiveCare
+                    ]
                 },
                 {
                     id: 'low-lactose',
