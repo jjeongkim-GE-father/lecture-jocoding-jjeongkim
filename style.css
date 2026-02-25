@@ -350,6 +350,16 @@ p {
     text-decoration: underline;
 }
 
+.section-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.section-link:hover {
+    text-decoration: underline;
+}
+
 .ad-slot {
     margin: 28px 0;
     padding: 16px;
@@ -363,6 +373,17 @@ p {
 
 .ads-enabled .ad-slot {
     display: block;
+}
+
+.legal-page .info-card {
+    margin-bottom: 16px;
+}
+
+.legal-list {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--muted);
+    line-height: 1.7;
 }
 
 .stage-grid {
