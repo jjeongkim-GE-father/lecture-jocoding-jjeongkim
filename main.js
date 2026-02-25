@@ -855,7 +855,7 @@ const DATA = {
     groups: [
         { id: 'all', label: { ko: '전체', en: 'All' } },
         { id: 'pregnancy', label: { ko: '임신', en: 'Pregnancy' } },
-        { id: 'postpartum', label: { ko: '출산 직후', en: 'Postpartum 0-6w' } },
+        { id: 'postpartum', label: { ko: '산후 0-6주', en: 'Postpartum 0-6w' } },
         { id: 'baby-0-12', label: { ko: '생후 0-12개월', en: '0-12 months' } },
         { id: 'baby-13-36', label: { ko: '생후 13-36개월', en: '13-36 months' } }
     ],
@@ -1187,7 +1187,7 @@ const DATA = {
         {
             id: 'post-0-6w',
             group: 'postpartum',
-            label: { ko: '출산 직후', en: 'Postpartum 0-6w' },
+            label: { ko: '산후 0-6주', en: 'Postpartum 0-6w' },
             range: { ko: '회복 초기', en: 'Early recovery' },
             top5: {
                 ko: ['충분한 휴식', '수유/분유 루틴', '회복 식단', '집안 동선 정리', '도움 요청 리스트'],
@@ -3411,6 +3411,14 @@ const renderStages = () => {
         const card = document.createElement('div');
         card.className = 'stage-card';
 
+        const header = document.createElement('div');
+        header.className = 'stage-header';
+        header.innerHTML = `
+            <div class="stage-tag">${stage.label[currentLang]}</div>
+            <div class="stage-title">${stage.range[currentLang]}</div>
+            <div class="stage-sub">${translations[currentLang].stageTap}</div>
+        `;
+
         const list = document.createElement('div');
         list.className = 'card-list';
         stage.cards.slice(0, 3).forEach(cardItem => {
@@ -3423,6 +3431,7 @@ const renderStages = () => {
             list.appendChild(item);
         });
 
+        card.appendChild(header);
         card.appendChild(list);
         card.addEventListener('click', () => openModal(stage));
         stageCards.appendChild(card);
