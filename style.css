@@ -302,6 +302,37 @@ p {
     line-height: 1.7;
 }
 
+.section-lead {
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.info-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    display: grid;
+    gap: 10px;
+}
+
+.info-card h3 {
+    font-size: 18px;
+}
+
+.info-card p {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
 .stage-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

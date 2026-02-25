@@ -23,13 +23,47 @@
     <header class="site-header">
         <div class="brand" id="brand">몽글맵</div>
         <nav class="site-nav">
+            <button class="nav-link" data-target="about" id="nav-about">About</button>
             <button class="nav-link" data-target="stages" id="nav-stages">Care Stages</button>
             <button class="nav-link" data-target="hot" id="nav-hot">Care Themes</button>
             <button class="nav-link" data-target="partnership" id="nav-partnership">Partnership</button>
+            <button class="nav-link" data-target="privacy" id="nav-privacy">Privacy</button>
+            <button class="nav-link" data-target="terms" id="nav-terms">Terms</button>
+            <button class="nav-link" data-target="contact" id="nav-contact">Contact</button>
         </nav>
     </header>
 
     <main class="page">
+        <section class="section" id="about">
+            <div class="section-header">
+                <h2 id="about-title">About Mongle Map</h2>
+                <p id="about-subtitle">A practical, parent-first guide to key milestones from pregnancy to 36 months.</p>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3 id="about-mission-title">Our Mission</h3>
+                    <p id="about-mission-text">
+                        We turn complex parenting information into clear, actionable steps so families can focus on what
+                        matters most.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 id="about-editorial-title">Editorial Policy</h3>
+                    <p id="about-editorial-text">
+                        Content is created from public guidelines and expert sources, then summarized for clarity.
+                        We avoid medical diagnosis and encourage professional consultation for health decisions.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 id="about-sources-title">Sources We Reference</h3>
+                    <p id="about-sources-text">
+                        Guidance is informed by public health agencies and pediatric resources. We update summaries when
+                        key guidance changes.
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <section class="hero" id="hero">
             <div class="hero-text">
                 <p class="tagline" id="tagline">Mom-loved, baby-ready.</p>
@@ -65,6 +99,9 @@
                 <h2 id="stages-title">Stage Playbook</h2>
                 <p id="stages-subtitle">Tap a stage to see Top 5 essentials + detailed cards.</p>
             </div>
+            <div class="section-lead" id="stages-lead">
+                Each stage highlights the top essentials plus practical actions you can apply right away.
+            </div>
             <div id="stage-cards" class="stage-grid"></div>
         </section>
 
@@ -73,7 +110,21 @@
                 <h2 id="hot-title">육아 테마</h2>
                 <p id="hot-subtitle">놀이, 교육, 외출, 분유까지 한 번에.</p>
             </div>
+            <div class="section-lead" id="hot-lead">
+                Browse themes for quick guidance on common challenges like sleep, feeding, and play.
+            </div>
             <div id="hot-clusters" class="cluster-grid"></div>
+        </section>
+
+        <section class="section" id="contact">
+            <div class="section-header">
+                <h2 id="contact-title">Contact</h2>
+                <p id="contact-subtitle">Questions or feedback? Reach us anytime.</p>
+            </div>
+            <div class="info-card">
+                <p id="contact-text">Email: hello@monglemap.com</p>
+                <p id="contact-note">For business partnerships, use the form below.</p>
+            </div>
         </section>
 
         <section class="section" id="partnership">
@@ -103,6 +154,35 @@
                 </label>
                 <button class="form-submit" id="partnership-submit" type="submit">제휴 문의 보내기</button>
             </form>
+        </section>
+
+        <section class="section" id="privacy">
+            <div class="section-header">
+                <h2 id="privacy-title">Privacy Policy</h2>
+                <p id="privacy-subtitle">We respect your data and keep collection to a minimum.</p>
+            </div>
+            <div class="info-card">
+                <p id="privacy-text">
+                    We collect only what is needed to provide the service (such as form submissions). We do not sell
+                    personal information. Ad providers may use cookies or device identifiers to serve ads.
+                </p>
+                <p id="privacy-ads">
+                    You can manage ad personalization in your browser or Google Ads settings.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="terms">
+            <div class="section-header">
+                <h2 id="terms-title">Terms of Use</h2>
+                <p id="terms-subtitle">Please read before using the site.</p>
+            </div>
+            <div class="info-card">
+                <p id="terms-text">
+                    This site provides general parenting information and does not replace professional medical advice.
+                    By using the site, you agree to use the content at your own discretion.
+                </p>
+            </div>
         </section>
 
         <section class="section" id="disclaimer">
