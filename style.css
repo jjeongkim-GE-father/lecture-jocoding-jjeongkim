@@ -183,7 +183,8 @@ p {
     flex-wrap: wrap;
 }
 
-#jump-stages {
+#jump-stages,
+#jump-themes {
     padding: 16px 28px;
     font-size: 16px;
     cursor: pointer;
@@ -196,7 +197,8 @@ p {
     font-weight: 600;
 }
 
-#jump-stages:hover {
+#jump-stages:hover,
+#jump-themes:hover {
     transform: translateY(-2px);
     box-shadow: 0 20px 35px rgba(217, 114, 63, 0.35);
 }
