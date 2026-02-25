@@ -240,11 +240,11 @@ p {
     color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.16em;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .filter-label {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--muted);
     letter-spacing: 0.08em;
