@@ -164,7 +164,7 @@ p {
 }
 
 #main-heading {
-    font-size: clamp(32px, 3.6vw, 52px);
+    font-size: clamp(30px, 3.3vw, 50px);
     line-height: 1.1;
 }
 
