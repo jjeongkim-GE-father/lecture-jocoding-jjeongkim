@@ -81,6 +81,7 @@ const textEls = {
     navStages: document.getElementById('nav-stages'),
     navHot: document.getElementById('nav-hot'),
     navAbout: document.getElementById('nav-about'),
+    navSources: document.getElementById('nav-sources'),
     navPrivacy: document.getElementById('nav-privacy'),
     navTerms: document.getElementById('nav-terms'),
     navContact: document.getElementById('nav-contact'),

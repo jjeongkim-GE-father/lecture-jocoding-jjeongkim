@@ -350,6 +350,21 @@ p {
     text-decoration: underline;
 }
 
+.ad-slot {
+    margin: 28px 0;
+    padding: 16px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-lg);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    display: none;
+}
+
+.ads-enabled .ad-slot {
+    display: block;
+}
+
 .stage-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

@@ -24,9 +24,9 @@
         <div class="brand" id="brand">몽글맵</div>
         <nav class="site-nav">
             <button class="nav-link" data-target="about" id="nav-about">About</button>
-            <button class="nav-link" data-target="sources" id="nav-sources">Sources</button>
             <button class="nav-link" data-target="stages" id="nav-stages">Care Stages</button>
             <button class="nav-link" data-target="hot" id="nav-hot">Care Themes</button>
+            <button class="nav-link" data-target="sources" id="nav-sources">Sources</button>
             <button class="nav-link" data-target="contact" id="nav-contact">Contact</button>
             <button class="nav-link" data-target="partnership" id="nav-partnership">Partnership</button>
             <button class="nav-link" data-target="privacy" id="nav-privacy">Privacy</button>
@@ -65,21 +65,6 @@
             </div>
         </section>
 
-        <section class="section" id="sources">
-            <div class="section-header">
-                <h2 id="sources-title">Sources & References</h2>
-                <p id="sources-subtitle">We link to public health guidance and parent resources we rely on.</p>
-            </div>
-            <div class="info-card">
-                <ul class="sources-list" id="sources-list">
-                    <li><a href="https://www.cdc.gov/parents/index.html" target="_blank" rel="noopener noreferrer">CDC: Parent Information</a></li>
-                    <li><a href="https://www.who.int/health-topics/maternal-health" target="_blank" rel="noopener noreferrer">WHO: Maternal Health</a></li>
-                    <li><a href="https://www.who.int/health-topics/child-health" target="_blank" rel="noopener noreferrer">WHO: Child Health</a></li>
-                    <li><a href="https://www.aap.org/" target="_blank" rel="noopener noreferrer">American Academy of Pediatrics</a></li>
-                </ul>
-            </div>
-        </section>
-
         <section class="hero" id="hero">
             <div class="hero-text">
                 <p class="tagline" id="tagline">Mom-loved, baby-ready.</p>
@@ -111,6 +96,10 @@
         </section>
 
         <!-- Ad slot recommendation: place a responsive unit below the hero after approval. -->
+        <div class="ad-slot" id="ad-slot-hero" aria-hidden="true">
+            Ad slot (enabled after AdSense approval)
+        </div>
+
         <section class="section" id="stages">
             <div class="section-header">
                 <h2 id="stages-title">Stage Playbook</h2>
@@ -121,6 +110,10 @@
             </div>
             <div id="stage-cards" class="stage-grid"></div>
         </section>
+
+        <div class="ad-slot" id="ad-slot-feed" aria-hidden="true">
+            Ad slot (enabled after AdSense approval)
+        </div>
 
         <!-- Ad slot recommendation: place an in-feed unit between long content blocks after approval. -->
         <section class="section" id="hot">
@@ -134,34 +127,20 @@
             <div id="hot-clusters" class="cluster-grid"></div>
         </section>
 
-        <section class="section" id="privacy">
+        <section class="section" id="sources">
             <div class="section-header">
-                <h2 id="privacy-title">Privacy Policy</h2>
-                <p id="privacy-subtitle">We respect your data and keep collection to a minimum.</p>
+                <h2 id="sources-title">Sources & References</h2>
+                <p id="sources-subtitle">We link to public health guidance and parent resources we rely on.</p>
             </div>
             <div class="info-card">
-                <p id="privacy-text">
-                    We collect only what is needed to provide the service (such as form submissions). We do not sell
-                    personal information. We retain submissions only as long as needed to respond.
-                    Ad providers may use cookies or device identifiers to serve ads.
-                </p>
-                <p id="privacy-ads">
-                    You can manage ad personalization in your browser or Google Ads settings.
-                </p>
-            </div>
-        </section>
-
-        <section class="section" id="terms">
-            <div class="section-header">
-                <h2 id="terms-title">Terms of Use</h2>
-                <p id="terms-subtitle">Please read before using the site.</p>
-            </div>
-            <div class="info-card">
-                <p id="terms-text">
-                    This site provides general parenting information and does not replace professional medical advice.
-                    By using the site, you agree to use the content at your own discretion and verify product labels
-                    or guidance with professionals when needed.
-                </p>
+                <ul class="sources-list" id="sources-list">
+                    <li><a href="https://www.cdc.gov/parents/index.html" target="_blank" rel="noopener noreferrer">CDC: Parent Information</a></li>
+                    <li><a href="https://www.who.int/health-topics/maternal-health" target="_blank" rel="noopener noreferrer">WHO: Maternal Health</a></li>
+                    <li><a href="https://www.who.int/health-topics/child-health" target="_blank" rel="noopener noreferrer">WHO: Child Health</a></li>
+                    <li><a href="https://www.aap.org/" target="_blank" rel="noopener noreferrer">American Academy of Pediatrics</a></li>
+                    <li><a href="https://www.kdca.go.kr/" target="_blank" rel="noopener noreferrer">KDCA: 질병관리청</a></li>
+                    <li><a href="https://www.mohw.go.kr/" target="_blank" rel="noopener noreferrer">MOHW: 보건복지부</a></li>
+                </ul>
             </div>
         </section>
 
@@ -203,6 +182,37 @@
                 </label>
                 <button class="form-submit" id="partnership-submit" type="submit">제휴 문의 보내기</button>
             </form>
+        </section>
+
+        <section class="section" id="privacy">
+            <div class="section-header">
+                <h2 id="privacy-title">Privacy Policy</h2>
+                <p id="privacy-subtitle">We respect your data and keep collection to a minimum.</p>
+            </div>
+            <div class="info-card">
+                <p id="privacy-text">
+                    We collect only what is needed to provide the service (such as form submissions). We do not sell
+                    personal information. We retain submissions only as long as needed to respond.
+                    Ad providers may use cookies or device identifiers to serve ads.
+                </p>
+                <p id="privacy-ads">
+                    You can manage ad personalization in your browser or Google Ads settings.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="terms">
+            <div class="section-header">
+                <h2 id="terms-title">Terms of Use</h2>
+                <p id="terms-subtitle">Please read before using the site.</p>
+            </div>
+            <div class="info-card">
+                <p id="terms-text">
+                    This site provides general parenting information and does not replace professional medical advice.
+                    By using the site, you agree to use the content at your own discretion and verify product labels
+                    or guidance with professionals when needed.
+                </p>
+            </div>
         </section>
 
         <section class="section" id="disclaimer">
